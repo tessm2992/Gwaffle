@@ -12,7 +12,7 @@ struct TabBarView: View {
     
     var body: some View {
         TabView(selection: $selectedTab) {
-            Text("Feed View")
+            FeedView()
                 .tabItem {
                     Image(systemName: "house")
                         .environment(\.symbolVariants, selectedTab == 0 ? .fill : .none)

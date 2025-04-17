@@ -19,14 +19,14 @@ struct FeedView: View {
                         VStack {
                             ForEach(0 ..< 3, id:\.self) { _ in
                                 ThreadPostView()
+                                DividerView(width: proxy.size.width - 15)
                             }
-                            DividerView(width: proxy.size.width - 15)
                             Spacer()
                         }
                         .frame(maxWidth: .infinity)
                         .toolbar {
                             ToolbarItem(placement: .topBarLeading) {
-                                HStack(spacing: 2) {
+                                HStack(spacing: 1) {
                                     Image(systemName: "line.3.horizontal")
                                         .resizable()
                                         .scaledToFill()

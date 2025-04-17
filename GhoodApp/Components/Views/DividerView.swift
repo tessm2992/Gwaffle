@@ -19,3 +19,5 @@ struct DividerView: View {
             .frame(width: width,height: 3)
     }
 }
+
+
