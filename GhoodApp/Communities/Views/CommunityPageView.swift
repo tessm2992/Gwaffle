@@ -8,8 +8,29 @@
 import SwiftUI
 
 struct CommunityPageView: View {
+    private var ghoodPink: Color = Color(red: 255/255, green: 41/255, blue: 91/255)
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        ScrollView {
+            Text("Hello!")
+        }
+        .scrollIndicators(.hidden)
+        .toolbar {
+            ToolbarItem(placement: .topBarLeading) {
+                Button(action:{}, label: {
+                    Image(systemName: "arrow.left")
+                        .foregroundStyle(ghoodPink)
+                        .fontWeight(.bold)
+                })
+            }
+            ToolbarItem(placement: .topBarTrailing) {
+                Button(action:{}, label: {
+                    Image(systemName: "magnifyingglass")
+                        .foregroundStyle(ghoodPink)
+                        .fontWeight(.bold)
+                })
+            }
+        }
     }
 }
 

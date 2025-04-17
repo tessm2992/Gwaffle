@@ -52,6 +52,7 @@ struct FeedView: View {
                     }
                 }
             }
+            .navigationBarBackButtonHidden(true)
             .toolbar {
                 ToolbarItem(placement: .topBarLeading) {
                     HStack(spacing: 1) {

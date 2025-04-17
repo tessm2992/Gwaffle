@@ -20,7 +20,7 @@ struct TabBarView: View {
                     }
                 .tag(0)
             
-            Text("Communities View")
+            CommunityListView(selectedTab: $selectedTab)
                 .tabItem {
                     Image(systemName: "person.3")
                         .environment(\.symbolVariants, selectedTab == 1 ? .fill : .none)

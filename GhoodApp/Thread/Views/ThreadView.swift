@@ -16,6 +16,10 @@ struct ThreadView: View {
             ScrollView {
                 ThreadHeaderView()
                 DividerThinView(width: proxy.size.width - 15)
+                ForEach(0..<2) { _ in
+                    ThreadPostOtherView()
+                    DividerThinView(width: proxy.size.width - 15)
+                }
                 
             }
             .scrollIndicators(.hidden)

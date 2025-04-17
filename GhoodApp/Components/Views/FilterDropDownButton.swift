@@ -8,11 +8,43 @@
 import SwiftUI
 
 struct FilterDropDownButton: View {
+    @Binding var selected: FilterDropDownOption
+    @Binding var isExpanded: Bool
+
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        Button(action: {
+            withAnimation { isExpanded.toggle() }
+        }) {
+            HStack(spacing: 6) {
+                Text(selected.rawValue)
+                    .font(.system(size: 12, weight: .semibold))
+                    .foregroundColor(ghoodPink)
+
+                Image(systemName: "chevron.down")
+                    .resizable()
+                    .frame(width: 10, height: 5)
+                    .rotationEffect(.degrees(isExpanded ? 180 : 0))
+                    .foregroundColor(ghoodPink)
+            }
+            .padding(.vertical, 8)
+            .padding(.horizontal, 12)
+        }
     }
 }
 
+
 #Preview {
-    FilterDropDownButton()
+    struct FilterDropDownButtonPreview: View {
+        @State private var selected = FilterDropDownOption.mostRecent
+        @State private var isExpanded = false
+
+        var body: some View {
+            FilterDropDownButton(selected: $selected, isExpanded: $isExpanded)
+                .padding()
+                .background(Color.gray.opacity(0.1))
+        }
+    }
+
+    return FilterDropDownButtonPreview()
 }
+

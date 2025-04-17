@@ -8,11 +8,73 @@
 import SwiftUI
 
 struct CommunityListView: View {
+    @Binding var selectedTab: Int
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        GeometryReader { proxy in
+            NavigationStack {
+                VStack(spacing: 0) {
+                    HStack(spacing: -12) {
+                        HomeLogo(selectedTab: $selectedTab)
+                        Text("Communities")
+                            .font(.system(size: 20,weight: .bold))
+                            .foregroundStyle(Color(ghoodPink))
+                            .padding(.bottom,4)
+                    }
+                    
+                    ScrollView  {
+                        CapsuleSearchBar()
+                            .padding(.bottom,10)
+                        HStack {
+                            Image(systemName: "plus.circle.fill")
+                                .resizable()
+                                .scaledToFill()
+                                .frame(width: 50,height: 50)
+                                .foregroundColor(Color(.systemGray3))
+                            Text("Create a group")
+                                .font(.system(size: 17,weight: .semibold))
+                                .foregroundStyle(Color(.black))
+                            Spacer()
+                        }
+                        .padding(.horizontal)
+                        DividerThinnestView(width: proxy.size.width - 15)
+                        VStack {
+                            ForEach(0..<4) { _ in
+                                CommunityTile()
+                                DividerThinnestView(width: proxy.size.width - 15)
+                            }
+                        }
+                        Spacer()
+                            .frame(height: 20)
+                        NavigationLink {
+                            CommunityPageView()
+                        } label: {
+                            HStack {
+                                Text("Explore Communities")
+                                    .font(.system(size: 20,weight: .semibold))
+                                    .foregroundStyle(Color(ghoodPink))
+                                Spacer()
+                                Image(systemName: "chevron.right")
+                                    .foregroundStyle(Color(ghoodPink))
+                                    .fontWeight(.bold)
+                            }
+                            .padding(.horizontal)
+                        }
+                    }
+                }
+            }
+        }
     }
 }
 
 #Preview {
-    CommunityListView()
+    struct PreviewWrapper: View {
+        @State private var selectedTab = 1
+
+        var body: some View {
+            CommunityListView(selectedTab: $selectedTab)
+        }
+    }
+
+    return PreviewWrapper()
 }
