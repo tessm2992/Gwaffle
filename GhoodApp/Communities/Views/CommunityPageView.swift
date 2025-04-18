@@ -9,6 +9,7 @@ import SwiftUI
 
 struct CommunityPageView: View {
     private var ghoodPink: Color = Color(red: 255/255, green: 41/255, blue: 91/255)
+    @Environment(\.dismiss) private var dismiss
     
     var body: some View {
         GeometryReader { proxy in
@@ -36,7 +37,7 @@ struct CommunityPageView: View {
             .scrollIndicators(.hidden)
             .toolbar {
                 ToolbarItem(placement: .topBarLeading) {
-                    Button(action:{}, label: {
+                    Button(action:{dismiss()}, label: {
                         Image(systemName: "arrow.left")
                             .foregroundStyle(ghoodPink)
                             .fontWeight(.bold)

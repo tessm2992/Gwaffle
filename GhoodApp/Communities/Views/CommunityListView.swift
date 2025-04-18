@@ -9,6 +9,7 @@ import SwiftUI
 
 struct CommunityListView: View {
     @Binding var selectedTab: Int
+    @State private var showCreateGroup: Bool = false
     
     var body: some View {
         GeometryReader { proxy in
@@ -25,17 +26,24 @@ struct CommunityListView: View {
                     ScrollView  {
                         CapsuleSearchBar()
                             .padding(.bottom,10)
-                        HStack {
-                            Image(systemName: "plus.circle.fill")
-                                .resizable()
-                                .scaledToFill()
-                                .frame(width: 50,height: 50)
-                                .foregroundColor(Color(.systemGray3))
-                            Text("Create a group")
-                                .font(.system(size: 17,weight: .semibold))
-                                .foregroundStyle(Color(.black))
-                            Spacer()
-                        }
+                        Button(action: {
+                            showCreateGroup.toggle()
+                        }, label: {
+                            HStack {
+                                Image(systemName: "plus.circle.fill")
+                                    .resizable()
+                                    .scaledToFill()
+                                    .frame(width: 50,height: 50)
+                                    .foregroundColor(Color(.systemGray3))
+                                Text("Create a group")
+                                    .font(.system(size: 17,weight: .semibold))
+                                    .foregroundStyle(Color(.black))
+                                Spacer()
+                            }
+                        })
+                        .fullScreenCover(isPresented: $showCreateGroup, content: {
+                            CreateNewGroupView()
+                        })
                         .padding(.horizontal)
                         DividerThinnestView(width: proxy.size.width - 15)
                         VStack {
@@ -47,7 +55,8 @@ struct CommunityListView: View {
                         Spacer()
                             .frame(height: 20)
                         NavigationLink {
-                            CommunityPageView()
+                            CommunityExploreView()
+                                .navigationBarBackButtonHidden()
                         } label: {
                             HStack {
                                 Text("Explore Communities")

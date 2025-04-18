@@ -1,13 +1,13 @@
 //
-//  ProfileView.swift
+//  CommunityExploreView.swift
 //  GhoodApp
 //
-//  Created by Tess Munsie on 4/16/25.
+//  Created by Tess Munsie on 4/17/25.
 //
 
 import SwiftUI
 
-struct ThreadView: View {
+struct CommunityExploreView: View {
     private var ghoodPink: Color = Color(red: 255/255, green: 41/255, blue: 91/255)
     private var ghoodLightPink: Color = Color(red: 255/255, green: 250/255, blue: 251/255)
     @Environment(\.dismiss) private var dismiss
@@ -15,16 +15,12 @@ struct ThreadView: View {
     var body: some View {
         GeometryReader { proxy in
             ScrollView {
-                ThreadHeaderView()
-                DividerThinView(width: proxy.size.width - 15)
-                ForEach(0..<2) { _ in
-                    ThreadPostOtherView()
-                    DividerThinView(width: proxy.size.width - 15)
-                }
+                Text("Tiles for community categories")
+                    .foregroundStyle(Color(.black))
                 
             }
             .scrollIndicators(.hidden)
-            .navigationTitle("Threads")
+            .navigationTitle("Explore Communities")
             .foregroundStyle(Color(.systemGray5))
             .toolbar{
                 ToolbarItem(placement: .topBarLeading) {
@@ -47,9 +43,6 @@ struct ThreadView: View {
     }
 }
 
-
 #Preview {
-    ThreadView()
+    CommunityExploreView()
 }
-
-

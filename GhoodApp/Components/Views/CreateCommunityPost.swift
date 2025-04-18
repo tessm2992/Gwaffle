@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct CreateCommunityPost: View {
+    @State private var showCreatePost: Bool = false
+    
     var body: some View {
         HStack {
             Image("avatar")
@@ -15,8 +17,15 @@ struct CreateCommunityPost: View {
                 .scaledToFill()
                 .frame(width: 40,height: 40)
                 .clipShape(Circle())
-            Text("Write something...")
-                .foregroundColor(Color(.systemGray))
+            Button(action: {
+                showCreatePost.toggle()
+            }, label: {
+                HStack {
+                    Text("Write something...")
+                        .foregroundColor(Color(.systemGray))
+                    Spacer()
+                }
+            })
             Spacer()
             Image(systemName:"photo.badge.plus")
                 .resizable()
@@ -25,6 +34,9 @@ struct CreateCommunityPost: View {
                 .foregroundStyle(.green)
         }
         .padding(.horizontal)
+        .fullScreenCover(isPresented: $showCreatePost, content: {
+            CreatePostView()
+        })
     }
 }
 
