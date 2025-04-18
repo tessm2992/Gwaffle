@@ -13,14 +13,15 @@ struct StickyNavBar: View {
     let topInset: CGFloat
     let showHeaderInfo: Bool
     let ghoodPink: Color
-
+    @Environment(\.dismiss) private var dismiss
+    
     var body: some View {
         VStack(spacing: 0) {
             HStack {
-                Button(action: {}) {
+                Button(action: {dismiss()}, label: {
                     Image(systemName: "arrow.left")
                         .foregroundStyle(showHeaderInfo ? ghoodPink : ghoodPink)
-                }
+                })
 
                 Spacer()
 
