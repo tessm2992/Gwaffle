@@ -10,7 +10,7 @@ import SwiftUI
 struct ThreadPostOtherView: View {
     private var ghoodPink: Color = Color(red: 255/255, green: 41/255, blue: 91/255)
     var body: some View {
-        VStack(alignment: .leading) {
+        VStack(alignment: .leading, spacing: 4) {
             HStack {
                 NavigationLink {
                     ThreadView()
@@ -27,11 +27,11 @@ struct ThreadPostOtherView: View {
                         .navigationBarBackButtonHidden()
                 } label: {
                     Text("tessm234")
-                        .font(.system(size: 11,weight: .semibold))
+                        .font(.system(size: 13,weight: .semibold))
                         .foregroundStyle(ghoodPink.opacity(0.7))
                 }
-                Text("2 hours ago")
-                    .font(.system(size: 11))
+                Text("12h")
+                    .font(.system(size: 13))
                     .foregroundStyle(Color(.systemGray))
                 Spacer()
             }
@@ -41,16 +41,19 @@ struct ThreadPostOtherView: View {
                 .font(.system(size: 14,weight: .semibold))
                 .foregroundStyle(Color(.black))
                 .padding(.horizontal)
+                .padding(.bottom, 0)
             BadgeTag(badge: .paige)
                 .padding(.horizontal)
+                .padding(.bottom, 0)
             Text("I'm elaborating on the head of this post. So I'm asking everyone else for advice. You know what I mean? Or no?")
-                .font(.system(size: 14))
+                .font(.system(size: 12))
                 .foregroundStyle(Color(.black))
                 .padding(.horizontal)
-                .padding(.top,1)
+                .padding(.top, 0)
             Image("threadpic")
                 .resizable()
                 .scaledToFill()
+                .frame(height: 180)
                 .clipped()
             HStack(spacing: 3) {
                 Image(systemName: "hand.thumbsup.circle.fill")

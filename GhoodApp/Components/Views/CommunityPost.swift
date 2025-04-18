@@ -10,7 +10,7 @@ import SwiftUI
 struct CommunityPost: View {
     private var ghoodPink: Color = Color(red: 255/255, green: 41/255, blue: 91/255)
     var body: some View {
-        VStack(alignment: .leading) {
+        VStack(alignment: .leading,spacing: 4) {
             HStack {
                 NavigationLink {
                     ThreadView()
@@ -19,7 +19,7 @@ struct CommunityPost: View {
                     Image("avatar")
                         .resizable()
                         .scaledToFill()
-                        .frame(width: 40,height: 40)
+                        .frame(width: 30,height: 30)
                         .clipShape(Circle())
                 }
                 VStack(alignment: .leading, spacing: 0){
@@ -34,6 +34,7 @@ struct CommunityPost: View {
                     Text("2 hours ago")
                         .font(.system(size: 11))
                         .foregroundStyle(Color(.systemGray))
+                        .padding(.top, 2)
                 }
                 
             }
@@ -47,6 +48,7 @@ struct CommunityPost: View {
             Image("threadpic")
                 .resizable()
                 .scaledToFill()
+                .frame(height: 180)
                 .clipped()
             HStack(spacing: 3) {
                 Image(systemName: "hand.thumbsup.circle.fill")

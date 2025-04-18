@@ -27,7 +27,7 @@ struct FilterDropDown: View {
                         withAnimation { isExpanded = false }
                     }) {
                         Text(option.rawValue)
-                            .font(.system(size: 12))
+                            .font(.system(size: 11))
                             .foregroundColor(ghoodPink)
                             .padding(.vertical, 6)
                             .padding(.horizontal, 12)

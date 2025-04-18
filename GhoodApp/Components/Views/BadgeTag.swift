@@ -27,8 +27,8 @@ struct BadgeTag: View {
 
     var body: some View {
         Text(badge.rawValue)
-            .font(.system(size: 12, weight: .semibold))
-            .padding(.vertical, 4)
+            .font(.system(size: 11, weight: .semibold))
+            .padding(.vertical, 3)
             .padding(.horizontal, 10)
             .background(
                 Capsule()

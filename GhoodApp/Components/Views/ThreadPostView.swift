@@ -10,7 +10,7 @@ import SwiftUI
 struct ThreadPostView: View {
     private var ghoodPink: Color = Color(red: 255/255, green: 41/255, blue: 91/255)
     var body: some View {
-        VStack(alignment: .leading) {
+        VStack(alignment: .leading,spacing: 6) {
             HStack {
                 NavigationLink {
                     ThreadView()
@@ -31,7 +31,7 @@ struct ThreadPostView: View {
                             .font(.system(size: 14,weight: .semibold))
                             .foregroundStyle(Color(ghoodPink))
                     }
-                    Text("2 hours ago")
+                    Text("12h")
                         .font(.system(size: 11))
                         .foregroundStyle(Color(.systemGray))
                 }
@@ -43,13 +43,13 @@ struct ThreadPostView: View {
                 .foregroundStyle(Color(.black))
                 .padding(.horizontal)
             Text("I'm elaborating on the head of this post. So I'm asking everyone else for advice. You know what I mean? Or no?")
-                .font(.system(size: 14))
+                .font(.system(size: 12))
                 .foregroundStyle(Color(.black))
                 .padding(.horizontal)
-                .padding(.top,1)
             Image("threadpic")
                 .resizable()
                 .scaledToFill()
+                .frame(height: 180)
                 .clipped()
             HStack(spacing: 3) {
                 Image(systemName: "hand.thumbsup.circle.fill")

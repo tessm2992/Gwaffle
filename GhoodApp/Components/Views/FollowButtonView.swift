@@ -16,7 +16,7 @@ struct FollowButtonView: View {
             isFollowing.toggle()
         }) {
             Text(isFollowing ? "Following" : "Follow")
-                .font(.system(size: 14, weight: .semibold))
+                .font(.system(size: 15, weight: .semibold))
                 .foregroundColor(isFollowing ? ghoodPink : .white)
                 .padding(.vertical, 6)
                 .padding(.horizontal, 16)

@@ -43,7 +43,8 @@ struct FeedView: View {
                             if isDropdownExpanded {
                                 FilterDropDown(selected: $selectedDropDown, isExpanded: $isDropdownExpanded)
                                     .frame(width: 180)
-                                    .offset(y: 45)
+                                    .offset(y: -7)
+                                    .offset(x: 38)
                                     .transition(.opacity.combined(with: .move(edge: .top)))
                                     .animation(.easeInOut(duration: 0.2), value: isDropdownExpanded)
                                     .zIndex(1)

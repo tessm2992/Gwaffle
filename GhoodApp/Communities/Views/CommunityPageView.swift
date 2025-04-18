@@ -6,64 +6,131 @@
 //
 
 import SwiftUI
+import PhotosUI
 
 struct CommunityPageView: View {
-    private var ghoodPink: Color = Color(red: 255/255, green: 41/255, blue: 91/255)
-    @Environment(\.dismiss) private var dismiss
-    @State private var isAdmin = true
-    @State private var coverImage: UIImage? = nil
+    @State private var coverImage: UIImage? = UIImage(named: "TinxCoverPhoto")
     @State private var imageOffset: CGSize = .zero
-    
+    @State private var selectedItem: PhotosPickerItem? = nil
+    @State private var scrollOffset: CGFloat = 0
+    @State private var showHeaderInfo: Bool = false
+
     var body: some View {
-        GeometryReader { proxy in
-            ScrollView {
-                VStack {
-                    VStack {
-                        if isAdmin {
-                            EditableCoverBanner(
-                                image: $coverImage,
-                                imageOffset: $imageOffset,
-                                onSave: {
-                    
+        GeometryReader { geo in
+            ZStack(alignment: .top) {
+                GeometryReader { proxy in
+                    ScrollView {
+                        VStack(spacing: 0) {
+                            
+                            // Parallax header
+                            GeometryReader { imageGeo in
+                                let y = imageGeo.frame(in: .global).minY
+                                
+                                ParallaxEditableHeader(
+                                    image: $coverImage,
+                                    imageOffset: $imageOffset,
+                                    selectedItem: $selectedItem,
+                                    height: 250
+                                )
+                                .offset(y: y > 0 ? -y : 0)
+                                .frame(height: max(250 + (y > 0 ? y : 0), 250))
+                            }
+                            .frame(height: 250)
+                            
+                            // Main content
+                            VStack(spacing: 16) {
+                                CommunityHeader()
+                                DividerView(width: proxy.size.width - 15)
+                                CreateCommunityPost()
+                                DividerView(width: proxy.size.width - 15)
+                                VStack {
+                                    ForEach(0..<4) { _ in
+                                        CommunityPost()
+                                        DividerView(width: proxy.size.width - 15)
+                                    }
                                 }
-                            )
-                        } else {
-                            StaticCoverBanner(image: coverImage, imageOffset: imageOffset)
+                            }
+                            .padding(.top, 16)
+                        }
+                        .background(
+                            GeometryReader {
+                                Color.clear.preference(
+                                    key: ScrollOffsetKey.self,
+                                    value: $0.frame(in: .global).minY
+                                )
+                            }
+                        )
+                    }
+                }
+
+                // Top sticky nav bar
+                VStack {
+                    HStack {
+                        Button(action: {}) {
+                            Image(systemName: "arrow.left")
+                                .foregroundStyle(showHeaderInfo ? .black : ghoodPink)
+                        }
+
+                        Spacer()
+
+                        if showHeaderInfo {
+                            HStack(spacing: 8) {
+                                Image(uiImage: coverImage ?? UIImage())
+                                    .resizable()
+                                    .frame(width: 24, height: 24)
+                                    .clipShape(Circle())
+                                Text("Group Name")
+                                    .font(.headline)
+                                    .foregroundColor(.black)
+                            }
+                        }
+
+                        Spacer()
+
+                        Button(action: {}) {
+                            Image(systemName: "magnifyingglass")
+                                .foregroundStyle(showHeaderInfo ? .black : ghoodPink)
                         }
                     }
-                }
-                CommunityHeader()
-                    .padding(.top,15)
-                DividerView(width: proxy.size.width - 15)
-                CreateCommunityPost()
-                DividerView(width: proxy.size.width - 15)
-                VStack {
-                    ForEach(0 ..< 3, id:\.self) { _ in
-                        CommunityPost()
-                        DividerThinView(width: proxy.size.width - 15)
-                    }
+                    .padding(.horizontal)
+                    .padding(.top, 10)
+                    .frame(height: 44)
+                    .background(
+                        (showHeaderInfo ? Color.white : Color.clear)
+                            .animation(.easeInOut(duration: 0.25), value: showHeaderInfo)
+                    )
+                    .shadow(color: showHeaderInfo ? .black.opacity(0.05) : .clear, radius: 4, y: 2)
                 }
             }
-            .scrollIndicators(.hidden)
-            .toolbar {
-                ToolbarItem(placement: .topBarLeading) {
-                    Button(action:{dismiss()}, label: {
-                        Image(systemName: "arrow.left")
-                            .foregroundStyle(ghoodPink)
-                            .fontWeight(.bold)
-                    })
+            .ignoresSafeArea(edges: .top)
+            .onPreferenceChange(ScrollOffsetKey.self) { value in
+                let newOffset = -value
+                scrollOffset = newOffset
+                withAnimation(.easeInOut(duration: 0.2)) {
+                    showHeaderInfo = newOffset > 200
                 }
-                ToolbarItem(placement: .topBarTrailing) {
-                    Button(action:{}, label: {
-                        Image(systemName: "magnifyingglass")
-                            .foregroundStyle(ghoodPink)
-                            .fontWeight(.bold)
-                    })
+            }
+            .onChange(of: selectedItem) {
+                Task {
+                    if let data = try? await selectedItem?.loadTransferable(type: Data.self),
+                       let uiImage = UIImage(data: data) {
+                        coverImage = uiImage
+                        imageOffset = .zero
+                    }
                 }
             }
         }
     }
 }
+
+struct ScrollOffsetKey: PreferenceKey {
+    static var defaultValue: CGFloat = 0
+    static func reduce(value: inout CGFloat, nextValue: () -> CGFloat) {
+        value = nextValue()
+    }
+}
+
+
 
 #Preview {
     CommunityPageView()
