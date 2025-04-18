@@ -14,116 +14,104 @@ struct CommunityPageView: View {
     @State private var selectedItem: PhotosPickerItem? = nil
     @State private var scrollOffset: CGFloat = 0
     @State private var showHeaderInfo: Bool = false
-
+    @State private var groupName: String = "Tinx's Army"
+    private var ghoodPink: Color = Color(red: 255/255, green: 41/255, blue: 91/255)
+    
+    var topSafeAreaInset: CGFloat {
+        UIApplication.shared.connectedScenes
+            .compactMap { $0 as? UIWindowScene }
+            .flatMap { $0.windows }
+            .first?.safeAreaInsets.top ?? 44
+    }
+    
     var body: some View {
-        GeometryReader { geo in
-            ZStack(alignment: .top) {
-                GeometryReader { proxy in
-                    ScrollView {
-                        VStack(spacing: 0) {
+        ZStack(alignment: .top) {
+            // Main scroll view with content
+            ScrollViewReader { scrollProxy in
+                ScrollView {
+                    // Scroll position tracker
+                    OffsetTrackingView(offset: $scrollOffset)
+                        .frame(height: 0)
+                    
+                    VStack(spacing: 0) {
+                        // Parallax header
+                        GeometryReader { imageGeo in
+                            let y = imageGeo.frame(in: .global).minY
                             
-                            // Parallax header
-                            GeometryReader { imageGeo in
-                                let y = imageGeo.frame(in: .global).minY
-                                
-                                ParallaxEditableHeader(
-                                    image: $coverImage,
-                                    imageOffset: $imageOffset,
-                                    selectedItem: $selectedItem,
-                                    height: 250
-                                )
-                                .offset(y: y > 0 ? -y : 0)
-                                .frame(height: max(250 + (y > 0 ? y : 0), 250))
-                            }
-                            .frame(height: 250)
-                            
-                            // Main content
-                            VStack(spacing: 16) {
-                                CommunityHeader()
-                                DividerView(width: proxy.size.width - 15)
-                                CreateCommunityPost()
-                                DividerView(width: proxy.size.width - 15)
-                                VStack {
-                                    ForEach(0..<4) { _ in
-                                        CommunityPost()
-                                        DividerView(width: proxy.size.width - 15)
-                                    }
+                            ParallaxEditableHeader(
+                                image: $coverImage,
+                                imageOffset: $imageOffset,
+                                selectedItem: $selectedItem,
+                                height: 250
+                            )
+                            .offset(y: y > 0 ? -y : 0)
+                            .frame(height: max(250 + (y > 0 ? y : 0), 250))
+                        }
+                        .frame(height: 250)
+                        
+                        // Main content
+                        VStack(spacing: 16) {
+                            CommunityHeader(groupName: $groupName)
+                            DividerView(width: UIScreen.main.bounds.width - 5)
+                            CreateCommunityPost()
+                            DividerView(width: UIScreen.main.bounds.width - 5)
+                            VStack {
+                                ForEach(0..<4) { _ in
+                                    CommunityPost()
+                                    DividerView(width: UIScreen.main.bounds.width - 5)
                                 }
                             }
-                            .padding(.top, 16)
                         }
-                        .background(
-                            GeometryReader {
-                                Color.clear.preference(
-                                    key: ScrollOffsetKey.self,
-                                    value: $0.frame(in: .global).minY
-                                )
-                            }
-                        )
-                    }
-                }
-
-                // Top sticky nav bar
-                VStack {
-                    HStack {
-                        Button(action: {}) {
-                            Image(systemName: "arrow.left")
-                                .foregroundStyle(showHeaderInfo ? .black : ghoodPink)
-                        }
-
-                        Spacer()
-
-                        if showHeaderInfo {
-                            HStack(spacing: 8) {
-                                Image(uiImage: coverImage ?? UIImage())
-                                    .resizable()
-                                    .frame(width: 24, height: 24)
-                                    .clipShape(Circle())
-                                Text("Group Name")
-                                    .font(.headline)
-                                    .foregroundColor(.black)
-                            }
-                        }
-
-                        Spacer()
-
-                        Button(action: {}) {
-                            Image(systemName: "magnifyingglass")
-                                .foregroundStyle(showHeaderInfo ? .black : ghoodPink)
-                        }
-                    }
-                    .padding(.horizontal)
-                    .padding(.top, 10)
-                    .frame(height: 44)
-                    .background(
-                        (showHeaderInfo ? Color.white : Color.clear)
-                            .animation(.easeInOut(duration: 0.25), value: showHeaderInfo)
-                    )
-                    .shadow(color: showHeaderInfo ? .black.opacity(0.05) : .clear, radius: 4, y: 2)
-                }
-            }
-            .ignoresSafeArea(edges: .top)
-            .onPreferenceChange(ScrollOffsetKey.self) { value in
-                let newOffset = -value
-                scrollOffset = newOffset
-                withAnimation(.easeInOut(duration: 0.2)) {
-                    showHeaderInfo = newOffset > 200
-                }
-            }
-            .onChange(of: selectedItem) {
-                Task {
-                    if let data = try? await selectedItem?.loadTransferable(type: Data.self),
-                       let uiImage = UIImage(data: data) {
-                        coverImage = uiImage
-                        imageOffset = .zero
+                        .padding(.top, 16)
                     }
                 }
             }
+            
+            // Fixed top nav bar that changes appearance on scroll
+            StickyNavBar(
+                coverImage: coverImage,
+                groupName: groupName,
+                topInset: topSafeAreaInset,
+                showHeaderInfo: showHeaderInfo,
+                ghoodPink: ghoodPink
+            )
+        }
+        .ignoresSafeArea(edges: .top)
+        .onChange(of: selectedItem) {
+            Task {
+                if let data = try? await selectedItem?.loadTransferable(type: Data.self),
+                   let uiImage = UIImage(data: data) {
+                    coverImage = uiImage
+                    imageOffset = .zero
+                }
+            }
+        }
+        .onChange(of: scrollOffset) { oldValue, newValue in
+            // Create a threshold for showing the header info
+            withAnimation(.easeInOut(duration: 0.2)) {
+                showHeaderInfo = newValue > 150
+            }
+            print("Scroll offset: \(newValue), Show header: \(showHeaderInfo)")
         }
     }
 }
 
-struct ScrollOffsetKey: PreferenceKey {
+// Create a dedicated view to track scroll offset
+struct OffsetTrackingView: View {
+    @Binding var offset: CGFloat
+    
+    var body: some View {
+        GeometryReader { geo in
+            Color.clear
+                .preference(key: OffsetPreferenceKey.self, value: geo.frame(in: .global).minY)
+                .onPreferenceChange(OffsetPreferenceKey.self) { value in
+                    offset = -value
+                }
+        }
+    }
+}
+
+struct OffsetPreferenceKey: PreferenceKey {
     static var defaultValue: CGFloat = 0
     static func reduce(value: inout CGFloat, nextValue: () -> CGFloat) {
         value = nextValue()
@@ -135,3 +123,5 @@ struct ScrollOffsetKey: PreferenceKey {
 #Preview {
     CommunityPageView()
 }
+
+

@@ -10,6 +10,8 @@ import SwiftUI
 struct CommunityHeader: View {
     private var ghoodPink: Color = Color(red: 255/255, green: 41/255, blue: 91/255)
     private var ghoodLightPink: Color = Color(red: 255/255, green: 250/255, blue: 251/255)
+    @Binding var groupName: String
+    
     var body: some View {
         VStack(alignment: .leading) {
             HStack {
@@ -19,7 +21,7 @@ struct CommunityHeader: View {
                 } label: {
                     VStack(alignment: .leading,spacing: 3) {
                         HStack {
-                            Text("Tinx's Army")
+                            Text(groupName)
                                 .font(.system(size: 22,weight: .semibold))
                                 .foregroundStyle(Color(ghoodPink))
                             Image(systemName: "chevron.right")
@@ -56,6 +58,9 @@ struct CommunityHeader: View {
                 .padding(.horizontal)
         }
     }
+    init(groupName: Binding<String> = .constant("Tinx's Army")) {
+           self._groupName = groupName
+   }
 }
 
 #Preview {
