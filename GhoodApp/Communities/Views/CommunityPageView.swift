@@ -10,16 +10,26 @@ import SwiftUI
 struct CommunityPageView: View {
     private var ghoodPink: Color = Color(red: 255/255, green: 41/255, blue: 91/255)
     @Environment(\.dismiss) private var dismiss
+    @State private var isAdmin = true
+    @State private var coverImage: UIImage? = nil
+    @State private var imageOffset: CGSize = .zero
     
     var body: some View {
         GeometryReader { proxy in
             ScrollView {
                 VStack {
                     VStack {
-                        Image("TinxCoverPhoto")
-                            .resizable()
-                            .scaledToFill()
-                            .frame(width: proxy.size.width,height:50)
+                        if isAdmin {
+                            EditableCoverBanner(
+                                image: $coverImage,
+                                imageOffset: $imageOffset,
+                                onSave: {
+                    
+                                }
+                            )
+                        } else {
+                            StaticCoverBanner(image: coverImage, imageOffset: imageOffset)
+                        }
                     }
                 }
                 CommunityHeader()
