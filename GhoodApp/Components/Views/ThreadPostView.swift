@@ -10,59 +10,68 @@ import SwiftUI
 struct ThreadPostView: View {
     private var ghoodPink: Color = Color(red: 255/255, green: 41/255, blue: 91/255)
     var body: some View {
-        VStack(alignment: .leading,spacing: 6) {
-            HStack {
-                NavigationLink {
-                    ThreadView()
-                        .navigationBarBackButtonHidden()
-                } label: {
-                    Image("threadpic")
-                        .resizable()
-                        .scaledToFill()
-                        .frame(width: 40,height: 40)
-                        .clipShape(Circle())
-                }
-                VStack(alignment: .leading,spacing: 0) {
+        NavigationLink {
+            DetailedThreadView()
+                .navigationBarBackButtonHidden()
+        } label: {
+            VStack(alignment: .leading,spacing: 6) {
+                HStack {
                     NavigationLink {
                         ThreadView()
                             .navigationBarBackButtonHidden()
                     } label: {
-                        Text("g/summerhousebravo")
-                            .font(.system(size: 14,weight: .semibold))
-                            .foregroundStyle(Color(ghoodPink))
+                        Image("threadpic")
+                            .resizable()
+                            .scaledToFill()
+                            .frame(width: 40,height: 40)
+                            .clipShape(Circle())
                     }
-                    Text("12h")
-                        .font(.system(size: 11))
-                        .foregroundStyle(Color(.systemGray))
+                    VStack(alignment: .leading,spacing: 3) {
+                        NavigationLink {
+                            ThreadView()
+                                .navigationBarBackButtonHidden()
+                        } label: {
+                            Text("g/summerhousebravo")
+                                .font(.system(size: 14,weight: .semibold))
+                                .foregroundStyle(Color(ghoodPink))
+                        }
+                        Text("12h")
+                            .font(.system(size: 11))
+                            .foregroundStyle(Color(.systemGray))
+                    }
+                    Spacer()
                 }
-                Spacer()
-            }
-            .padding(.horizontal)
-            Text("Placeholder header text for the posts. This is going to be in bold")
-                .font(.system(size: 14,weight: .semibold))
-                .foregroundStyle(Color(.black))
                 .padding(.horizontal)
-            Text("I'm elaborating on the head of this post. So I'm asking everyone else for advice. You know what I mean? Or no?")
-                .font(.system(size: 12))
-                .foregroundStyle(Color(.black))
-                .padding(.horizontal)
-            Image("threadpic")
-                .resizable()
-                .scaledToFill()
-                .frame(height: 180)
-                .clipped()
-            HStack(spacing: 3) {
-                Image(systemName: "hand.thumbsup.circle.fill")
+                Text("Placeholder header text for the posts. This is going to be in bold")
+                    .font(.system(size: 14,weight: .semibold))
+                    .foregroundStyle(Color(.black))
+                    .padding(.horizontal)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .multilineTextAlignment(.leading)
+                Text("I'm elaborating on the head of this post. So I'm asking everyone else for advice. You know what I mean? Or no?")
+                    .font(.system(size: 12))
+                    .foregroundStyle(Color(.black))
+                    .padding(.horizontal)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .multilineTextAlignment(.leading)
+                Image("threadpic")
                     .resizable()
-                    .frame(width: 18,height: 18)
-                    .foregroundStyle(Color(ghoodPink))
-                Text("18")
-                Spacer()
-                Text("43 comments")
-                    .foregroundStyle(Color(ghoodPink))
+                    .scaledToFill()
+                    .frame(height: 180)
+                    .clipped()
+                HStack(spacing: 3) {
+                    Image(systemName: "hand.thumbsup.circle.fill")
+                        .resizable()
+                        .frame(width: 18,height: 18)
+                        .foregroundStyle(Color(ghoodPink))
+                    Text("18")
+                    Spacer()
+                    Text("43 comments")
+                        .foregroundStyle(Color(ghoodPink))
+                }
+                .padding(.horizontal)
+                .font(.system(size: 13))
             }
-            .padding(.horizontal)
-            .font(.system(size: 13))
         }
     }
 }

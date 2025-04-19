@@ -42,7 +42,7 @@ struct TabBarView: View {
                     }
                 .tag(3)
             
-            Text("Profile View")
+            ProfileView()
                 .tabItem {
                     Image(systemName: "person.crop.circle")
                         .environment(\.symbolVariants, selectedTab == 4 ? .fill : .none)

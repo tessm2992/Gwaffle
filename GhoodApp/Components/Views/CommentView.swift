@@ -8,92 +8,90 @@
 import SwiftUI
 
 struct CommentView: View {
-    private var ghoodPink: Color = Color(red: 255/255, green: 41/255, blue: 91/255)
-    private var ghoodLightPink: Color = Color(red: 255/255, green: 250/255, blue: 251/255)
-    @Environment(\.dismiss) private var dismiss
+    let ghoodPink: Color = Color(red: 255/255, green: 41/255, blue: 91/255)
+    let username: String
+    let timeAgo: String
+    let commentText: String
+    
+    @Binding var isLiked: Bool
+    @Binding var likeCount: Int
     
     var body: some View {
-        GeometryReader { proxy in
-            ScrollView {
-                VStack(alignment: .leading, spacing: 4) {
-                    HStack {
+        VStack(alignment: .leading, spacing: 4) {
+            HStack(alignment: .top, spacing: 8) {
+                NavigationLink {
+                    ProfileView()
+                        .navigationBarBackButtonHidden()
+                } label: {
+                    Image("avatar")
+                        .resizable()
+                        .scaledToFill()
+                        .frame(width: 40,height: 40)
+                        .clipShape(Circle())
+                }
+                VStack(alignment: .leading) {
+                    VStack(alignment: .leading,spacing: 4) {
                         NavigationLink {
                             ProfileView()
                                 .navigationBarBackButtonHidden()
                         } label: {
-                            Image("avatar")
-                                .resizable()
-                                .scaledToFill()
-                                .frame(width: 20,height: 20)
-                                .clipShape(Circle())
-                        }
-                        NavigationLink {
-                            ProfileView()
-                                .navigationBarBackButtonHidden()
-                        } label: {
-                            Text("tessm234")
+                            Text(username)
                                 .font(.system(size: 13,weight: .semibold))
                                 .foregroundStyle(ghoodPink.opacity(0.7))
                         }
-                        Spacer()
+                        Text(commentText)
+                            .font(.system(size: 12))
+                            .foregroundStyle(Color(.black))
+                            .padding(.top, 0)
                     }
-                    .padding(.horizontal)
-                    .padding(.vertical,2)
-                    Text("I'm elaborating on the head of this post. So I'm asking everyone else for advice. You know what I mean? Or no?")
-                        .font(.system(size: 12))
-                        .foregroundStyle(Color(.black))
-                        .padding(.horizontal)
-                        .padding(.top, 0)
-                    HStack(spacing: 7) {
-                        Text("1h")
+                    .padding(10)
+                    .background(
+                        RoundedRectangle(cornerRadius: 16)
+                            .fill(Color(.systemGray6))
+                    )
+                    HStack(spacing: 9) {
+                        Text("\(timeAgo)")
                             .font(.system(size: 11))
                             .foregroundStyle(Color(.systemGray))
                             .padding(.top, 2)
-                        Text("Like")
-                            .font(.system(size: 11))
-                            .foregroundStyle(Color(.systemGray))
-                            .padding(.top, 2)
+                        Button(action: {
+                            isLiked.toggle()
+                            likeCount += isLiked ? 1 : -1
+                        }) {
+                            Text("Like")
+                                .font(.system(size: 11,weight: .semibold))
+                                .foregroundStyle(Color(.systemGray))
+                                .padding(.top, 2)
+                        }
                         Text("Reply")
-                            .font(.system(size: 11))
+                            .font(.system(size: 11,weight: .semibold))
                             .foregroundStyle(Color(.systemGray))
                             .padding(.top, 2)
                         Spacer()
-                        Text("18")
-                            .foregroundStyle(Color(ghoodPink))
-                        Image(systemName: "hand.thumbsup.circle.fill")
-                            .resizable()
-                            .frame(width: 18,height: 18)
-                            .foregroundStyle(Color(ghoodPink))
+                        HStack(spacing: 3) {
+                            Text("\(likeCount)")
+                                .font(.system(size: 11))
+                                .foregroundStyle(Color(ghoodPink))
+                            Image(systemName: "hand.thumbsup.circle.fill")
+                                .resizable()
+                                .frame(width: 18,height: 18)
+                                .foregroundStyle(Color(ghoodPink))
+                        }
                     }
-                    .padding(.horizontal)
-                    .font(.system(size: 13))
                 }
-                
-            }
-            .scrollIndicators(.hidden)
-            .navigationTitle("Threads")
-            .foregroundStyle(Color(.systemGray5))
-            .toolbar{
-                ToolbarItem(placement: .topBarLeading) {
-                    Button(action: {dismiss()}, label: {
-                        Image(systemName: "arrow.left")
-                            .foregroundStyle(Color(ghoodPink))
-                            .fontWeight(.bold)
-                    })
-                }
-                ToolbarItem(placement: .topBarTrailing) {
-                    Button(action: {dismiss()}, label: {
-                        Text("g/summerhousebravo")
-                            .foregroundStyle(Color(ghoodPink))
-                            .fontWeight(.bold)
-                    })
-                }
-                
             }
         }
+        .padding(.horizontal)
     }
 }
 
 #Preview {
-    CommentView()
+    CommentView(
+        username: "tessm234",
+        timeAgo: "2h",
+        commentText: "This is such a helpful post! Thanks for sharing your thoughts.",
+        isLiked: .constant(false),
+        likeCount: .constant(18)
+    )
 }
+

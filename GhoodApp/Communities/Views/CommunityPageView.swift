@@ -50,7 +50,7 @@ struct CommunityPageView: View {
                         .frame(height: 250)
                         
                         // Main content
-                        VStack(spacing: 16) {
+                        VStack(spacing: 10) {
                             CommunityHeader(groupName: $groupName)
                             DividerView(width: UIScreen.main.bounds.width - 5)
                             CreateCommunityPost()

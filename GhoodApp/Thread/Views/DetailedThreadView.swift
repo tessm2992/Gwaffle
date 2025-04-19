@@ -11,11 +11,13 @@ struct DetailedThreadView: View {
     private var ghoodPink: Color = Color(red: 255/255, green: 41/255, blue: 91/255)
     private var ghoodLightPink: Color = Color(red: 255/255, green: 250/255, blue: 251/255)
     @Environment(\.dismiss) private var dismiss
+    @State private var isLiked = false  
+    @State private var likeCount = 18
     
     var body: some View {
         GeometryReader { proxy in
             ScrollView {
-                VStack(alignment: .leading, spacing: 4) {
+                VStack(alignment: .leading, spacing: 6) {
                     HStack {
                         NavigationLink {
                             ProfileView()
@@ -77,11 +79,17 @@ struct DetailedThreadView: View {
                     }
                     .padding(.horizontal)
                     .font(.system(size: 13))
+                    CommentView(
+                        username: "tessm234",
+                        timeAgo: "2h ago",
+                        commentText: "This is such a helpful post! Thanks for sharing your thoughts.",
+                        isLiked: $isLiked,
+                        likeCount: $likeCount
+                    )
+                    .padding(.top)
                 }
-                
             }
             .scrollIndicators(.hidden)
-            .navigationTitle("Threads")
             .foregroundStyle(Color(.systemGray5))
             .toolbar{
                 ToolbarItem(placement: .topBarLeading) {
@@ -91,14 +99,13 @@ struct DetailedThreadView: View {
                             .fontWeight(.bold)
                     })
                 }
-                ToolbarItem(placement: .topBarTrailing) {
+                ToolbarItem(placement: .topBarLeading) {
                     Button(action: {dismiss()}, label: {
                         Text("g/summerhousebravo")
                             .foregroundStyle(Color(ghoodPink))
                             .fontWeight(.bold)
                     })
                 }
-                
             }
         }
     }
