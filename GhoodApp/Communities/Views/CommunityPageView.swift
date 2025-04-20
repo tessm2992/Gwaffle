@@ -56,9 +56,9 @@ struct CommunityPageView: View {
                         VStack {
                             VStack(spacing: 10) {
                                 CommunityHeader(groupName: $groupName)
-                                DividerView(width: UIScreen.main.bounds.width - 5)
+                                DividerView(width: UIScreen.main.bounds.width)
                                 CreateCommunityPost()
-                                DividerView(width: UIScreen.main.bounds.width - 5)
+                                DividerView(width: UIScreen.main.bounds.width)
                             }
                             .padding(.top, 16)
                             HStack {
@@ -68,7 +68,7 @@ struct CommunityPageView: View {
                             VStack(spacing: 0) {
                                 ForEach(0..<4) { _ in
                                     CommunityPost()
-                                    DividerView(width: UIScreen.main.bounds.width - 5)
+                                    DividerView(width: UIScreen.main.bounds.width)
                                 }
                             }
                             .padding(.top, -10)
