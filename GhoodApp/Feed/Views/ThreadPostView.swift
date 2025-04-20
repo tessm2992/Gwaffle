@@ -9,6 +9,13 @@ import SwiftUI
 
 struct ThreadPostView: View {
     private var ghoodPink: Color = Color(red: 255/255, green: 41/255, blue: 91/255)
+    @StateObject private var viewModel = FeedViewModel()
+    private var index: Int
+    init(viewModel: FeedViewModel, index: Int) {
+        self._viewModel = StateObject(wrappedValue: viewModel)
+        self.index = index
+    }
+    
     var body: some View {
         NavigationLink {
             DetailedThreadView()
@@ -42,13 +49,13 @@ struct ThreadPostView: View {
                     Spacer()
                 }
                 .padding(.horizontal)
-                Text("Placeholder header text for the posts. This is going to be in bold")
+                Text(viewModel.threadposts[index].postTitle)
                     .font(.system(size: 14,weight: .semibold))
                     .foregroundStyle(Color(.black))
                     .padding(.horizontal)
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .multilineTextAlignment(.leading)
-                Text("I'm elaborating on the head of this post. So I'm asking everyone else for advice. You know what I mean? Or no?")
+                Text(viewModel.threadposts[index].postSubTitle ?? "")
                     .font(.system(size: 12))
                     .foregroundStyle(Color(.black))
                     .padding(.horizontal)
@@ -77,6 +84,6 @@ struct ThreadPostView: View {
 }
 
 #Preview {
-    ThreadPostView()
+    ThreadPostView(viewModel: FeedViewModel(),index: 0)
 }
     

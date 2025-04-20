@@ -13,6 +13,10 @@ struct FeedView: View {
     @State private var selectedFeedFilter: FeedFilterOption = .sortDiscover
     @State private var selectedDropDown: FilterDropDownOption = .mostRecent
     @State private var isDropdownExpanded = false
+    @StateObject private var viewModel = FeedViewModel()
+    init(viewModel: FeedViewModel) {
+        self._viewModel = StateObject(wrappedValue: viewModel)
+    }
     
     var body: some View {
         NavigationStack {
@@ -31,8 +35,8 @@ struct FeedView: View {
                                 .padding(.vertical, 9)
                                 ScrollView {
                                     VStack {
-                                        ForEach(0 ..< 3, id:\.self) { _ in
-                                            ThreadPostView()
+                                        ForEach(0 ..< viewModel.threadposts.count, id: \.self) { index in
+                                            ThreadPostView(viewModel: viewModel, index: index)
                                             DividerView(width: proxy.size.width - 15)
                                         }
                                         Spacer()
@@ -84,7 +88,7 @@ struct FeedView: View {
 }
     
 #Preview {
-    FeedView()
+    FeedView(viewModel: FeedViewModel())
 }
 
 

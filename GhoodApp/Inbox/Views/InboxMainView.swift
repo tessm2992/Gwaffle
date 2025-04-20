@@ -36,6 +36,7 @@ struct InboxMainView: View {
                         }
                     }
                 }
+                .padding(.top, 0)
                 
                 // Swipeable Pages
                 TabView(selection: $selectedTab) {

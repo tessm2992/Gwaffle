@@ -34,7 +34,7 @@ struct InboxSearchBar: View {
                 .foregroundStyle(ghoodPink)
         }
         .padding(.horizontal)
-        .padding(.top, 15)
+        .padding(.top, 10)
     }
 }
 

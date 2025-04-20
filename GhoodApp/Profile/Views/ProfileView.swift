@@ -22,7 +22,7 @@ struct ProfileView: View {
                             Image("avatar")
                                 .resizable()
                                 .scaledToFill()
-                                .frame(width: 130,height: 130)
+                                .frame(width: 110,height: 110)
                                 .clipShape(Circle())
                                 .padding(12)
                             Text("tessm345")
