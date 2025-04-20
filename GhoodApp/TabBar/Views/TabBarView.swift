@@ -34,7 +34,7 @@ struct TabBarView: View {
                     Text("Create")
                     }
             
-            Text("Inbox View")
+            InboxMainView()
                 .tabItem {
                     Image(systemName: "bell")
                         .environment(\.symbolVariants, selectedTab == 3 ? .fill : .none)
