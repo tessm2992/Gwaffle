@@ -25,7 +25,6 @@ struct CommunityAboutView: View {
                 }
                 
                 .scrollIndicators(.hidden)
-                .navigationTitle("Tinx's Army")
                 .foregroundStyle(Color(.systemGray5))
                 .toolbar{
                     ToolbarItem(placement: .topBarLeading) {
@@ -33,6 +32,13 @@ struct CommunityAboutView: View {
                             Image(systemName: "arrow.left")
                                 .foregroundStyle(Color(ghoodPink))
                                 .fontWeight(.bold)
+                        })
+                    }
+                    ToolbarItem(placement: .principal) {
+                        Button(action: {dismiss()}, label: {
+                            Text("Tinx's Army")
+                                .foregroundStyle(Color(ghoodPink))
+                                .font(.system(size: 20,weight: .semibold))
                         })
                     }
                     

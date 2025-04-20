@@ -15,32 +15,37 @@ struct ProfileView: View {
         NavigationStack {
             GeometryReader { proxy in
                 ScrollView {
-                    VStack(alignment: .leading) {
-                        Image("avatar")
+                    VStack {
+                        HStack {
+                            Spacer()
+                            VStack(spacing: 5) {
+                                Image("avatar")
+                                    .resizable()
+                                    .scaledToFill()
+                                    .frame(width: 130,height: 130)
+                                    .clipShape(Circle())
+                                    .padding(15)
+                                Text("tessm345")
+                                    .font(.system(size: 28,weight: .bold))
+                                    .foregroundStyle(Color(.black))
+                                HStack {
+                                    Text("28 y/o")
+                                    Text("Seattle, WA")
+                                }
+                                .font(.system(size: 17,weight: .bold))
+                                .foregroundStyle(Color(.systemGray2))
+                            }
+                            Spacer()
+                        }
                         
-                        Text("About")
-                            .font(.system(size: 20))
-                            .foregroundStyle(Color(.black))
-                        Text("this is context on the community etc")
-                            .font(.system(size: 20))
-                            .foregroundStyle(Color(.black))
                     }
-                    
                     .scrollIndicators(.hidden)
                     .toolbar{
-                        ToolbarItem(placement: .topBarLeading) {
-                            Button(action: {dismiss()}, label: {
-                                Image(systemName: "arrow.left")
-                                    .foregroundStyle(Color(ghoodPink))
-                                    .fontWeight(.bold)
-                                    .font(.system(size: 20,weight:.semibold))
-                            })
-                        }
                         ToolbarItem(placement: .principal) {
                             HStack(spacing: 24) {
                                 Text("Profile")
-                                    .foregroundStyle(ghoodPink)
-                                    
+                                    .foregroundStyle(Color(ghoodPink))
+                                    .font(.system(size: 20,weight: .semibold))
                             }
                         }
                         ToolbarItem(placement: .topBarTrailing) {
@@ -59,6 +64,7 @@ struct ProfileView: View {
         }
     }
 }
+
 
 #Preview {
     ProfileView()

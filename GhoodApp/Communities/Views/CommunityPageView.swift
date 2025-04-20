@@ -16,6 +16,9 @@ struct CommunityPageView: View {
     @State private var showHeaderInfo: Bool = false
     @State private var groupName: String = "Tinx's Army"
     private var ghoodPink: Color = Color(red: 255/255, green: 41/255, blue: 91/255)
+    @State private var selectedFeedFilter: FeedFilterOption = .sortDiscover
+    @State private var selectedDropDown: FilterDropDownOption = .mostRecent
+    @State private var isDropdownExpanded = false
     
     var topSafeAreaInset: CGFloat {
         UIApplication.shared.connectedScenes
@@ -50,21 +53,39 @@ struct CommunityPageView: View {
                         .frame(height: 250)
                         
                         // Main content
-                        VStack(spacing: 10) {
-                            CommunityHeader(groupName: $groupName)
-                            DividerView(width: UIScreen.main.bounds.width - 5)
-                            CreateCommunityPost()
-                            DividerView(width: UIScreen.main.bounds.width - 5)
-                            VStack {
+                        VStack {
+                            VStack(spacing: 10) {
+                                CommunityHeader(groupName: $groupName)
+                                DividerView(width: UIScreen.main.bounds.width - 5)
+                                CreateCommunityPost()
+                                DividerView(width: UIScreen.main.bounds.width - 5)
+                            }
+                            .padding(.top, 16)
+                            HStack {
+                                FilterDropDownButton(selected: $selectedDropDown, isExpanded: $isDropdownExpanded)
+                                Spacer()
+                            }
+                            VStack(spacing: 0) {
                                 ForEach(0..<4) { _ in
                                     CommunityPost()
                                     DividerView(width: UIScreen.main.bounds.width - 5)
                                 }
                             }
+                            .padding(.top, -10)
                         }
-                        .padding(.top, 16)
                     }
                 }
+            }
+            
+            // filter drop down
+            if isDropdownExpanded {
+                FilterDropDown(selected: $selectedDropDown, isExpanded: $isDropdownExpanded)
+                    .frame(width: 180)
+                    .offset(y: 250)
+                    .offset(x: 0)
+                    .transition(.opacity.combined(with: .move(edge: .top)))
+                    .animation(.easeInOut(duration: 0.2), value: isDropdownExpanded)
+                    .zIndex(1)
             }
             
             // Fixed top nav bar that changes appearance on scroll

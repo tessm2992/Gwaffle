@@ -1,5 +1,5 @@
 //
-//  ThreadFilter.swift
+//  FeedFilter.swift
 //  GhoodApp
 //
 //  Created by Tess Munsie on 4/17/25.
@@ -7,17 +7,17 @@
 
 import SwiftUI
 
-enum ThreadFilterOption: String, CaseIterable, Equatable {
+enum FeedFilterOption: String, CaseIterable, Equatable {
     case sortFollowing = "Following"
     case sortDiscover = "Discover"
 }
 
-struct ThreadFilter: View {
-    @Binding var selected: ThreadFilterOption
+struct FeedFilter: View {
+    @Binding var selected: FeedFilterOption
 
     var body: some View {
         HStack(spacing: 10) {
-            ForEach(ThreadFilterOption.allCases, id: \.self) { option in
+            ForEach(FeedFilterOption.allCases, id: \.self) { option in
                 Button(action: {
                     selected = option
                 }) {
@@ -43,6 +43,6 @@ struct ThreadFilter: View {
 
 
 #Preview {
-    @Previewable @State var selected: ThreadFilterOption = .sortFollowing
-    return ThreadFilter(selected: $selected)
+    @Previewable @State var selected: FeedFilterOption = .sortFollowing
+    return FeedFilter(selected: $selected)
 }

@@ -79,7 +79,7 @@ struct DetailedThreadView: View {
                     }
                     .padding(.horizontal)
                     .font(.system(size: 13))
-                    CommentView(
+                    CommentCell(
                         username: "tessm234",
                         timeAgo: "2h ago",
                         commentText: "This is such a helpful post! Thanks for sharing your thoughts.",

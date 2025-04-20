@@ -10,7 +10,7 @@ import SwiftUI
 struct FeedView: View {
     private var ghoodPink: Color = Color(red: 255/255, green: 41/255, blue: 91/255)
     private var ghoodLightPink: Color = Color(red: 255/255, green: 250/255, blue: 251/255)
-    @State private var selectedThreadFilter: ThreadFilterOption = .sortDiscover
+    @State private var selectedFeedFilter: FeedFilterOption = .sortDiscover
     @State private var selectedDropDown: FilterDropDownOption = .mostRecent
     @State private var isDropdownExpanded = false
     
@@ -24,7 +24,7 @@ struct FeedView: View {
                         ZStack(alignment: .topTrailing) {
                             VStack(spacing: 0) {
                                 HStack {
-                                    ThreadFilter(selected: $selectedThreadFilter)
+                                    FeedFilter(selected: $selectedFeedFilter)
                                     Spacer()
                                     FilterDropDownButton(selected: $selectedDropDown, isExpanded: $isDropdownExpanded)
                                 }

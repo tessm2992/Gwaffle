@@ -28,7 +28,7 @@ struct TabBarView: View {
                     }
                 .tag(1)
             
-            Text("Create Post View")
+            CreateThreadPostView()
                 .tabItem {
                     Image(systemName: "plus.rectangle.fill")
                     Text("Create")

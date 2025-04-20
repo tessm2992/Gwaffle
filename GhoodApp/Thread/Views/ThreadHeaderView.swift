@@ -36,11 +36,16 @@ struct ThreadHeaderView: View {
                 .padding(.horizontal)
                 .padding(.top,1)
             HStack {
-                Text("see more")
-                    .font(.system(size: 14,weight: .semibold))
-                    .foregroundStyle(Color(.black))
-                    .padding(.horizontal)
-                    .padding(.top,5)
+                NavigationLink {
+                    ThreadAboutView()
+                        .navigationBarBackButtonHidden()
+                } label: {
+                    Text("see more")
+                        .font(.system(size: 14,weight: .semibold))
+                        .foregroundStyle(Color(.black))
+                        .padding(.horizontal)
+                        .padding(.top,5)
+                }
                 Text("Pop Culture")
                     .font(.system(size: 14,weight: .semibold))
                     .foregroundStyle(Color(ghoodPink))

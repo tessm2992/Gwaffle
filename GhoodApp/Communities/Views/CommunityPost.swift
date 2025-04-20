@@ -15,7 +15,7 @@ struct CommunityPost: View {
             DetailedThreadView()
                 .navigationBarBackButtonHidden()
         } label: {
-            VStack(alignment: .leading,spacing: 4) {
+            VStack(alignment: .leading,spacing: 6) {
                 VStack(alignment: .leading) {
                     HStack {
                         NavigationLink {
@@ -37,7 +37,7 @@ struct CommunityPost: View {
                                     .font(.system(size: 15,weight: .semibold))
                                     .foregroundStyle(ghoodPink.opacity(0.7))
                             }
-                            Text("2 hours ago")
+                            Text("2h")
                                 .font(.system(size: 11))
                                 .foregroundStyle(Color(.systemGray))
                                 .padding(.top, 2)

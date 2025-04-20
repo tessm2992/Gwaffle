@@ -1,5 +1,5 @@
 //
-//  CommentView.swift
+//  CommentCell.swift
 //  GhoodApp
 //
 //  Created by Tess Munsie on 4/18/25.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct CommentView: View {
+struct CommentCell: View {
     let ghoodPink: Color = Color(red: 255/255, green: 41/255, blue: 91/255)
     let username: String
     let timeAgo: String
@@ -86,7 +86,7 @@ struct CommentView: View {
 }
 
 #Preview {
-    CommentView(
+    CommentCell(
         username: "tessm234",
         timeAgo: "2h",
         commentText: "This is such a helpful post! Thanks for sharing your thoughts.",
