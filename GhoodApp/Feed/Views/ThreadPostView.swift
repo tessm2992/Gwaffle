@@ -27,7 +27,7 @@ struct ThreadPostView: View {
                         ThreadView()
                             .navigationBarBackButtonHidden()
                     } label: {
-                        Image("threadpic")
+                        Image(viewModel.threadposts[index].page?.pageURL ?? "")
                             .resizable()
                             .scaledToFill()
                             .frame(width: 40,height: 40)
@@ -38,7 +38,7 @@ struct ThreadPostView: View {
                             ThreadView()
                                 .navigationBarBackButtonHidden()
                         } label: {
-                            Text("g/summerhousebravo")
+                            Text(viewModel.threadposts[index].page?.pageTitle ?? "")
                                 .font(.system(size: 14,weight: .semibold))
                                 .foregroundStyle(Color(ghoodPink))
                         }
@@ -61,7 +61,7 @@ struct ThreadPostView: View {
                     .padding(.horizontal)
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .multilineTextAlignment(.leading)
-                Image("threadpic")
+                Image(viewModel.threadposts[index].postURL ?? "")
                     .resizable()
                     .scaledToFill()
                     .frame(height: 180)
@@ -71,7 +71,8 @@ struct ThreadPostView: View {
                         .resizable()
                         .frame(width: 18,height: 18)
                         .foregroundStyle(Color(ghoodPink))
-                    Text("18")
+                    Text("\(viewModel.threadposts[index].postLikes)")
+                        .foregroundStyle(Color(.systemGray))
                     Spacer()
                     Text("43 comments")
                         .foregroundStyle(Color(ghoodPink))

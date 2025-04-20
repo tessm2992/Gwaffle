@@ -11,11 +11,13 @@ struct PostThread: Identifiable, Hashable, Codable {
     
     let id: String
     let userId: String
-    var postThread: String
+    let threadId: String
     var postTitle: String
     var postSubTitle: String?
     var postLikes: Int
     var postURL: String?
     var isVideo: Bool
     var owner: User?
+    var page: PageThread?
+    
 }
