@@ -9,6 +9,12 @@ import SwiftUI
 
 struct ThreadPostOtherView: View {
     private var ghoodPink: Color = Color(red: 255/255, green: 41/255, blue: 91/255)
+    @StateObject private var viewModel = FeedViewModel()
+    private var index: Int
+    init(viewModel: FeedViewModel, index: Int) {
+        self._viewModel = StateObject(wrappedValue: viewModel)
+        self.index = index
+    }
     
     var body: some View {
         NavigationLink {
@@ -31,7 +37,7 @@ struct ThreadPostOtherView: View {
                         ProfileView()
                             .navigationBarBackButtonHidden()
                     } label: {
-                        Text("tessm234")
+                        Text(viewModel.threadposts[index].owner?.userName ?? "")
                             .font(.system(size: 13,weight: .semibold))
                             .foregroundStyle(ghoodPink.opacity(0.7))
                     }
@@ -42,7 +48,7 @@ struct ThreadPostOtherView: View {
                 }
                 .padding(.horizontal)
                 .padding(.vertical,2)
-                Text("Placeholder header text for the posts. This is going to be in bold")
+                Text(viewModel.threadposts[index].postTitle)
                     .font(.system(size: 14,weight: .semibold))
                     .foregroundStyle(Color(.black))
                     .padding(.horizontal)
@@ -52,14 +58,14 @@ struct ThreadPostOtherView: View {
                 BadgeTag(badge: .paige)
                     .padding(.horizontal)
                     .padding(.bottom, 0)
-                Text("I'm elaborating on the head of this post. So I'm asking everyone else for advice. You know what I mean? Or no?")
+                Text(viewModel.threadposts[index].postSubTitle ?? "")
                     .font(.system(size: 12))
                     .foregroundStyle(Color(.black))
                     .padding(.horizontal)
                     .padding(.top, 0)
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .multilineTextAlignment(.leading)
-                Image("threadpic")
+                Image(viewModel.threadposts[index].postURL ?? "")
                     .resizable()
                     .scaledToFill()
                     .frame(height: 180)
@@ -69,7 +75,7 @@ struct ThreadPostOtherView: View {
                         .resizable()
                         .frame(width: 18,height: 18)
                         .foregroundStyle(Color(ghoodPink))
-                    Text("18")
+                    Text("\(viewModel.threadposts[index].postLikes)")
                         .foregroundStyle(Color(ghoodPink))
                     Spacer()
                     Text("43 comments")
@@ -82,5 +88,5 @@ struct ThreadPostOtherView: View {
     }
 }
 #Preview {
-    ThreadPostOtherView()
+    ThreadPostOtherView(viewModel: FeedViewModel(),index: 0)
 }

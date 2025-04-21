@@ -24,7 +24,7 @@ struct ThreadPostView: View {
             VStack(alignment: .leading,spacing: 6) {
                 HStack {
                     NavigationLink {
-                        ThreadView()
+                        ThreadView(viewModel: viewModel, index: index)
                             .navigationBarBackButtonHidden()
                     } label: {
                         Image(viewModel.threadposts[index].page?.pageURL ?? "")
@@ -35,7 +35,7 @@ struct ThreadPostView: View {
                     }
                     VStack(alignment: .leading,spacing: 3) {
                         NavigationLink {
-                            ThreadView()
+                            ThreadView(viewModel: viewModel, index: index)
                                 .navigationBarBackButtonHidden()
                         } label: {
                             Text(viewModel.threadposts[index].page?.pageTitle ?? "")
