@@ -27,6 +27,7 @@ struct CommunityPageView: View {
             .first?.safeAreaInsets.top ?? 44
     }
     
+    
     var body: some View {
         ZStack(alignment: .top) {
             // Main scroll view with content
@@ -55,7 +56,7 @@ struct CommunityPageView: View {
                         // Main content
                         VStack {
                             VStack(spacing: 10) {
-                                CommunityHeader(groupName: $groupName)
+                                CommunityHeader()
                                 DividerView(width: UIScreen.main.bounds.width)
                                 CreateCommunityPost()
                                 DividerView(width: UIScreen.main.bounds.width)
@@ -67,7 +68,7 @@ struct CommunityPageView: View {
                             }
                             VStack(spacing: 0) {
                                 ForEach(0..<4) { _ in
-                                    CommunityPost()
+                                    CommunityPostView()
                                     DividerView(width: UIScreen.main.bounds.width)
                                 }
                             }

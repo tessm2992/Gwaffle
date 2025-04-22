@@ -8,11 +8,12 @@
 import SwiftUI
 
 struct ProfilePostsView: View {
+    
     var body: some View {
         ScrollView {
             VStack {
                 ForEach(0..<5) { _ in
-                    CommunityPost()
+                    CommunityPostView()
                     Divider()
                 }
             }
@@ -22,4 +23,5 @@ struct ProfilePostsView: View {
 
 #Preview {
     ProfilePostsView()
+
 }

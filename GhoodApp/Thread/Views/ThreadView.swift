@@ -11,8 +11,10 @@ struct ThreadView: View {
     private var ghoodPink: Color = Color(red: 255/255, green: 41/255, blue: 91/255)
     private var ghoodLightPink: Color = Color(red: 255/255, green: 250/255, blue: 251/255)
     @Environment(\.dismiss) private var dismiss
+    
     @StateObject private var viewModel = FeedViewModel()
     private var index: Int
+    
     init(viewModel: FeedViewModel, index: Int) {
         self._viewModel = StateObject(wrappedValue: viewModel)
         self.index = index
@@ -23,11 +25,10 @@ struct ThreadView: View {
             ScrollView {
                 ThreadHeaderView(viewModel: viewModel, index: index)
                 DividerThinView(width: proxy.size.width - 15)
-                ForEach(0..<2) { _ in
+                ForEach(0..<viewModel.threadposts.count, id: \.self) { index in
                     ThreadPostOtherView(viewModel: viewModel, index: index)
                     DividerThinView(width: proxy.size.width - 15)
                 }
-                
             }
             .scrollIndicators(.hidden)
             .navigationTitle("Threads")
@@ -55,7 +56,7 @@ struct ThreadView: View {
 
 
 #Preview {
-    ThreadView(viewModel: FeedViewModel(),index: 0)
+    ThreadView(viewModel: FeedViewModel(), index: 0)
 }
 
 

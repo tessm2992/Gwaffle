@@ -1,5 +1,5 @@
 //
-//  CommunityPost.swift
+//  CommunityPostView.swift
 //  GhoodApp
 //
 //  Created by Tess Munsie on 4/17/25.
@@ -7,12 +7,13 @@
 
 import SwiftUI
 
-struct CommunityPost: View {
+struct CommunityPostView: View {
     private var ghoodPink: Color = Color(red: 255/255, green: 41/255, blue: 91/255)
+
     
     var body: some View {
         NavigationLink {
-            DetailedThreadView()
+            DetailedCommunityView()
                 .navigationBarBackButtonHidden()
         } label: {
             VStack(alignment: .leading,spacing: 6) {
@@ -76,5 +77,5 @@ struct CommunityPost: View {
 }
 
 #Preview {
-    CommunityPost()
+    CommunityPostView()
 }

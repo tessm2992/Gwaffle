@@ -13,10 +13,9 @@ struct FeedView: View {
     @State private var selectedFeedFilter: FeedFilterOption = .sortDiscover
     @State private var selectedDropDown: FilterDropDownOption = .mostRecent
     @State private var isDropdownExpanded = false
+    
     @StateObject private var viewModel = FeedViewModel()
-    init(viewModel: FeedViewModel) {
-        self._viewModel = StateObject(wrappedValue: viewModel)
-    }
+    
     
     var body: some View {
         NavigationStack {
@@ -88,7 +87,7 @@ struct FeedView: View {
 }
     
 #Preview {
-    FeedView(viewModel: FeedViewModel())
+    FeedView()
 }
 
 

@@ -10,6 +10,7 @@ import SwiftUI
 struct CommunityTile: View {
     private var ghoodPink: Color = Color(red: 255/255, green: 41/255, blue: 91/255)
     
+    
     var body: some View {
         VStack(alignment: .leading) {
             NavigationLink {

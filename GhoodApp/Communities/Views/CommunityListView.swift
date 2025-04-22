@@ -11,6 +11,7 @@ struct CommunityListView: View {
     @Binding var selectedTab: Int
     @State private var showCreateGroup: Bool = false
     
+    
     var body: some View {
         GeometryReader { proxy in
             NavigationStack {
@@ -79,11 +80,10 @@ struct CommunityListView: View {
 #Preview {
     struct PreviewWrapper: View {
         @State private var selectedTab = 1
-
+        
         var body: some View {
             CommunityListView(selectedTab: $selectedTab)
         }
     }
-
     return PreviewWrapper()
 }

@@ -11,6 +11,14 @@ struct ThreadAboutView: View {
     private var ghoodPink: Color = Color(red: 255/255, green: 41/255, blue: 91/255)
     @Environment(\.dismiss) private var dismiss
     
+    @StateObject private var viewModel = FeedViewModel()
+    private var index: Int
+    
+    init(viewModel: FeedViewModel, index: Int) {
+        self._viewModel = StateObject(wrappedValue: viewModel)
+        self.index = index
+    }
+    
     var body: some View {
         NavigationStack {
             GeometryReader { proxy in
@@ -19,7 +27,7 @@ struct ThreadAboutView: View {
                         Text("About")
                             .font(.system(size: 20))
                             .foregroundStyle(Color(.black))
-                        Text("this is context on the community etc")
+                        Text(viewModel.threadposts[index].page?.pageAbout ?? "")
                             .font(.system(size: 20))
                             .foregroundStyle(Color(.black))
                     }
@@ -35,9 +43,9 @@ struct ThreadAboutView: View {
                             })
                         }
                         ToolbarItem(placement: .principal) {
-                            Text("g/summerhousebravo")
+                            Text(viewModel.threadposts[index].page?.pageTitle ?? "")
                                 .foregroundStyle(Color(ghoodPink))
-                                .font(.system(size: 20,weight: .semibold))
+                                .font(.system(size: 17,weight: .semibold))
                             }
                         }
                     }
@@ -47,5 +55,5 @@ struct ThreadAboutView: View {
     }
 
 #Preview {
-    ThreadAboutView()
+    ThreadAboutView(viewModel: FeedViewModel(), index: 0)
 }

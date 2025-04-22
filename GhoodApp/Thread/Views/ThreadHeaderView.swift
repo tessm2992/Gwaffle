@@ -10,8 +10,10 @@ import SwiftUI
 struct ThreadHeaderView: View {
     private var ghoodPink: Color = Color(red: 255/255, green: 41/255, blue: 91/255)
     private var ghoodLightPink: Color = Color(red: 255/255, green: 250/255, blue: 251/255)
+    
     @StateObject private var viewModel = FeedViewModel()
     private var index: Int
+    
     init(viewModel: FeedViewModel, index: Int) {
         self._viewModel = StateObject(wrappedValue: viewModel)
         self.index = index
@@ -44,7 +46,7 @@ struct ThreadHeaderView: View {
                 .padding(.top,1)
             HStack {
                 NavigationLink {
-                    ThreadAboutView()
+                    ThreadAboutView(viewModel: viewModel, index: index)
                         .navigationBarBackButtonHidden()
                 } label: {
                     Text("see more")
@@ -53,7 +55,7 @@ struct ThreadHeaderView: View {
                         .padding(.horizontal)
                         .padding(.top,5)
                 }
-                Text("Pop Culture")
+                Text(viewModel.threadposts[index].page?.pageCategory ?? "")
                     .font(.system(size: 14,weight: .semibold))
                     .foregroundStyle(Color(ghoodPink))
                     .padding(.top,5)
@@ -64,5 +66,5 @@ struct ThreadHeaderView: View {
 }
 
 #Preview {
-    ThreadHeaderView(viewModel: FeedViewModel(),index: 0)
+    ThreadHeaderView(viewModel: FeedViewModel(), index: 0)
 }

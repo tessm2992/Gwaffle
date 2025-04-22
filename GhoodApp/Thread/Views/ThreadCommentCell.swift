@@ -1,5 +1,5 @@
 //
-//  CommentCell.swift
+//  ThreadCommentCell.swift
 //  GhoodApp
 //
 //  Created by Tess Munsie on 4/18/25.
@@ -7,14 +7,16 @@
 
 import SwiftUI
 
-struct CommentCell: View {
+struct ThreadCommentCell: View {
     let ghoodPink: Color = Color(red: 255/255, green: 41/255, blue: 91/255)
-    let username: String
-    let timeAgo: String
-    let commentText: String
     
-    @Binding var isLiked: Bool
-    @Binding var likeCount: Int
+    @StateObject private var viewModel = FeedViewModel()
+    private var index: Int
+    
+    init(viewModel: FeedViewModel, index: Int) {
+        self._viewModel = StateObject(wrappedValue: viewModel)
+        self.index = index
+    }
     
     var body: some View {
         VStack(alignment: .leading, spacing: 4) {
@@ -23,7 +25,7 @@ struct CommentCell: View {
                     ProfileView()
                         .navigationBarBackButtonHidden()
                 } label: {
-                    Image("avatar")
+                    Image(viewModel.threadcomments[index].owner?.profileImageName ?? "")
                         .resizable()
                         .scaledToFill()
                         .frame(width: 40,height: 40)
@@ -35,11 +37,11 @@ struct CommentCell: View {
                             ProfileView()
                                 .navigationBarBackButtonHidden()
                         } label: {
-                            Text(username)
+                            Text(viewModel.threadcomments[index].owner?.userName ?? "")
                                 .font(.system(size: 13,weight: .semibold))
                                 .foregroundStyle(ghoodPink.opacity(0.7))
                         }
-                        Text(commentText)
+                        Text(viewModel.threadcomments[index].text)
                             .font(.system(size: 12))
                             .foregroundStyle(Color(.black))
                             .padding(.top, 0)
@@ -50,26 +52,24 @@ struct CommentCell: View {
                             .fill(Color(.systemGray6))
                     )
                     HStack(spacing: 9) {
-                        Text("\(timeAgo)")
+                        Text("2h")
                             .font(.system(size: 11))
                             .foregroundStyle(Color(.systemGray))
                             .padding(.top, 2)
-                        Button(action: {
-                            isLiked.toggle()
-                            likeCount += isLiked ? 1 : -1
-                        }) {
+                        Button(action: {},
+                               label: {
                             Text("Like")
                                 .font(.system(size: 11,weight: .semibold))
                                 .foregroundStyle(Color(.systemGray))
                                 .padding(.top, 2)
-                        }
+                        })
                         Text("Reply")
                             .font(.system(size: 11,weight: .semibold))
                             .foregroundStyle(Color(.systemGray))
                             .padding(.top, 2)
                         Spacer()
                         HStack(spacing: 3) {
-                            Text("\(likeCount)")
+                            Text("\"threadcomments.likes")
                                 .font(.system(size: 11))
                                 .foregroundStyle(Color(ghoodPink))
                             Image(systemName: "hand.thumbsup.circle.fill")
@@ -86,12 +86,6 @@ struct CommentCell: View {
 }
 
 #Preview {
-    CommentCell(
-        username: "tessm234",
-        timeAgo: "2h",
-        commentText: "This is such a helpful post! Thanks for sharing your thoughts.",
-        isLiked: .constant(false),
-        likeCount: .constant(18)
-    )
+    ThreadCommentCell(viewModel: FeedViewModel(), index: 0)
 }
 

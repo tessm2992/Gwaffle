@@ -11,6 +11,7 @@ struct SwipeableTabsView: View {
     @State private var selectedTab = 0
     private let tabTitles = ["Posts", "Comments"]
 
+    
     var body: some View {
         VStack(spacing: 0) {
             // Tab Headers

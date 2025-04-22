@@ -9,8 +9,10 @@ import SwiftUI
 
 struct ThreadPostOtherView: View {
     private var ghoodPink: Color = Color(red: 255/255, green: 41/255, blue: 91/255)
+    
     @StateObject private var viewModel = FeedViewModel()
     private var index: Int
+    
     init(viewModel: FeedViewModel, index: Int) {
         self._viewModel = StateObject(wrappedValue: viewModel)
         self.index = index
@@ -18,7 +20,7 @@ struct ThreadPostOtherView: View {
     
     var body: some View {
         NavigationLink {
-            DetailedThreadView()
+            DetailedThreadView(viewModel: viewModel, index: index)
                 .navigationBarBackButtonHidden()
         } label: {
             VStack(alignment: .leading, spacing: 4) {
@@ -87,6 +89,7 @@ struct ThreadPostOtherView: View {
         }
     }
 }
+
 #Preview {
-    ThreadPostOtherView(viewModel: FeedViewModel(),index: 0)
+    ThreadPostOtherView(viewModel: FeedViewModel(), index: 0)
 }

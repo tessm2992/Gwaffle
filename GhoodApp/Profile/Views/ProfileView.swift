@@ -12,6 +12,7 @@ struct ProfileView: View {
     @State private var tabOffset: CGFloat = 0
     @State private var pinned = false
     
+    
     var body: some View {
         NavigationStack {
             ScrollView {
@@ -38,7 +39,6 @@ struct ProfileView: View {
                         Spacer()
                     }
                     .padding(.bottom, 10)
-                    
                     
                     SwipeableTabsView()
                 }

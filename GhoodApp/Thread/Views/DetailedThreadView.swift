@@ -11,8 +11,14 @@ struct DetailedThreadView: View {
     private var ghoodPink: Color = Color(red: 255/255, green: 41/255, blue: 91/255)
     private var ghoodLightPink: Color = Color(red: 255/255, green: 250/255, blue: 251/255)
     @Environment(\.dismiss) private var dismiss
-    @State private var isLiked = false  
-    @State private var likeCount = 18
+    
+    @StateObject private var viewModel = FeedViewModel()
+    private var index: Int
+    
+    init(viewModel: FeedViewModel, index: Int) {
+        self._viewModel = StateObject(wrappedValue: viewModel)
+        self.index = index
+    }
     
     var body: some View {
         GeometryReader { proxy in
@@ -79,13 +85,7 @@ struct DetailedThreadView: View {
                     }
                     .padding(.horizontal)
                     .font(.system(size: 13))
-                    CommentCell(
-                        username: "tessm234",
-                        timeAgo: "2h ago",
-                        commentText: "This is such a helpful post! Thanks for sharing your thoughts.",
-                        isLiked: $isLiked,
-                        likeCount: $likeCount
-                    )
+                    ThreadCommentCell(viewModel: viewModel, index: index)
                     .padding(.top)
                 }
             }
@@ -112,5 +112,5 @@ struct DetailedThreadView: View {
 }
 
 #Preview {
-    DetailedThreadView()
+    DetailedThreadView(viewModel: FeedViewModel(), index: 0)
 }
