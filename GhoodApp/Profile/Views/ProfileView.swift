@@ -8,10 +8,15 @@
 import SwiftUI
 
 struct ProfileView: View {
+    var showBackButton: Bool = false
+    
     private var ghoodPink: Color = Color(red: 255/255, green: 41/255, blue: 91/255)
     @State private var tabOffset: CGFloat = 0
     @State private var pinned = false
-    
+    @Environment(\.dismiss) private var dismiss
+    init(showBackButton: Bool = false) {
+            self.showBackButton = showBackButton
+        }
     
     var body: some View {
         NavigationStack {
@@ -43,7 +48,7 @@ struct ProfileView: View {
                     SwipeableTabsView()
                 }
                 .scrollIndicators(.hidden)
-                .padding(.top, -60)
+                .padding(.top, 0)
                 .toolbar{
                     ToolbarItem(placement: .principal) {
                         HStack {
@@ -59,6 +64,15 @@ struct ProfileView: View {
                                 .scaledToFill()
                                 .frame(width: 24, height: 24)
                                 .foregroundStyle(ghoodPink)
+                        }
+                    }
+                    if showBackButton {
+                        ToolbarItem(placement: .topBarLeading) {
+                            Button(action: {dismiss()}, label: {
+                                Image(systemName: "arrow.left")
+                                    .foregroundStyle(Color(ghoodPink))
+                                    .fontWeight(.bold)
+                            })
                         }
                     }
                 }

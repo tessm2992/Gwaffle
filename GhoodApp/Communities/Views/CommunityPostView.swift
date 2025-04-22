@@ -20,7 +20,7 @@ struct CommunityPostView: View {
                 VStack(alignment: .leading) {
                     HStack {
                         NavigationLink {
-                            ProfileView()
+                            ProfileView(showBackButton: true)
                                 .navigationBarBackButtonHidden()
                         } label: {
                             Image("avatar")
@@ -31,7 +31,7 @@ struct CommunityPostView: View {
                         }
                         VStack(alignment: .leading, spacing: 0){
                             NavigationLink {
-                                ProfileView()
+                                ProfileView(showBackButton: true)
                                     .navigationBarBackButtonHidden()
                             } label: {
                                 Text("tessm234")
