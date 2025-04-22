@@ -29,7 +29,7 @@ struct DetailedThreadView: View {
                             ProfileView()
                                 .navigationBarBackButtonHidden()
                         } label: {
-                            Image("avatar")
+                            Image(viewModel.threadposts[index].owner?.profileImageName ?? "")
                                 .resizable()
                                 .scaledToFill()
                                 .frame(width: 20,height: 20)
@@ -39,7 +39,7 @@ struct DetailedThreadView: View {
                             ProfileView()
                                 .navigationBarBackButtonHidden()
                         } label: {
-                            Text("tessm234")
+                            Text(viewModel.threadposts[index].owner?.userName ?? "")
                                 .font(.system(size: 13,weight: .semibold))
                                 .foregroundStyle(ghoodPink.opacity(0.7))
                         }
@@ -50,7 +50,7 @@ struct DetailedThreadView: View {
                     }
                     .padding(.horizontal)
                     .padding(.vertical,2)
-                    Text("Placeholder header text for the posts. This is going to be in bold")
+                    Text(viewModel.threadposts[index].postTitle)
                         .font(.system(size: 14,weight: .semibold))
                         .foregroundStyle(Color(.black))
                         .padding(.horizontal)
@@ -58,12 +58,12 @@ struct DetailedThreadView: View {
                     BadgeTag(badge: .paige)
                         .padding(.horizontal)
                         .padding(.bottom, 0)
-                    Text("I'm elaborating on the head of this post. So I'm asking everyone else for advice. You know what I mean? Or no?")
+                    Text(viewModel.threadposts[index].postSubTitle ?? "")
                         .font(.system(size: 12))
                         .foregroundStyle(Color(.black))
                         .padding(.horizontal)
                         .padding(.top, 0)
-                    Image("threadpic")
+                    Image(viewModel.threadposts[index].postURL ?? "")
                         .resizable()
                         .scaledToFill()
                         .frame(height: 180)
@@ -75,17 +75,15 @@ struct DetailedThreadView: View {
                             .foregroundStyle(Color(ghoodPink))
                         Text("18")
                             .foregroundStyle(Color(ghoodPink))
-                        Image(systemName: "message")
-                            .resizable()
-                            .frame(width: 18,height: 18)
-                            .foregroundStyle(Color(ghoodPink))
-                            .fontWeight(.bold)
-                        Text("43")
+                        Spacer()
+                        Text("43 comments")
                             .foregroundStyle(Color(ghoodPink))
                     }
                     .padding(.horizontal)
                     .font(.system(size: 13))
-                    ThreadCommentCell(viewModel: viewModel, index: index)
+                    ForEach(0 ..< viewModel.threadcomments.count, id: \.self) { index in
+                        ThreadCommentCell(viewModel: viewModel, index: index)
+                    }
                     .padding(.top)
                 }
             }
@@ -101,7 +99,7 @@ struct DetailedThreadView: View {
                 }
                 ToolbarItem(placement: .topBarLeading) {
                     Button(action: {dismiss()}, label: {
-                        Text("g/summerhousebravo")
+                        Text(viewModel.threadposts[index].page?.pageTitle ?? "")
                             .foregroundStyle(Color(ghoodPink))
                             .fontWeight(.bold)
                     })

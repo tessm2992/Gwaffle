@@ -29,7 +29,7 @@ struct ThreadPostOtherView: View {
                         ProfileView()
                             .navigationBarBackButtonHidden()
                     } label: {
-                        Image("avatar")
+                        Image(viewModel.threadposts[index].owner?.profileImageName ?? "")
                             .resizable()
                             .scaledToFill()
                             .frame(width: 20,height: 20)
