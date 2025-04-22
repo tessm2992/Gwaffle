@@ -16,12 +16,24 @@ struct CreateNewGroupView: View {
         NavigationStack {
             VStack(alignment: .leading) {
                 Divider()
-                Text("Name")
-                TextField("Name your group",text: $mindText)
-                    .padding(.horizontal)
-                Text("Privacy")
-                TextField("Name your group",text: $mindText)
-                    .padding(.horizontal)
+                VStack {
+                    Text("Name")
+                    TextField("Name your community",text: $mindText)
+                        .padding(.horizontal)
+                    Text("Privacy")
+                    TextField("Choose privacy",text: $mindText)
+                        .padding(.horizontal)
+                    Text("Visibility")
+                    TextField("Choose privacy",text: $mindText)
+                        .padding(.horizontal)
+                    Text("Description")
+                    TextField("Describer your community so people who what it's about",text: $mindText)
+                        .padding(.horizontal)
+                    Text("Category")
+                    TextField("Drop down of options",text: $mindText)
+                        .padding(.horizontal)
+                }
+                .padding(.horizontal)
                 Spacer()
                 Divider()
                 HStack {
@@ -51,7 +63,7 @@ struct CreateNewGroupView: View {
                     })
                 }
                 ToolbarItem(placement: .principal) {
-                    Text("Create Post")
+                    Text("Create Community")
                         .font(.headline)
                         .fontWeight(.semibold)
                 }

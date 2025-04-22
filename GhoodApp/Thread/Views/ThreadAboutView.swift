@@ -24,13 +24,45 @@ struct ThreadAboutView: View {
             GeometryReader { proxy in
                 ScrollView {
                     VStack(alignment: .leading) {
-                        Text("About")
-                            .font(.system(size: 20))
-                            .foregroundStyle(Color(.black))
-                        Text(viewModel.threadposts[index].page?.pageAbout ?? "")
-                            .font(.system(size: 20))
-                            .foregroundStyle(Color(.black))
+                        VStack(alignment: .leading) {
+                            Text("Description")
+                                .font(.system(size: 20, weight: .semibold))
+                                .foregroundStyle(Color(.black))
+                                .padding(.bottom, 3)
+                            
+                            Text(viewModel.threadposts[index].page?.pageAbout ?? "")
+                                .font(.system(size: 15))
+                                .foregroundStyle(Color(.black))
+                        }
+                        .padding(.bottom)
+                        
+                        VStack(alignment: .leading) {
+                            Text("Rules")
+                                .font(.system(size: 20, weight: .semibold))
+                                .foregroundStyle(Color(.black))
+                                .padding(.bottom, 3)
+                            Text("List of rules")
+                                .font(.system(size: 15))
+                                .foregroundStyle(Color(.black))
+                        }
+                        .padding(.bottom)
+                        
+                        VStack(alignment: .leading) {
+                            Text("Moderators")
+                                .font(.system(size: 20, weight: .semibold))
+                                .foregroundStyle(Color(.black))
+                                .padding(.bottom, 3)
+                            Text("List of moderators")
+                                .font(.system(size: 15))
+                                .foregroundStyle(Color(.black))
+                        }
+                        .padding(.bottom)
                     }
+                    .padding(.horizontal)
+                    .padding(.top, 0)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                   
+                    Spacer()
                     
                     .scrollIndicators(.hidden)
                     .foregroundStyle(Color(.systemGray5))
@@ -46,13 +78,14 @@ struct ThreadAboutView: View {
                             Text(viewModel.threadposts[index].page?.pageTitle ?? "")
                                 .foregroundStyle(Color(ghoodPink))
                                 .font(.system(size: 17,weight: .semibold))
-                            }
                         }
                     }
                 }
+                .frame(maxWidth: .infinity, alignment: .leading)
             }
         }
     }
+}
 
 #Preview {
     ThreadAboutView(viewModel: FeedViewModel(), index: 0)

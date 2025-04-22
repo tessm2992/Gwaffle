@@ -69,7 +69,7 @@ struct ThreadCommentCell: View {
                             .padding(.top, 2)
                         Spacer()
                         HStack(spacing: 3) {
-                            Text("\"threadcomments.likes")
+                            Text("3")
                                 .font(.system(size: 11))
                                 .foregroundStyle(Color(ghoodPink))
                             Image(systemName: "hand.thumbsup.circle.fill")

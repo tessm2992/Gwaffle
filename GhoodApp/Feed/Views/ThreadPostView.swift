@@ -63,11 +63,15 @@ struct ThreadPostView: View {
                     .padding(.horizontal)
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .multilineTextAlignment(.leading)
-                Image(viewModel.threadposts[index].postURL ?? "")
-                    .resizable()
-                    .scaledToFill()
-                    .frame(height: 180)
-                    .clipped()
+                if let postURL = viewModel.threadposts[index].postURL, !postURL.isEmpty {
+                    Image(postURL)
+                            .resizable()
+                            .scaledToFill()
+                            .frame(maxWidth: .infinity, maxHeight: 400, alignment: .top)
+                            .clipped()
+                } else {
+                    EmptyView()
+                }
                 HStack(spacing: 3) {
                     Image(systemName: "hand.thumbsup.circle.fill")
                         .resizable()

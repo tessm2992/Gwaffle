@@ -13,35 +13,99 @@ struct CommunityAboutView: View {
     @Environment(\.dismiss) private var dismiss
     
     var body: some View {
-        GeometryReader { proxy in
-            ScrollView {
-                VStack(alignment: .leading) {
-                    Text("About")
-                        .font(.system(size: 20))
-                        .foregroundStyle(Color(.black))
-                    Text("this is context on the community etc")
-                        .font(.system(size: 20))
-                        .foregroundStyle(Color(.black))
-                }
-                
-                .scrollIndicators(.hidden)
-                .foregroundStyle(Color(.systemGray5))
-                .toolbar{
-                    ToolbarItem(placement: .topBarLeading) {
-                        Button(action: {dismiss()}, label: {
-                            Image(systemName: "arrow.left")
-                                .foregroundStyle(Color(ghoodPink))
-                                .fontWeight(.bold)
-                        })
+        NavigationStack {
+            GeometryReader { proxy in
+                ScrollView {
+                    VStack(alignment: .leading) {
+                        VStack(alignment: .leading) {
+                            Text("About")
+                                .font(.system(size: 20, weight: .semibold))
+                                .foregroundStyle(Color(.black))
+                                .padding(.bottom, 3)
+                            
+                            Text("This is the community description. Any background of who the creator is or what the purpose of the group is will be featured here.")
+                                .font(.system(size: 15))
+                                .foregroundStyle(Color(.black))
+                                .padding(.bottom,3)
+                            HStack(spacing: 10) {
+                                Image(systemName: "lock.fill")
+                                    .resizable()
+                                    .scaledToFill()
+                                    .frame(width: 12,height: 12)
+                                VStack(alignment: .leading) {
+                                    Text("Private")
+                                        .font(.system(size: 15))
+                                        .foregroundStyle(Color(.black))
+                                    Text("Only members can see who's in the group and what they post.")
+                                        .font(.system(size: 10))
+                                        .foregroundStyle(Color(.systemGray))
+                                }
+                            }
+                            .padding(.bottom, 5)
+                            HStack(spacing: 10) {
+                                Image(systemName: "eye.fill")
+                                    .resizable()
+                                    .scaledToFill()
+                                    .frame(width: 12,height: 12)
+                                VStack(alignment: .leading) {
+                                    Text("Visible")
+                                        .font(.system(size: 15))
+                                        .foregroundStyle(Color(.black))
+                                    Text("Only members can see who's in the group and what they post.")
+                                        .font(.system(size: 10))
+                                        .foregroundStyle(Color(.systemGray))
+                                }
+                            }
+                            .padding(.bottom, 5)
+                        }
+                        .padding(.bottom)
+                        
+                        VStack(alignment: .leading) {
+                            Text("Rules")
+                                .font(.system(size: 20, weight: .semibold))
+                                .foregroundStyle(Color(.black))
+                                .padding(.bottom, 3)
+                            Text("List of rules")
+                                .font(.system(size: 15))
+                                .foregroundStyle(Color(.black))
+                        }
+                        .padding(.bottom)
+                        
+                        VStack(alignment: .leading) {
+                            Text("Moderators")
+                                .font(.system(size: 20, weight: .semibold))
+                                .foregroundStyle(Color(.black))
+                                .padding(.bottom, 3)
+                            Text("List of moderators")
+                                .font(.system(size: 15))
+                                .foregroundStyle(Color(.black))
+                        }
+                        .padding(.bottom)
                     }
-                    ToolbarItem(placement: .principal) {
-                        Button(action: {dismiss()}, label: {
-                            Text("Tinx's Army")
-                                .foregroundStyle(Color(ghoodPink))
-                                .font(.system(size: 20,weight: .semibold))
-                        })
-                    }
+                    .padding(.horizontal)
+                    .padding(.top, 0)
+                    .frame(maxWidth: .infinity, alignment: .leading)
                     
+                    Spacer()
+                    
+                    .scrollIndicators(.hidden)
+                    .foregroundStyle(Color(.systemGray5))
+                    .toolbar{
+                        ToolbarItem(placement: .topBarLeading) {
+                            Button(action: {dismiss()}, label: {
+                                Image(systemName: "arrow.left")
+                                    .foregroundStyle(Color(ghoodPink))
+                                    .fontWeight(.bold)
+                            })
+                        }
+                        ToolbarItem(placement: .principal) {
+                            Button(action: {dismiss()}, label: {
+                                Text("Tinx's Army")
+                                    .foregroundStyle(Color(ghoodPink))
+                                    .font(.system(size: 20,weight: .semibold))
+                            })
+                        }
+                    }
                 }
             }
         }

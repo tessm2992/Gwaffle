@@ -63,28 +63,32 @@ struct DetailedThreadView: View {
                         .foregroundStyle(Color(.black))
                         .padding(.horizontal)
                         .padding(.top, 0)
-                    Image(viewModel.threadposts[index].postURL ?? "")
-                        .resizable()
-                        .scaledToFill()
-                        .frame(height: 180)
-                        .clipped()
+                    if let postURL = viewModel.threadposts[index].postURL, !postURL.isEmpty {
+                        Image(postURL)
+                                .resizable()
+                                .scaledToFill()
+                                .frame(maxWidth: .infinity, maxHeight: 400, alignment: .top)
+                                .clipped()
+                    } else {
+                        EmptyView()
+                    }
                     HStack(spacing: 4) {
                         Image(systemName: "hand.thumbsup.circle.fill")
                             .resizable()
                             .frame(width: 18,height: 18)
                             .foregroundStyle(Color(ghoodPink))
-                        Text("18")
+                        Text("\(viewModel.threadposts[index].postLikes)")
                             .foregroundStyle(Color(ghoodPink))
                         Spacer()
                         Text("43 comments")
                             .foregroundStyle(Color(ghoodPink))
                     }
                     .padding(.horizontal)
+                    .padding(.bottom)
                     .font(.system(size: 13))
                     ForEach(0 ..< viewModel.threadcomments.count, id: \.self) { index in
                         ThreadCommentCell(viewModel: viewModel, index: index)
                     }
-                    .padding(.top)
                 }
             }
             .scrollIndicators(.hidden)

@@ -18,4 +18,5 @@ struct CommentThread: Identifiable, Hashable, Codable {
     
     var owner: User?
     var page: PageThread?
+    var postT: PostThread?
 }

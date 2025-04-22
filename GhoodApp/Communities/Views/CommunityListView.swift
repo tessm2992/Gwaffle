@@ -36,7 +36,7 @@ struct CommunityListView: View {
                                     .scaledToFill()
                                     .frame(width: 50,height: 50)
                                     .foregroundColor(Color(.systemGray3))
-                                Text("Create a group")
+                                Text("Create a community")
                                     .font(.system(size: 17,weight: .semibold))
                                     .foregroundStyle(Color(.black))
                                 Spacer()

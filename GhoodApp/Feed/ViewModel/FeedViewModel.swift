@@ -52,37 +52,7 @@ class FeedViewModel: ObservableObject {
         for index in 0..<threadcomments.count {
             threadcomments[index].owner = users.first(where: { $0.id == threadcomments[index].userId })
             threadcomments[index].page = threadpage.first(where: { $0.id == threadcomments[index].userId })
-        }
-    }
-    
-    // Helper method to get comments for a specific post
-    func getThreadComments(for postId: String) -> [CommentThread] {
-        return threadcomments.filter { $0.postId == postId }
-    }
-        
-    // Method to add a new comment
-    func addThreadComment(postId: String, userId: String, text: String) {
-        let newThreadComment = CommentThread(
-            id: UUID().uuidString,
-            postId: postId,
-            userId: userId,
-            text: text,
-            likes: 0
-        )
-            
-        // Set the owner
-        var updatedThreadComment = newThreadComment
-        updatedThreadComment.owner = users.first(where: { $0.id == userId })
-        
-        // Add to our list
-        threadcomments.append(updatedThreadComment)
-    }
-        
-    // Method to like/unlike a comment
-    func toggleLike(for threadcommentId: String) {
-        if let index = threadcomments.firstIndex(where: { $0.id == threadcommentId }) {
-            threadcomments[index].isLiked.toggle()
-            threadcomments[index].likes += threadcomments[index].isLiked ? 1 : -1
+            threadcomments[index].postT = threadposts.first(where: { $0.id == threadcomments[index].userId })
         }
     }
 }
