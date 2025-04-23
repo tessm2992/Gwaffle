@@ -32,6 +32,7 @@ struct ThreadView: View {
             }
             .scrollIndicators(.hidden)
             .navigationTitle("Threads")
+                .foregroundStyle(Color(ghoodPink))
             .foregroundStyle(Color(.systemGray5))
             .toolbar{
                 ToolbarItem(placement: .topBarLeading) {
