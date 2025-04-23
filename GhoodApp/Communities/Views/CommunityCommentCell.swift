@@ -21,7 +21,7 @@ struct CommunityCommentCell: View {
                     Image("avatar")
                         .resizable()
                         .scaledToFill()
-                        .frame(width: 40,height: 40)
+                        .frame(width: 35,height: 35)
                         .clipShape(Circle())
                 }
                 VStack(alignment: .leading) {
@@ -34,7 +34,7 @@ struct CommunityCommentCell: View {
                                 .font(.system(size: 13,weight: .semibold))
                                 .foregroundStyle(ghoodPink.opacity(0.7))
                         }
-                        Text("body of comment")
+                        Text("This is the text for a coment. It can vary in size depending on how long the comment is.")
                             .font(.system(size: 12))
                             .foregroundStyle(Color(.black))
                             .padding(.top, 0)

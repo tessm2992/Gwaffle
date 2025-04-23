@@ -19,7 +19,7 @@ struct InboxSearchBar: View {
                     .foregroundColor(ghoodPink.opacity(0.7))
                 
                 TextField("Search messages", text: $searchText)
-                    .foregroundStyle(Color(.systemGray))
+                    .foregroundStyle(Color(.black))
                     .font(.system(size: 14))
             }
             .padding(.horizontal, 12)

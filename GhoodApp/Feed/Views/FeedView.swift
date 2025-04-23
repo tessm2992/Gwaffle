@@ -105,7 +105,7 @@ struct FeedView: View {
             ZStack(alignment: .leading) {
                 if showMenu {
                     SideMenuView()
-                        .frame(width: 250)
+                        .frame(width: 270)
                         .transition(.move(edge: .leading))
                 }
             }

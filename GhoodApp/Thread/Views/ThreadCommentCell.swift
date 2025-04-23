@@ -28,7 +28,7 @@ struct ThreadCommentCell: View {
                     Image(viewModel.threadcomments[index].owner?.profileImageName ?? "")
                         .resizable()
                         .scaledToFill()
-                        .frame(width: 40,height: 40)
+                        .frame(width: 35,height: 35)
                         .clipShape(Circle())
                 }
                 VStack(alignment: .leading) {
