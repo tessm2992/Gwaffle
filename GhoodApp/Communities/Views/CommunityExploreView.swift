@@ -24,57 +24,59 @@ struct CommunityExploreView: View {
         ("Identity-Based","gear"),
     ]
     var body: some View {
-        GeometryReader { proxy in
-            ScrollView {
-                HStack {
-                    Text("Categories")
-                        .font(.system(size: 20,weight: .semibold))
-                        .foregroundStyle(Color(ghoodPink))
-                    Spacer()
-                }
-                .padding(.top, 10)
-                LazyVGrid(columns: gridItems,spacing: 15) {
-                    ForEach(0 ..< 6) { index in
-                        NavigationLink {
-                            CommunityDiscoverView()
-                                .navigationBarBackButtonHidden()
-                        } label: {
-                            VStack(alignment: .leading) {
-                                HStack { Spacer() }
-                                Spacer()
-                                Text(shortcutsArray[index].0)
-                                    .font(.headline)
-                                    .foregroundStyle(Color(.white))
-                                HStack { Spacer() }
-                        }
-                        .padding(.horizontal)
-                        .frame(width: proxy.size.width * 0.45,height: 100)
-                        .background(ghoodPink.opacity(0.8))
-                        .clipShape(RoundedRectangle(cornerRadius: 10))
+        NavigationStack {
+            GeometryReader { proxy in
+                ScrollView {
+                    CapsuleSearchBar()
+                        .padding(.bottom,10)
+                    HStack {
+                        Text("Categories")
+                            .font(.system(size: 20,weight: .semibold))
+                            .foregroundStyle(Color(ghoodPink))
+                        Spacer()
+                    }
+                    .padding(.top, 10)
+                    LazyVGrid(columns: gridItems,spacing: 15) {
+                        ForEach(0 ..< 6) { index in
+                            NavigationLink {
+                                CommunityDiscoverView()
+                                    .navigationBarBackButtonHidden()
+                            } label: {
+                                VStack(alignment: .leading) {
+                                    HStack { Spacer() }
+                                    Spacer()
+                                    Text(shortcutsArray[index].0)
+                                        .font(.headline)
+                                        .foregroundStyle(Color(.white))
+                                    HStack { Spacer() }
+                                }
+                                .padding(.horizontal)
+                                .frame(width: proxy.size.width * 0.45,height: 100)
+                                .background(ghoodPink.opacity(0.8))
+                                .clipShape(RoundedRectangle(cornerRadius: 10))
+                            }
                         }
                     }
                 }
-            }
-            .scrollIndicators(.hidden)
-            .navigationTitle("Explore Communities")
-            .padding(.horizontal)
-            .foregroundStyle(Color(.systemGray5))
-            .toolbar{
-                ToolbarItem(placement: .topBarLeading) {
-                    Button(action: {dismiss()}, label: {
-                        Image(systemName: "arrow.left")
-                            .foregroundStyle(Color(ghoodPink))
-                            .fontWeight(.bold)
-                    })
+                .scrollIndicators(.hidden)
+                .padding(.horizontal)
+                .foregroundStyle(Color(.systemGray5))
+                .toolbar{
+                    ToolbarItem(placement: .topBarLeading) {
+                        Button(action: {dismiss()}, label: {
+                            Image(systemName: "arrow.left")
+                                .foregroundStyle(Color(ghoodPink))
+                                .fontWeight(.bold)
+                        })
+                    }
+                    ToolbarItem(placement: .principal) {
+                        Button(action: {dismiss()}, label: {
+                            Text("Explore Communities")
+                                .foregroundStyle(Color(ghoodPink))
+                                .fontWeight(.bold)
+                        })
+                    }
                 }
-                ToolbarItem(placement: .topBarTrailing) {
-                    Button(action: {}, label: {
-                        Image(systemName: "magnifyingglass")
-                            .foregroundStyle(Color(ghoodPink))
-                            .fontWeight(.bold)
-                    })
-                }
-                
             }
         }
     }

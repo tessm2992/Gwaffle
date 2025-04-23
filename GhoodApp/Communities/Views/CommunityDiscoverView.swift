@@ -16,6 +16,8 @@ struct CommunityDiscoverView: View {
         NavigationStack {
             GeometryReader { proxy in
                 ScrollView {
+                    CapsuleSearchBar()
+                        .padding(.bottom,10)
                     Text("Tiles for different communities related to this category!")
                         .foregroundStyle(Color(ghoodPink))
                 }
@@ -32,13 +34,6 @@ struct CommunityDiscoverView: View {
                     ToolbarItem(placement: .principal) {
                         Button(action: {dismiss()}, label: {
                             Text("Local & Neighborhood")
-                                .foregroundStyle(Color(ghoodPink))
-                                .fontWeight(.bold)
-                        })
-                    }
-                    ToolbarItem(placement: .topBarTrailing) {
-                        Button(action: {}, label: {
-                            Image(systemName: "magnifyingglass")
                                 .foregroundStyle(Color(ghoodPink))
                                 .fontWeight(.bold)
                         })
