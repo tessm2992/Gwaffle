@@ -56,10 +56,13 @@ struct CommunityCommentCell: View {
                                 .foregroundStyle(Color(.systemGray))
                                 .padding(.top, 2)
                         })
-                        Text("Reply")
-                            .font(.system(size: 11,weight: .semibold))
-                            .foregroundStyle(Color(.systemGray))
-                            .padding(.top, 2)
+                        Button(action: {},
+                               label: {
+                            Text("Reply")
+                                .font(.system(size: 11,weight: .semibold))
+                                .foregroundStyle(Color(.systemGray))
+                                .padding(.top, 2)
+                        })
                         Spacer()
                         HStack(spacing: 3) {
                             Text("3")

@@ -18,6 +18,7 @@ struct InboxSearchBar: View {
                 Image(systemName: "magnifyingglass")
                     .foregroundColor(ghoodPink.opacity(0.7))
                 
+              
                 TextField("Search messages", text: $searchText)
                     .foregroundStyle(Color(.black))
                     .font(.system(size: 14))
@@ -27,11 +28,16 @@ struct InboxSearchBar: View {
             .background(Color(ghoodPink.opacity(0.06)))
             .clipShape(Capsule())
             .padding(.horizontal)
-            Image(systemName: "square.and.pencil")
-                .resizable()
-                .scaledToFill()
-                .frame(width: 24, height: 24)
-                .foregroundStyle(ghoodPink)
+            NavigationLink {
+                NewDirectMessageView()
+                    .navigationBarBackButtonHidden()
+            } label: {
+                Image(systemName: "square.and.pencil")
+                    .resizable()
+                    .scaledToFill()
+                    .frame(width: 24, height: 24)
+                    .foregroundStyle(ghoodPink)
+            }
         }
         .padding(.horizontal)
         .padding(.top, 10)

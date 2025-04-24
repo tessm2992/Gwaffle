@@ -14,16 +14,20 @@ struct SideMenuView: View {
     var body: some View {
         GeometryReader { proxy in
             VStack(alignment: .leading) {
-                HStack(spacing: 20) {
-                    Text("Recently Visited")
-                        .font(.system(size: 18, weight: .semibold))
-                        .foregroundStyle(Color(ghoodPink))
-                    Text("see all")
-                        .font(.system(size: 18))
-                        .foregroundStyle(Color(ghoodPink))
+                NavigationLink {
+                    SideMenuRecentsView()
+                } label: {
+                    HStack(spacing: 20) {
+                        Text("Recently Visited")
+                            .font(.system(size: 18, weight: .semibold))
+                            .foregroundStyle(Color(ghoodPink))
+                        Text("see all")
+                            .font(.system(size: 18))
+                            .foregroundStyle(Color(ghoodPink))
+                    }
+                    .padding(.top, 100)
+                    .padding(.bottom, 10)
                 }
-                .padding(.top, 100)
-                .padding(.bottom, 10)
                 VStack {
                     HStack {
                         Image("threadpic")

@@ -93,7 +93,7 @@ struct DetailedThreadView: View {
             }
             .scrollIndicators(.hidden)
             .foregroundStyle(Color(.systemGray5))
-            .toolbar{
+            .toolbar {
                 ToolbarItem(placement: .topBarLeading) {
                     Button(action: {dismiss()}, label: {
                         Image(systemName: "arrow.left")
@@ -109,6 +109,7 @@ struct DetailedThreadView: View {
                     })
                 }
             }
+            .toolbar(.hidden, for: .tabBar)
         }
     }
 }

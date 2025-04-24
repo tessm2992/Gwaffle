@@ -83,6 +83,7 @@ struct CreateThreadPostView: View {
                     .disabled(mindText.count == 0)
                 }
             }
+            .toolbar(.hidden, for: .tabBar)
         }
     }
 }

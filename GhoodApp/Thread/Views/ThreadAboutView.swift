@@ -25,7 +25,7 @@ struct ThreadAboutView: View {
                 ScrollView {
                     VStack(alignment: .leading) {
                         VStack(alignment: .leading) {
-                            Text("Description")
+                            Text("About")
                                 .font(.system(size: 20, weight: .semibold))
                                 .foregroundStyle(Color(.black))
                                 .padding(.bottom, 3)
@@ -37,24 +37,26 @@ struct ThreadAboutView: View {
                         .padding(.bottom)
                         
                         VStack(alignment: .leading) {
-                            Text("Rules")
+                            Text("Admins")
                                 .font(.system(size: 20, weight: .semibold))
                                 .foregroundStyle(Color(.black))
                                 .padding(.bottom, 3)
-                            Text("List of rules")
-                                .font(.system(size: 15))
-                                .foregroundStyle(Color(.black))
-                        }
-                        .padding(.bottom)
-                        
-                        VStack(alignment: .leading) {
-                            Text("Moderators")
-                                .font(.system(size: 20, weight: .semibold))
-                                .foregroundStyle(Color(.black))
-                                .padding(.bottom, 3)
-                            Text("List of moderators")
-                                .font(.system(size: 15))
-                                .foregroundStyle(Color(.black))
+                            ForEach(0 ..< 2) { index in
+                                NavigationLink {
+                                    ProfileView()
+                                } label: {
+                                    HStack {
+                                        Image("avatar")
+                                            .resizable()
+                                            .scaledToFill()
+                                            .frame(width: 20,height: 20)
+                                            .clipShape(Circle())
+                                        Text("tessm345")
+                                            .font(.system(size: 15))
+                                            .foregroundStyle(Color(.black))
+                                    }
+                                }
+                            }
                         }
                         .padding(.bottom)
                     }

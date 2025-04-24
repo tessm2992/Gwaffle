@@ -15,13 +15,13 @@ struct CommunityExploreView: View {
         .init(.flexible(),spacing: 15),
         .init(.flexible(),spacing: 15),
     ]
-    private var shortcutsArray: [(String,String)] = [
-        ("Local & Neighborhoods","gear"),
-        ("Creator Communities","gear"),
-        ("Support Groups","gear"),
-        ("Family & Parenting","gear"),
-        ("Social & Hobbies","gear"),
-        ("Identity-Based","gear"),
+    private var shortcutsArray: [(String,String,Color)] = [
+        ("Local & Neighborhoods","gear",.orange),
+        ("Creator Communities","gear",.blue),
+        ("Support Groups","gear",.pink),
+        ("Family & Parenting","gear",.green),
+        ("Social & Hobbies","gear",.indigo),
+        ("Identity-Based","gear",.mint),
     ]
     var body: some View {
         NavigationStack {
@@ -42,17 +42,15 @@ struct CommunityExploreView: View {
                                 CommunityDiscoverView()
                                     .navigationBarBackButtonHidden()
                             } label: {
-                                VStack(alignment: .leading) {
-                                    HStack { Spacer() }
-                                    Spacer()
+                                ZStack(alignment: .bottomLeading) {
                                     Text(shortcutsArray[index].0)
                                         .font(.headline)
                                         .foregroundStyle(Color(.white))
-                                    HStack { Spacer() }
+                                        .padding(.top)
                                 }
                                 .padding(.horizontal)
                                 .frame(width: proxy.size.width * 0.45,height: 100)
-                                .background(ghoodPink.opacity(0.8))
+                                .background(shortcutsArray[index].2)
                                 .clipShape(RoundedRectangle(cornerRadius: 10))
                             }
                         }
@@ -72,7 +70,7 @@ struct CommunityExploreView: View {
                     ToolbarItem(placement: .principal) {
                         Button(action: {dismiss()}, label: {
                             Text("Explore Communities")
-                                .foregroundStyle(Color(ghoodPink))
+                                .foregroundStyle(Color(.black))
                                 .fontWeight(.bold)
                         })
                     }

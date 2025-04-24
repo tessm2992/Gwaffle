@@ -23,6 +23,7 @@ struct ThreadView: View {
     var body: some View {
         GeometryReader { proxy in
             ScrollView {
+                DividerThinView(width: proxy.size.width)
                 ThreadHeaderView(viewModel: viewModel, index: index)
                 DividerThinView(width: proxy.size.width - 15)
                 ForEach(0..<viewModel.threadposts.count, id: \.self) { index in

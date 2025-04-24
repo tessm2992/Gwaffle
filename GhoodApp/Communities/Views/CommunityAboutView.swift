@@ -22,11 +22,10 @@ struct CommunityAboutView: View {
                                 .font(.system(size: 20, weight: .semibold))
                                 .foregroundStyle(Color(.black))
                                 .padding(.bottom, 3)
-                            
                             Text("This is the community description. Any background of who the creator is or what the purpose of the group is will be featured here.")
                                 .font(.system(size: 15))
                                 .foregroundStyle(Color(.black))
-                                .padding(.bottom,3)
+                                .padding(.bottom,12)
                             HStack(spacing: 10) {
                                 Image(systemName: "lock.fill")
                                     .resizable()
@@ -37,7 +36,7 @@ struct CommunityAboutView: View {
                                         .font(.system(size: 15))
                                         .foregroundStyle(Color(.black))
                                     Text("Only members can see who's in the group and what they post.")
-                                        .font(.system(size: 10))
+                                        .font(.system(size: 12))
                                         .foregroundStyle(Color(.systemGray))
                                 }
                             }
@@ -51,8 +50,8 @@ struct CommunityAboutView: View {
                                     Text("Visible")
                                         .font(.system(size: 15))
                                         .foregroundStyle(Color(.black))
-                                    Text("Only members can see who's in the group and what they post.")
-                                        .font(.system(size: 10))
+                                    Text("Anyone can find this group.")
+                                        .font(.system(size: 12))
                                         .foregroundStyle(Color(.systemGray))
                                 }
                             }
@@ -65,20 +64,42 @@ struct CommunityAboutView: View {
                                 .font(.system(size: 20, weight: .semibold))
                                 .foregroundStyle(Color(.black))
                                 .padding(.bottom, 3)
-                            Text("List of rules")
+                            Text("1. No promotions or spam")
+                                .padding(2)
+                                .font(.system(size: 15))
+                                .foregroundStyle(Color(.black))
+                            Text("2. Be kind & respectful")
+                                .padding(2)
+                                .font(.system(size: 15))
+                                .foregroundStyle(Color(.black))
+                            Text("3. Respect everyone's privacy")
+                                .padding(2)
                                 .font(.system(size: 15))
                                 .foregroundStyle(Color(.black))
                         }
                         .padding(.bottom)
                         
                         VStack(alignment: .leading) {
-                            Text("Moderators")
+                            Text("Admins")
                                 .font(.system(size: 20, weight: .semibold))
                                 .foregroundStyle(Color(.black))
                                 .padding(.bottom, 3)
-                            Text("List of moderators")
-                                .font(.system(size: 15))
-                                .foregroundStyle(Color(.black))
+                            ForEach(0 ..< 2) { index in
+                                NavigationLink {
+                                    ProfileView()
+                                } label: {
+                                    HStack {
+                                        Image("avatar")
+                                            .resizable()
+                                            .scaledToFill()
+                                            .frame(width: 20,height: 20)
+                                            .clipShape(Circle())
+                                        Text("tessm345")
+                                            .font(.system(size: 15))
+                                            .foregroundStyle(Color(.black))
+                                    }
+                                }
+                            }
                         }
                         .padding(.bottom)
                     }

@@ -24,7 +24,7 @@ struct CommunityTile: View {
                         .frame(width: 50,height: 50)
                         .clipShape(Circle())
                     VStack(alignment: .leading,spacing: 0) {
-                        Text("The Toast After Dark")
+                        Text("Tinx's Army")
                             .font(.system(size: 17,weight: .semibold))
                             .foregroundStyle(Color(.black))
                         HStack {
