@@ -9,7 +9,6 @@ import SwiftUI
 
 struct TabBarView: View {
     @State private var selectedTab = 0
-    @State private var showCreatePostView = false
     
     var body: some View {
         ZStack(alignment: .bottom) {
@@ -54,9 +53,6 @@ struct TabBarView: View {
                 
             }
             .tint(Color(hex: "#FF295B"))
-        }
-        .sheet(isPresented: $showCreatePostView) {
-            CreateThreadPostView()
         }
     }
 }
