@@ -55,10 +55,16 @@ struct ThreadHeaderView: View {
                         .padding(.horizontal)
                         .padding(.top,5)
                 }
-                Text(viewModel.threadposts[index].page?.pageCategory ?? "")
-                    .font(.system(size: 14,weight: .semibold))
-                    .foregroundStyle(Color(.orange))
-                    .padding(.top,5)
+                NavigationLink {
+                    ThreadCategoryView()
+                        .navigationBarBackButtonHidden()
+                } label: {
+                    Text(viewModel.threadposts[index].page?.pageCategory ?? "")
+                        .font(.system(size: 14,weight: .semibold))
+                        .foregroundStyle(Color(.orange))
+                        .padding(.top,5)
+                }
+                
             }
             
         }

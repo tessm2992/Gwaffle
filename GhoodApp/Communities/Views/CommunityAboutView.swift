@@ -26,6 +26,17 @@ struct CommunityAboutView: View {
                                 .font(.system(size: 15))
                                 .foregroundStyle(Color(.black))
                                 .padding(.bottom,12)
+                            Button(action: {}, label: {
+                                Text("Creator Community")
+                                    .font(.system(size: 15))
+                                    .fontWeight(.semibold)
+                                    .foregroundStyle(.white)
+                                    .frame(width: 170, height: 30)
+                                    .background(.blue)
+                                    .clipShape(RoundedRectangle(cornerRadius: 30))
+                            })
+                            }
+                            .padding(.bottom, 5)
                             HStack(spacing: 10) {
                                 Image(systemName: "lock.fill")
                                     .resizable()
@@ -55,9 +66,7 @@ struct CommunityAboutView: View {
                                         .foregroundStyle(Color(.systemGray))
                                 }
                             }
-                            .padding(.bottom, 5)
-                        }
-                        .padding(.bottom)
+                            .padding(.bottom)
                         
                         VStack(alignment: .leading) {
                             Text("Rules")

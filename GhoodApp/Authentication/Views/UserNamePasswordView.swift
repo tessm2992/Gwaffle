@@ -1,5 +1,5 @@
 //
-//  LoginView.swift
+//  UserNamePasswordView.swift
 //  GhoodApp
 //
 //  Created by Tess Munsie on 4/24/25.
@@ -7,20 +7,21 @@
 
 import SwiftUI
 
-struct LoginView: View {
+struct UserNamePasswordView: View {
     @State private var userEmail = ""
     
     var body: some View {
         NavigationStack {
             GeometryReader { proxy in
                 VStack(spacing:70) {
-                    Spacer()
-                    Image("ghoodlogo")
-                        .resizable()
-                        .scaledToFill()
-                        .frame(width: 200, height: 0)
+                    Text("Create your username and password")
+                        .font(.title2)
+                        .fontWeight(.semibold)
+                        .padding(.top)
+                    Text("Your username is what you will go by here.")
+                        .font(.footnote)
                     VStack(spacing: 24) {
-                        TextField("Mobile number or email address", text: $userEmail)
+                        TextField("Username", text: $userEmail)
                             .textInputAutocapitalization(.never)
                             .padding(12)
                             .background(.white)
@@ -33,10 +34,9 @@ struct LoginView: View {
                             .frame(width: proxy.size.width - 30, height: 50)
                             .clipShape(RoundedRectangle(cornerRadius: 10))
                         NavigationLink{
-                            TabBarView()
-                                .navigationBarBackButtonHidden()
+                            AddNameView()
                             } label: {
-                                Text("Log In")
+                                Text("Continue")
                                     .font(.headline)
                                     .fontWeight(.semibold)
                                     .foregroundStyle(.white)
@@ -46,25 +46,14 @@ struct LoginView: View {
                                 
                         }
                         NavigationLink{
-                            AddEmailView()
+                            LoginView()
+                                .navigationBarBackButtonHidden()
                             } label: {
-                            Text("Create new account")
-                                .font(.headline)
-                                .fontWeight(.semibold)
-                                .foregroundStyle(ghoodPink)
-                                .frame(width: proxy.size.width - 30, height: 44)
-                                .overlay{
-                                    RoundedRectangle(cornerRadius: 30)
-                                        .stroke(ghoodPink,lineWidth: 1)
-                                }
-                                
-                        }
-                        Button(action: {}, label: {
-                            Text("Forgot your password?")
+                            Text("Already have an account?")
                                 .font(.headline)
                                 .fontWeight(.semibold)
                                 .foregroundStyle(.black)
-                        })
+                        }
                     }
                     HStack { Spacer()}
                     Spacer()
@@ -76,5 +65,5 @@ struct LoginView: View {
 }
 
 #Preview {
-    LoginView()
+    UserNamePasswordView()
 }

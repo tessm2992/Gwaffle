@@ -25,7 +25,7 @@ struct CommunityListView: View {
                     }
                     
                     ScrollView  {
-                        CapsuleSearchBar()
+                        CapsuleSearchBarTwo()
                             .padding(.bottom,10)
                         Button(action: {
                             showCreateGroup.toggle()

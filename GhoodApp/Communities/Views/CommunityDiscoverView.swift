@@ -34,7 +34,7 @@ struct CommunityDiscoverView: View {
                     ToolbarItem(placement: .principal) {
                         Button(action: {dismiss()}, label: {
                             Text("Local & Neighborhood")
-                                .foregroundStyle(Color(ghoodPink))
+                                .foregroundStyle(Color(.black))
                                 .fontWeight(.bold)
                         })
                     }
