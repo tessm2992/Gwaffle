@@ -21,13 +21,8 @@ struct GenderView: View {
                         .padding(.top)
                     Text("Tell us about yourself")
                         .font(.footnote)
-                        .padding(.bottom, 40)
-                    Text("How do you identify?")
-                        .font(.title3)
-                        .fontWeight(.semibold)
-                        .padding(.bottom, 10)
+                        .padding(.bottom, 20)
                     VStack(spacing: 24) {
-                        Text("")
                         NavigationLink{
                             InterestsView()
                                 .navigationBarBackButtonHidden()
@@ -65,15 +60,6 @@ struct GenderView: View {
                                 .clipShape(RoundedRectangle(cornerRadius: 30))
                         }
                         Spacer()
-                        NavigationLink{
-                            LoginView()
-                                .navigationBarBackButtonHidden()
-                        } label: {
-                            Text("Already have an account?")
-                                .font(.headline)
-                                .fontWeight(.semibold)
-                                .foregroundStyle(.black)
-                        }
                     }
                     HStack { Spacer()}
                     Spacer()
@@ -88,6 +74,16 @@ struct GenderView: View {
                         .foregroundStyle(Color(ghoodPink))
                         .fontWeight(.bold)
                 })
+            }
+            ToolbarItem(placement: .topBarTrailing) {
+                NavigationLink {
+                    InterestsView()
+                        .navigationBarBackButtonHidden()
+                    } label: {
+                        Text("Skip")
+                            .foregroundStyle(Color(ghoodPink))
+                            .fontWeight(.bold)
+                }
             }
         }
     }

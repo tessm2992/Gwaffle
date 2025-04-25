@@ -18,7 +18,7 @@ struct AddEmailView: View {
                     Text("Enter your email")
                         .font(.title2)
                         .fontWeight(.semibold)
-                        .padding(.top, 200)
+                        .padding(.bottom, 20)
                     VStack(spacing: 24) {
                         TextField("Email address", text: $userEmail)
                             .textInputAutocapitalization(.never)

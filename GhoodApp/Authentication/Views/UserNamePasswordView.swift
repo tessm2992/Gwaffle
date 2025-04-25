@@ -15,34 +15,28 @@ struct UserNamePasswordView: View {
         NavigationStack {
             GeometryReader { proxy in
                 VStack {
-                    VStack(alignment: .center, spacing: 6) {
-                        Text("Create your username and password")
-                            .font(.title2)
-                            .fontWeight(.semibold)
-                        Text("Your username is what you will go by here. You will be able to modify this later.")
-                            .font(.footnote)
-                            .padding(.horizontal)
-                    }
-                    .padding(.top, 120)
-                    .padding(.horizontal)
+                    Text("Create your username and password")
+                        .font(.title2)
+                        .fontWeight(.semibold)
+                    Text("Your username is what you will go by here. You will be able to modify this later")
+                        .font(.footnote)
+                        .padding(.bottom, 20)
+                        .padding(.horizontal)
                     VStack(spacing: 24) {
-                            HStack(spacing: 0) {
-                                TextField("Enter a username", text: $userEmail)
-                                    .textInputAutocapitalization(.never)
-                                Text("*").foregroundColor(.red)
-                            }
+                        TextField("Enter a username", text: $userEmail)
+                            .textInputAutocapitalization(.never)
                             .padding(12)
                             .background(.white)
                             .frame(width: proxy.size.width - 30, height: 50)
                             .clipShape(RoundedRectangle(cornerRadius: 10))
-                        SecureField("Password", text: $userEmail)
+                        TextField("Enter a password", text: $userEmail)
                             .textInputAutocapitalization(.never)
                             .padding(12)
                             .background(.white)
                             .frame(width: proxy.size.width - 30, height: 50)
                             .clipShape(RoundedRectangle(cornerRadius: 10))
                         NavigationLink{
-                            AddNameView()
+                            GenderView()
                                 .navigationBarBackButtonHidden()
                             } label: {
                                 Text("Continue")
@@ -55,15 +49,6 @@ struct UserNamePasswordView: View {
                                 
                         }
                         Spacer()
-                        NavigationLink{
-                            LoginView()
-                                .navigationBarBackButtonHidden()
-                            } label: {
-                            Text("Already have an account?")
-                                .font(.headline)
-                                .fontWeight(.semibold)
-                                .foregroundStyle(.black)
-                        }
                     }
                     HStack { Spacer()}
                     Spacer()

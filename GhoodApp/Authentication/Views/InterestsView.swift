@@ -22,12 +22,11 @@ struct InterestsView: View {
                     Text("Pick topics that are relevant to you")
                         .font(.footnote)
                     VStack(spacing: 24) {
-                        Text("")
                     NavigationLink{
                         TabBarView()
                             .navigationBarBackButtonHidden()
                         } label: {
-                            Text("Done")
+                            Text("Create an account")
                                 .font(.headline)
                                 .fontWeight(.semibold)
                                 .foregroundStyle(.white)
@@ -37,15 +36,6 @@ struct InterestsView: View {
                             
                     }
                     Spacer()
-                    NavigationLink{
-                        LoginView()
-                            .navigationBarBackButtonHidden()
-                        } label: {
-                        Text("Already have an account?")
-                            .font(.headline)
-                            .fontWeight(.semibold)
-                            .foregroundStyle(.black)
-                    }
                     }
                     HStack { Spacer()}
                     Spacer()

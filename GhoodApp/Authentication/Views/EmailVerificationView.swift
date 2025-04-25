@@ -18,11 +18,9 @@ struct EmailVerificationView: View {
                     Text("Verify your email")
                         .font(.title2)
                         .fontWeight(.semibold)
-                        .padding(.top, 170)
                     Text("Enter the 6-digit code we sent to your email")
                         .font(.footnote)
-                        .padding(.top, 1)
-                        .padding(.bottom, 5)
+                        .padding(.bottom, 20)
                     VStack(spacing: 24) {
                         TextField("Verification code", text: $userEmail)
                             .textInputAutocapitalization(.never)
@@ -31,7 +29,7 @@ struct EmailVerificationView: View {
                             .frame(width: proxy.size.width - 30, height: 50)
                             .clipShape(RoundedRectangle(cornerRadius: 10))
                         NavigationLink{
-                            UserNamePasswordView()
+                            AddNameView()
                                 .navigationBarBackButtonHidden()
                             } label: {
                                 Text("Continue")
@@ -43,6 +41,7 @@ struct EmailVerificationView: View {
                                     .clipShape(RoundedRectangle(cornerRadius: 30))
                                 
                         }
+                        Spacer()
                         NavigationLink{
                             LoginView()
                                 .navigationBarBackButtonHidden()
