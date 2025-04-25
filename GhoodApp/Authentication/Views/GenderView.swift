@@ -9,6 +9,7 @@ import SwiftUI
 
 struct GenderView: View {
     @State private var userEmail = ""
+    @Environment(\.dismiss) private var dismiss
     
     var body: some View {
         NavigationStack {
@@ -25,8 +26,11 @@ struct GenderView: View {
                         .font(.title3)
                         .fontWeight(.semibold)
                         .padding(.bottom, 10)
-                    NavigationLink{
-                        InterestsView()
+                    VStack(spacing: 24) {
+                        Text("")
+                        NavigationLink{
+                            InterestsView()
+                                .navigationBarBackButtonHidden()
                         } label: {
                             Text("Female")
                                 .font(.headline)
@@ -35,9 +39,10 @@ struct GenderView: View {
                                 .frame(width: proxy.size.width - 30, height: 44)
                                 .background(ghoodPink)
                                 .clipShape(RoundedRectangle(cornerRadius: 30))
-                    }
-                    NavigationLink{
-                        InterestsView()
+                        }
+                        NavigationLink{
+                            InterestsView()
+                                .navigationBarBackButtonHidden()
                         } label: {
                             Text("Male")
                                 .font(.headline)
@@ -46,9 +51,10 @@ struct GenderView: View {
                                 .frame(width: proxy.size.width - 30, height: 44)
                                 .background(ghoodPink)
                                 .clipShape(RoundedRectangle(cornerRadius: 30))
-                    }
-                    NavigationLink{
-                        InterestsView()
+                        }
+                        NavigationLink{
+                            InterestsView()
+                                .navigationBarBackButtonHidden()
                         } label: {
                             Text("I prefer not to say")
                                 .font(.headline)
@@ -57,26 +63,35 @@ struct GenderView: View {
                                 .frame(width: proxy.size.width - 30, height: 44)
                                 .background(ghoodPink)
                                 .clipShape(RoundedRectangle(cornerRadius: 30))
-                    }
-                    Spacer()
-                    NavigationLink{
-                        LoginView()
-                            .navigationBarBackButtonHidden()
+                        }
+                        Spacer()
+                        NavigationLink{
+                            LoginView()
+                                .navigationBarBackButtonHidden()
                         } label: {
-                        Text("Already have an account?")
-                            .font(.headline)
-                            .fontWeight(.semibold)
-                            .foregroundStyle(.black)
+                            Text("Already have an account?")
+                                .font(.headline)
+                                .fontWeight(.semibold)
+                                .foregroundStyle(.black)
+                        }
                     }
+                    HStack { Spacer()}
+                    Spacer()
                 }
-                HStack { Spacer()}
-                Spacer()
+                .background(Color(ghoodLightPink))
             }
-            .background(Color(ghoodLightPink))
+        }
+        .toolbar{
+            ToolbarItem(placement: .topBarLeading) {
+                Button(action: {dismiss()}, label: {
+                    Image(systemName: "arrow.left")
+                        .foregroundStyle(Color(ghoodPink))
+                        .fontWeight(.bold)
+                })
+            }
         }
     }
 }
-
 #Preview {
     GenderView()
 }

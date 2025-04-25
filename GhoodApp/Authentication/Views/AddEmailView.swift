@@ -9,17 +9,18 @@ import SwiftUI
 
 struct AddEmailView: View {
     @State private var userEmail = ""
+    @Environment(\.dismiss) private var dismiss
     
     var body: some View {
         NavigationStack {
             GeometryReader { proxy in
-                VStack(spacing:70) {
-                    Text("Sign Up")
+                VStack {
+                    Text("Enter your email")
                         .font(.title2)
                         .fontWeight(.semibold)
-                        .padding(.top)
+                        .padding(.top, 200)
                     VStack(spacing: 24) {
-                        TextField("Email", text: $userEmail)
+                        TextField("Email address", text: $userEmail)
                             .textInputAutocapitalization(.never)
                             .padding(12)
                             .background(.white)
@@ -27,6 +28,7 @@ struct AddEmailView: View {
                             .clipShape(RoundedRectangle(cornerRadius: 10))
                         NavigationLink{
                             EmailVerificationView()
+                                .navigationBarBackButtonHidden()
                             } label: {
                                 Text("Continue")
                                     .font(.headline)
@@ -51,6 +53,15 @@ struct AddEmailView: View {
                     Spacer()
                 }
                 .background(Color(ghoodLightPink))
+            }
+        }
+        .toolbar{
+            ToolbarItem(placement: .topBarLeading) {
+                Button(action: {dismiss()}, label: {
+                    Image(systemName: "arrow.left")
+                        .foregroundStyle(Color(ghoodPink))
+                        .fontWeight(.bold)
+                })
             }
         }
     }

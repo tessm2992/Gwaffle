@@ -9,17 +9,20 @@ import SwiftUI
 
 struct EmailVerificationView: View {
     @State private var userEmail = ""
+    @Environment(\.dismiss) private var dismiss
     
     var body: some View {
         NavigationStack {
             GeometryReader { proxy in
-                VStack(spacing:70) {
+                VStack {
                     Text("Verify your email")
                         .font(.title2)
                         .fontWeight(.semibold)
-                        .padding(.top)
+                        .padding(.top, 170)
                     Text("Enter the 6-digit code we sent to your email")
                         .font(.footnote)
+                        .padding(.top, 1)
+                        .padding(.bottom, 5)
                     VStack(spacing: 24) {
                         TextField("Verification code", text: $userEmail)
                             .textInputAutocapitalization(.never)
@@ -29,6 +32,7 @@ struct EmailVerificationView: View {
                             .clipShape(RoundedRectangle(cornerRadius: 10))
                         NavigationLink{
                             UserNamePasswordView()
+                                .navigationBarBackButtonHidden()
                             } label: {
                                 Text("Continue")
                                     .font(.headline)
@@ -53,6 +57,15 @@ struct EmailVerificationView: View {
                     Spacer()
                 }
                 .background(Color(ghoodLightPink))
+            }
+        }
+        .toolbar{
+            ToolbarItem(placement: .topBarLeading) {
+                Button(action: {dismiss()}, label: {
+                    Image(systemName: "arrow.left")
+                        .foregroundStyle(Color(ghoodPink))
+                        .fontWeight(.bold)
+                })
             }
         }
     }

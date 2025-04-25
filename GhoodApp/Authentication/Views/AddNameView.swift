@@ -9,6 +9,7 @@ import SwiftUI
 
 struct AddNameView: View {
     @State private var userEmail = ""
+    @Environment(\.dismiss) private var dismiss
     
     var body: some View {
         NavigationStack {
@@ -18,7 +19,7 @@ struct AddNameView: View {
                         Text("What's your name?")
                             .font(.title2)
                             .fontWeight(.semibold)
-                            .padding(.top)
+                            .padding(.top, 200)
                         Text("Your name will not be displayed on your profile.")
                             .font(.footnote)
                         HStack {

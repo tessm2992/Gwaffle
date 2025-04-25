@@ -47,6 +47,7 @@ struct LoginView: View {
                         }
                         NavigationLink{
                             AddEmailView()
+                                .navigationBarBackButtonHidden()
                             } label: {
                             Text("Create new account")
                                 .font(.headline)

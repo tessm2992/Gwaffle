@@ -9,25 +9,33 @@ import SwiftUI
 
 struct UserNamePasswordView: View {
     @State private var userEmail = ""
+    @Environment(\.dismiss) private var dismiss
     
     var body: some View {
         NavigationStack {
             GeometryReader { proxy in
-                VStack(spacing:70) {
-                    Text("Create your username and password")
-                        .font(.title2)
-                        .fontWeight(.semibold)
-                        .padding(.top)
-                    Text("Your username is what you will go by here.")
-                        .font(.footnote)
+                VStack {
+                    VStack(alignment: .center, spacing: 6) {
+                        Text("Create your username and password")
+                            .font(.title2)
+                            .fontWeight(.semibold)
+                        Text("Your username is what you will go by here. You will be able to modify this later.")
+                            .font(.footnote)
+                            .padding(.horizontal)
+                    }
+                    .padding(.top, 120)
+                    .padding(.horizontal)
                     VStack(spacing: 24) {
-                        TextField("Username", text: $userEmail)
-                            .textInputAutocapitalization(.never)
+                            HStack(spacing: 0) {
+                                TextField("Enter a username", text: $userEmail)
+                                    .textInputAutocapitalization(.never)
+                                Text("*").foregroundColor(.red)
+                            }
                             .padding(12)
                             .background(.white)
                             .frame(width: proxy.size.width - 30, height: 50)
                             .clipShape(RoundedRectangle(cornerRadius: 10))
-                        TextField("Password", text: $userEmail)
+                        SecureField("Password", text: $userEmail)
                             .textInputAutocapitalization(.never)
                             .padding(12)
                             .background(.white)
@@ -35,6 +43,7 @@ struct UserNamePasswordView: View {
                             .clipShape(RoundedRectangle(cornerRadius: 10))
                         NavigationLink{
                             AddNameView()
+                                .navigationBarBackButtonHidden()
                             } label: {
                                 Text("Continue")
                                     .font(.headline)
@@ -45,6 +54,7 @@ struct UserNamePasswordView: View {
                                     .clipShape(RoundedRectangle(cornerRadius: 30))
                                 
                         }
+                        Spacer()
                         NavigationLink{
                             LoginView()
                                 .navigationBarBackButtonHidden()
@@ -59,6 +69,15 @@ struct UserNamePasswordView: View {
                     Spacer()
                 }
                 .background(Color(ghoodLightPink))
+            }
+        }
+        .toolbar{
+            ToolbarItem(placement: .topBarLeading) {
+                Button(action: {dismiss()}, label: {
+                    Image(systemName: "arrow.left")
+                        .foregroundStyle(Color(ghoodPink))
+                        .fontWeight(.bold)
+                })
             }
         }
     }
