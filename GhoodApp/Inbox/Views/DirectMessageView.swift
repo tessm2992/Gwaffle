@@ -11,14 +11,44 @@ struct DirectMessageView: View {
     private var ghoodPink: Color = Color(red: 255/255, green: 41/255, blue: 91/255)
  
     @Environment(\.dismiss) private var dismiss
+    @State private var mindText: String = ""
     
     var body: some View {
         NavigationStack {
-            ScrollView {
-                Text("Direct messages!!!")
+            VStack(spacing: 0) {
+               
+                ScrollView {
+                    VStack {
+                        Text("[chat history]")
+                            .foregroundStyle(.black)
+                        Spacer(minLength: 20)
+                    }
+                    .padding(0)
+                }
+                .scrollIndicators(.hidden)
+                
+                HStack {
+                    TextField("Messsage",text: $mindText)
+                        .padding(10)
+                        .background(Color(.systemGray6))
+                        .cornerRadius(20)
+                        .foregroundStyle(.black)
+                    Button(action: {}, label: {
+                        Image(systemName: "paperplane.fill")
+                            .font(.subheadline)
+                            .fontWeight(.semibold)
+                            .frame(width: 60,height: 35)
+                            .foregroundStyle(mindText.count == 0 ? Color(.darkGray) : .white)
+                            .background(mindText.count == 0 ? Color(.systemGray5) : ghoodPink)
+                            .clipShape(RoundedRectangle(cornerRadius: 15))
+                    })
+                    .disabled(mindText.count == 0)
+                }
+                .padding(.horizontal)
+                .padding(.vertical, 10)
+                .background(Color(.systemBackground))
+                .shadow(color: Color(.systemGray5), radius: 5, y: -2)
             }
-            .scrollIndicators(.hidden)
-            .foregroundStyle(Color(.systemGray5))
             .toolbar{
                 ToolbarItem(placement: .topBarLeading) {
                     Button(action: {dismiss()}, label: {
