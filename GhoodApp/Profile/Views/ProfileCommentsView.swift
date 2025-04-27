@@ -13,7 +13,7 @@ struct ProfileCommentsView: View {
         ScrollView {
             VStack {
                 ForEach(0..<5) { _ in
-                    CommunityPostView()
+                    Text("Comments will go here")
                     Divider()
                 }
             }

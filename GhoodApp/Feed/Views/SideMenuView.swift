@@ -21,7 +21,7 @@ struct SideMenuView: View {
                             .navigationBarBackButtonHidden()
                     } label: {
                         Text("Explore Threads")
-                            .font(.system(size: 18, weight: .semibold))
+                            .font(.system(size: 18, weight: .bold))
                             .foregroundStyle(Color(ghoodPink))
                             .padding(.bottom, 10)
                             .padding(.top, 10)

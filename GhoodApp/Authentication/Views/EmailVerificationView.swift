@@ -63,7 +63,7 @@ struct EmailVerificationView: View {
                 Button(action: {dismiss()}, label: {
                     Image(systemName: "arrow.left")
                         .foregroundStyle(Color(ghoodPink))
-                        .fontWeight(.bold)
+                        .fontWeight(.semibold)
                 })
             }
         }

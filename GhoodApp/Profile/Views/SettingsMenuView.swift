@@ -8,29 +8,44 @@
 import SwiftUI
 
 struct SettingsMenuView: View {
+    @Environment(\.dismiss) private var dismiss
+    
     var body: some View {
-        VStack(alignment: .leading, spacing: 6) {
-            HStack {
-                Image(systemName: "gearshape")
-                    .frame(width: 24)
-                Text("Settings")
-                    .padding(.vertical, 10)
-            }
-            HStack {
-                Image(systemName: "questionmark.circle")
-                    .frame(width: 24)
-                Text("Help Center")
-                    .padding(.vertical, 10)
-            }
-            HStack {
-                Image(systemName: "rectangle.portrait.and.arrow.right")
-                    .frame(width: 24)
-                Text("Sign Out")
-                    .padding(.vertical, 10)
+        NavigationStack {
+            ScrollView {
+                VStack(alignment: .leading) {
+                    VStack(alignment: .leading, spacing: 20) {
+                        HStack {
+                            Image(systemName: "gearshape")
+                                .frame(width: 24)
+                            Text("Settings")
+                        }
+                        HStack {
+                            Image(systemName: "questionmark.circle")
+                                .frame(width: 24)
+                            Text("Help Center")
+                        }
+                        HStack {
+                            Image(systemName: "rectangle.portrait.and.arrow.right")
+                                .frame(width: 24)
+                            Text("Sign Out")
+                        }
+                    }
+                    .foregroundStyle(Color(ghoodPink))
+                }
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .padding(.horizontal)
             }
         }
-        .foregroundStyle(Color(ghoodPink))
-        .padding(.bottom,100)
+        .scrollIndicators(.hidden)
+        .toolbar{
+            ToolbarItem(placement: .topBarLeading) {
+                Button(action: {dismiss()}, label: {
+                    Image(systemName: "arrow.left")
+                        .foregroundStyle(Color(ghoodPink))
+                })
+            }
+        }
     }
 }
 

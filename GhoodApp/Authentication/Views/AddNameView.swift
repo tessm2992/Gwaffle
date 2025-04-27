@@ -64,7 +64,7 @@ struct AddNameView: View {
                     } label: {
                         Text("Skip")
                             .foregroundStyle(Color(ghoodPink))
-                            .fontWeight(.bold)
+                            .fontWeight(.semibold)
                 }
             }
         }

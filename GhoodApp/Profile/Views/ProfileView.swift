@@ -31,7 +31,6 @@ struct ProfileView: View {
                                     .scaledToFill()
                                     .frame(width: 110,height: 110)
                                     .clipShape(Circle())
-                                    .padding(12)
                                 Text("@tessm345")
                                     .font(.system(size: 25,weight: .bold))
                                     .foregroundStyle(Color(.black))
@@ -62,7 +61,6 @@ struct ProfileView: View {
                         SwipeableTabsView()
                     }
                     .scrollIndicators(.hidden)
-                    .padding(.top, 0)
                     .toolbar{
                         ToolbarItem(placement: .principal) {
                             HStack {
@@ -72,11 +70,14 @@ struct ProfileView: View {
                             }
                         }
                         ToolbarItem(placement: .topBarTrailing) {
-                            HStack {
-                                Image(systemName: "gearshape.fill")
+                            NavigationLink{
+                                SettingsMenuView()
+                                    .navigationBarBackButtonHidden()
+                            } label: {
+                                Image(systemName: "line.3.horizontal")
                                     .resizable()
                                     .scaledToFill()
-                                    .frame(width: 24, height: 24)
+                                    .frame(width: 15, height: 15)
                                     .foregroundStyle(ghoodPink)
                             }
                         }
@@ -85,7 +86,6 @@ struct ProfileView: View {
                                 Button(action: {dismiss()}, label: {
                                     Image(systemName: "arrow.left")
                                         .foregroundStyle(Color(ghoodPink))
-                                        .fontWeight(.bold)
                                 })
                             }
                         }

@@ -30,7 +30,6 @@ struct ThreadListView: View {
                     Button(action: {dismiss()}, label: {
                         Image(systemName: "arrow.left")
                             .foregroundStyle(Color(ghoodPink))
-                            .fontWeight(.bold)
                     })
                 }
                 ToolbarItem(placement: .principal) {

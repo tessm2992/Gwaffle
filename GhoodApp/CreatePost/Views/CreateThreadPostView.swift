@@ -6,11 +6,15 @@
 //
 
 import SwiftUI
+import PhotosUI
 
 struct CreateThreadPostView: View {
     private var ghoodPink: Color = Color(red: 255/255, green: 41/255, blue: 91/255)
     @Environment(\.dismiss) private var dismiss
     @State private var mindText: String = ""
+    @State private var selectedPhotoItem: PhotosPickerItem?
+    @State private var selectedPhoto: UIImage?
+    @State private var showPhotoPicker = false
     
     var body: some View {
         NavigationStack {
@@ -28,23 +32,40 @@ struct CreateThreadPostView: View {
                 .padding()
                 TextField("Submit a post for admin approval...",text: $mindText)
                     .padding(.horizontal)
+                
+                // Display selected photo if available
+                if let selectedPhoto = selectedPhoto {
+                    Image(uiImage: selectedPhoto)
+                        .resizable()
+                        .scaledToFit()
+                        .frame(maxHeight: 200)
+                        .padding()
+                }
+                
                 Spacer()
                 Divider()
                 HStack {
                     Spacer()
-                    Button(action:{}, label: {
+                    
+                    // Photo/Video picker button
+                    PhotosPicker(selection: $selectedPhotoItem,
+                                matching: .any(of: [.images, .videos])) {
                         Image(systemName: "photo.fill.on.rectangle.fill")
                             .foregroundStyle(.green)
-                    })
-                    Spacer()
-                    Button(action:{}, label: {
-                        Image(systemName: "camera.fill")
-                            .foregroundStyle(.blue)
-                    })
+                    }
+                    .onChange(of: selectedPhotoItem) { oldValue, newValue in
+                        Task {
+                            if let data = try? await newValue?.loadTransferable(type: Data.self),
+                               let uiImage = UIImage(data: data) {
+                                selectedPhoto = uiImage
+                            }
+                        }
+                    }
+                    
                     Spacer()
                     Button(action:{}, label: {
                         Image(systemName: "face.smiling.fill")
-                            .foregroundStyle(.teal)
+                            .foregroundStyle(.blue)
                     })
                     Spacer()
                     Button(action:{}, label: {
@@ -69,6 +90,7 @@ struct CreateThreadPostView: View {
                     Text("Create Post")
                         .font(.headline)
                         .fontWeight(.semibold)
+                        .foregroundStyle(Color(.black))
                 }
                 ToolbarItem(placement: .topBarTrailing) {
                     Button(action: {}, label: {

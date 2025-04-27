@@ -17,7 +17,7 @@ struct CapsuleSearchBar: View {
             Image(systemName: "magnifyingglass")
                 .foregroundColor(ghoodPink.opacity(0.7))
 
-            TextField("Search Communities", text: $searchText)
+            TextField("Search communities", text: $searchText)
                 .foregroundStyle(Color(.black))
                 .font(.system(size: 14))
         }

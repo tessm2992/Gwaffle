@@ -18,7 +18,7 @@ struct CommunityTile: View {
                     .navigationBarBackButtonHidden()
             } label: {
                 HStack {
-                    Image("threadpic")
+                    Image("TinxCoverPhoto")
                         .resizable()
                         .scaledToFill()
                         .frame(width: 50,height: 50)

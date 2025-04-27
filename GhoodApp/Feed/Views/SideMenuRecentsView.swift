@@ -33,7 +33,7 @@ struct SideMenuRecentsView: View {
                     .padding(.top, 10)
                     
                     VStack(spacing: 15) {
-                        ForEach(0..<10) { _ in
+                        ForEach(0..<20) { _ in
                             HStack(spacing: 20) {
                                 HStack {
                                     Image("threadpic")
@@ -43,6 +43,7 @@ struct SideMenuRecentsView: View {
                                         .clipShape(Circle())
                                     Text("g/summerhousebravo")
                                         .font(.system(size: 16))
+                                        .foregroundStyle(Color(ghoodPink))
                                 }
                                 Button(action: {
                                     // Add delete action here
@@ -69,7 +70,6 @@ struct SideMenuRecentsView: View {
                 Button(action: {dismiss()}, label: {
                     Image(systemName: "arrow.left")
                         .foregroundStyle(Color(ghoodPink))
-                        .fontWeight(.bold)
                 })
             }
         }

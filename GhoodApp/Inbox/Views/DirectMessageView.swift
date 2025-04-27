@@ -16,9 +16,9 @@ struct DirectMessageView: View {
     var body: some View {
         NavigationStack {
             VStack(spacing: 0) {
-               
                 ScrollView {
                     VStack {
+                        Spacer(minLength: 100)
                         Text("[chat history]")
                             .foregroundStyle(.black)
                         Spacer(minLength: 20)
@@ -26,7 +26,7 @@ struct DirectMessageView: View {
                     .padding(0)
                 }
                 .scrollIndicators(.hidden)
-                
+    
                 HStack {
                     TextField("Messsage",text: $mindText)
                         .padding(10)
@@ -43,18 +43,17 @@ struct DirectMessageView: View {
                             .clipShape(RoundedRectangle(cornerRadius: 15))
                     })
                     .disabled(mindText.count == 0)
+                    .shadow(color: Color(.systemGray5), radius: 5, y: -2)
                 }
                 .padding(.horizontal)
                 .padding(.vertical, 10)
                 .background(Color(.systemBackground))
-                .shadow(color: Color(.systemGray5), radius: 5, y: -2)
             }
             .toolbar{
                 ToolbarItem(placement: .topBarLeading) {
                     Button(action: {dismiss()}, label: {
                         Image(systemName: "arrow.left")
                             .foregroundStyle(Color(ghoodPink))
-                            .fontWeight(.bold)
                     })
                 }
                 ToolbarItem(placement: .topBarLeading) {

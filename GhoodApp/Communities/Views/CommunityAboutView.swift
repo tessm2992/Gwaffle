@@ -25,16 +25,17 @@ struct CommunityAboutView: View {
                             Text("This is the community description. Any background of who the creator is or what the purpose of the group is will be featured here.")
                                 .font(.system(size: 15))
                                 .foregroundStyle(Color(.black))
-                                .padding(.bottom,12)
-                            Button(action: {}, label: {
+                                .padding(.bottom,5)
+                            NavigationLink{
+                                CommunityDiscoverView()
+                                    .navigationBarBackButtonHidden()
+                                } label: {
                                 Text("Creator Community")
                                     .font(.system(size: 15))
                                     .fontWeight(.semibold)
-                                    .foregroundStyle(.white)
-                                    .frame(width: 170, height: 30)
-                                    .background(.blue)
-                                    .clipShape(RoundedRectangle(cornerRadius: 30))
-                            })
+                                    .foregroundStyle(.blue)
+                                    .frame(height: 30)
+                            }
                             }
                             .padding(.bottom, 5)
                             HStack(spacing: 10) {
@@ -125,7 +126,6 @@ struct CommunityAboutView: View {
                             Button(action: {dismiss()}, label: {
                                 Image(systemName: "arrow.left")
                                     .foregroundStyle(Color(ghoodPink))
-                                    .fontWeight(.bold)
                             })
                         }
                         ToolbarItem(placement: .principal) {

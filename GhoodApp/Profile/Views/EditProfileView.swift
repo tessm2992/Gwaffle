@@ -103,13 +103,12 @@ struct EditProfileView: View {
                 Button(action: {dismiss()}, label: {
                     Image(systemName: "arrow.left")
                         .foregroundStyle(Color(ghoodPink))
-                        .fontWeight(.bold)
                 })
             }
             ToolbarItem(placement: .principal) {
                 Text("Edit profile")
+                    .font(.system(size: 18, weight: .semibold))
                     .foregroundStyle(Color(.black))
-                    .fontWeight(.bold)
             }
         }
     }

@@ -11,20 +11,15 @@ struct NewDirectMessageView: View {
     private var ghoodPink: Color = Color(red: 255/255, green: 41/255, blue: 91/255)
  
     @Environment(\.dismiss) private var dismiss
-    @State private var mindText: String = ""
+    @State private var searchText: String = ""
     
     var body: some View {
         NavigationStack {
             ScrollView {
                 VStack(alignment: .leading) {
-                    Text("Search for people by username to chat with them")
-                        .font(.system(size: 14))
-                        .foregroundStyle(Color(.black))
-                        .padding(.bottom, 10)
-                        .padding(.horizontal)
                     CapsuleSearchBarThree()
                         .padding(.bottom, 10)
-                    Text("Type at least 3 characters to search for a username.")
+                    Text("Search for people by username to chat with them")
                         .font(.system(size: 14))
                         .foregroundStyle(Color(.black))
                         .padding(.horizontal)
@@ -52,11 +47,11 @@ struct NewDirectMessageView: View {
                             .font(.subheadline)
                             .fontWeight(.semibold)
                             .frame(width: 80,height: 35)
-                            .foregroundStyle(mindText.count == 0 ? Color(.darkGray) : .white)
-                            .background(mindText.count == 0 ? Color(.systemGray5) : ghoodPink)
+                            .foregroundStyle(searchText.count == 0 ? Color(.darkGray) : .white)
+                            .background(searchText.count == 0 ? Color(.systemGray5) : ghoodPink)
                             .clipShape(RoundedRectangle(cornerRadius: 8))
                     })
-                    .disabled(mindText.count == 0)
+                    .disabled(searchText.count == 0)
                 }
             }
         }

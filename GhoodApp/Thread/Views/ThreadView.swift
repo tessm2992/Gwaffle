@@ -41,14 +41,12 @@ struct ThreadView: View {
                     Button(action: {dismiss()}, label: {
                         Image(systemName: "arrow.left")
                             .foregroundStyle(Color(ghoodPink))
-                            .fontWeight(.bold)
                     })
                 }
                 ToolbarItem(placement: .topBarTrailing) {
                     Button(action: {}, label: {
                         Image(systemName: "magnifyingglass")
                             .foregroundStyle(Color(ghoodPink))
-                            .fontWeight(.bold)
                     })
                 }
                 
