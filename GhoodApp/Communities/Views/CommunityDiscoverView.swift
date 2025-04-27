@@ -18,8 +18,30 @@ struct CommunityDiscoverView: View {
                 ScrollView {
                     CapsuleSearchBar()
                         .padding(.bottom,10)
-                    Text("Tiles for different communities related to this category!")
-                        .foregroundStyle(Color(ghoodPink))
+                    VStack {
+                        LazyVGrid(columns: [
+                            GridItem(.adaptive(minimum:  180), spacing: 10)
+                        ], spacing: 15) {
+                            CommunityDiscoverTileView(
+                                onJoin: { print("Joined") }
+                            )
+                            CommunityDiscoverTileView(
+                                onJoin: { print("Joined") }
+                            )
+                            CommunityDiscoverTileView(
+                                onJoin: { print("Joined") }
+                            )
+                            CommunityDiscoverTileView(
+                                onJoin: { print("Joined") }
+                            )
+                            CommunityDiscoverTileView(
+                                onJoin: { print("Joined") }
+                            )
+                            CommunityDiscoverTileView(
+                                onJoin: { print("Joined") }
+                            )
+                        }
+                    }
                 }
                 .scrollIndicators(.hidden)
                 .foregroundStyle(Color(.systemGray5))
@@ -33,7 +55,7 @@ struct CommunityDiscoverView: View {
                     }
                     ToolbarItem(placement: .principal) {
                         Button(action: {dismiss()}, label: {
-                            Text("Local & Neighborhood")
+                            Text("Creator Communities")
                                 .foregroundStyle(Color(.black))
                                 .fontWeight(.bold)
                         })

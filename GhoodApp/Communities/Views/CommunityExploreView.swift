@@ -52,6 +52,9 @@ struct CommunityExploreView: View {
                                 .frame(width: proxy.size.width * 0.45,height: 100)
                                 .background(shortcutsArray[index].2)
                                 .clipShape(RoundedRectangle(cornerRadius: 10))
+                                .background(Color.white)
+                                .cornerRadius(12)
+                                .shadow(color: Color.black.opacity(0.2), radius: 7, x: 0, y: 2)
                             }
                         }
                     }

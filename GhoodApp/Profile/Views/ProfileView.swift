@@ -20,59 +20,74 @@ struct ProfileView: View {
     
     var body: some View {
         NavigationStack {
-            ScrollView {
-                VStack {
-                    HStack {
-                        Spacer()
-                        VStack(spacing: 5) {
-                            Image("avatar")
-                                .resizable()
-                                .scaledToFill()
-                                .frame(width: 110,height: 110)
-                                .clipShape(Circle())
-                                .padding(12)
-                            Text("tessm345")
-                                .font(.system(size: 27,weight: .bold))
-                                .foregroundStyle(Color(.black))
-                            HStack {
-                                Text("28 y/o")
-                                Text("Seattle, WA")
+            GeometryReader { proxy in
+                ScrollView {
+                    VStack {
+                        HStack {
+                            Spacer()
+                            VStack(spacing: 5) {
+                                Image("avatar")
+                                    .resizable()
+                                    .scaledToFill()
+                                    .frame(width: 110,height: 110)
+                                    .clipShape(Circle())
+                                    .padding(12)
+                                Text("@tessm345")
+                                    .font(.system(size: 25,weight: .bold))
+                                    .foregroundStyle(Color(.black))
+                                HStack {
+                                    Text("28 y/o")
+                                    Text("Seattle, WA")
+                                }
+                                .font(.system(size: 17,weight: .bold))
+                                .foregroundStyle(Color(.systemGray2))
+                                NavigationLink{
+                                    EditProfileView()
+                                        .navigationBarBackButtonHidden()
+                                } label: {
+                                    Text("Edit profile")
+                                        .font(.headline)
+                                        .foregroundStyle(.black)
+                                        .frame(width: 120, height: 33)
+                                        .background(Color(.systemGray6))
+                                        .clipShape(RoundedRectangle(cornerRadius: 8))
+                                    
+                                }
+                                .padding(.top, 10)
                             }
-                            .font(.system(size: 17,weight: .bold))
-                            .foregroundStyle(Color(.systemGray2))
+                            Spacer()
                         }
-                        Spacer()
+                        .padding(.bottom, 10)
+                        
+                        SwipeableTabsView()
                     }
-                    .padding(.bottom, 10)
-                    
-                    SwipeableTabsView()
-                }
-                .scrollIndicators(.hidden)
-                .padding(.top, 0)
-                .toolbar{
-                    ToolbarItem(placement: .principal) {
-                        HStack {
-                            Text("Profile")
-                                .foregroundStyle(Color(ghoodPink))
-                                .font(.system(size: 20,weight: .semibold))
-                        }
-                    }
-                    ToolbarItem(placement: .topBarTrailing) {
-                        HStack {
-                            Image(systemName: "gearshape.fill")
-                                .resizable()
-                                .scaledToFill()
-                                .frame(width: 24, height: 24)
-                                .foregroundStyle(ghoodPink)
-                        }
-                    }
-                    if showBackButton {
-                        ToolbarItem(placement: .topBarLeading) {
-                            Button(action: {dismiss()}, label: {
-                                Image(systemName: "arrow.left")
+                    .scrollIndicators(.hidden)
+                    .padding(.top, 0)
+                    .toolbar{
+                        ToolbarItem(placement: .principal) {
+                            HStack {
+                                Text("Profile")
                                     .foregroundStyle(Color(ghoodPink))
-                                    .fontWeight(.bold)
-                            })
+                                    .font(.system(size: 20,weight: .semibold))
+                            }
+                        }
+                        ToolbarItem(placement: .topBarTrailing) {
+                            HStack {
+                                Image(systemName: "gearshape.fill")
+                                    .resizable()
+                                    .scaledToFill()
+                                    .frame(width: 24, height: 24)
+                                    .foregroundStyle(ghoodPink)
+                            }
+                        }
+                        if showBackButton {
+                            ToolbarItem(placement: .topBarLeading) {
+                                Button(action: {dismiss()}, label: {
+                                    Image(systemName: "arrow.left")
+                                        .foregroundStyle(Color(ghoodPink))
+                                        .fontWeight(.bold)
+                                })
+                            }
                         }
                     }
                 }

@@ -19,8 +19,8 @@ struct FeedView: View {
     
     
     var body: some View {
-        ZStack {
-            NavigationStack {
+        NavigationStack {
+            ZStack {
                 VStack {
                     GeometryReader { proxy in
                         ZStack {
@@ -90,27 +90,27 @@ struct FeedView: View {
                         }
                     }
                 }
-            }
-            if showMenu {
-                Color.black.opacity(0.5)
-                    .edgesIgnoringSafeArea(.all)
-                    .onTapGesture {
-                        withAnimation {
-                            showMenu = false
-                        }
-                    }
-            }
-            
-            // Side menu with proper positioning
-            ZStack(alignment: .leading) {
                 if showMenu {
-                    SideMenuView()
-                        .frame(width: 270)
-                        .transition(.move(edge: .leading))
+                    Color.black.opacity(0.5)
+                        .edgesIgnoringSafeArea(.all)
+                        .onTapGesture {
+                            withAnimation {
+                                showMenu = false
+                            }
+                        }
                 }
+                
+                // Side menu with proper positioning
+                ZStack(alignment: .leading) {
+                    if showMenu {
+                        SideMenuView()
+                            .frame(width: 270)
+                            .transition(.move(edge: .leading))
+                    }
+                }
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .animation(.easeInOut, value: showMenu)
             }
-            .frame(maxWidth: .infinity, alignment: .leading)
-            .animation(.easeInOut, value: showMenu)
         }
     }
 }
