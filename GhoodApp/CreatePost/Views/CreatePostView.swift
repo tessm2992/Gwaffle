@@ -6,11 +6,15 @@
 //
 
 import SwiftUI
+import PhotosUI
 
 struct CreatePostView: View {
     private var ghoodPink: Color = Color(red: 255/255, green: 41/255, blue: 91/255)
     @Environment(\.dismiss) private var dismiss
     @State private var mindText: String = ""
+    @State private var selectedPhotoItem: PhotosPickerItem?
+    @State private var selectedPhoto: UIImage?
+    @State private var showPhotoPicker = false
     
     var body: some View {
         NavigationStack {
@@ -26,29 +30,47 @@ struct CreatePostView: View {
                     
                 }
                 .padding()
-                TextField("Submit a post for admin approval...",text: $mindText)
+                TextField("Submit something for admin approval...",text: $mindText)
                     .padding(.horizontal)
+                
+                // Display selected photo if available
+                if let selectedPhoto = selectedPhoto {
+                    Image(uiImage: selectedPhoto)
+                        .resizable()
+                        .scaledToFit()
+                        .frame(maxHeight: 200)
+                        .padding()
+                }
+                
                 Spacer()
                 Divider()
                 HStack {
                     Spacer()
-                    Button(action:{}, label: {
+                    
+                    // Photo/Video picker button
+                    PhotosPicker(selection: $selectedPhotoItem,
+                                matching: .any(of: [.images, .videos])) {
                         Image(systemName: "photo.fill.on.rectangle.fill")
                             .foregroundStyle(.green)
-                    })
+                    }
+                    .onChange(of: selectedPhotoItem) { oldValue, newValue in
+                        Task {
+                            if let data = try? await newValue?.loadTransferable(type: Data.self),
+                               let uiImage = UIImage(data: data) {
+                                selectedPhoto = uiImage
+                            }
+                        }
+                    }
+                    
                     Spacer()
                     Button(action:{}, label: {
-                        Image(systemName: "camera.fill")
+                        Image(systemName: "link")
                             .foregroundStyle(.blue)
+                            .fontWeight(.bold)
                     })
                     Spacer()
                     Button(action:{}, label: {
-                        Image(systemName: "face.smiling.fill")
-                            .foregroundStyle(.teal)
-                    })
-                    Spacer()
-                    Button(action:{}, label: {
-                        Image(systemName: "photo.fill.on.rectangle.fill")
+                        Image(systemName: "chart.bar.fill")
                             .foregroundStyle(.orange)
                     })
                     Spacer()
@@ -69,6 +91,7 @@ struct CreatePostView: View {
                     Text("Create Post")
                         .font(.headline)
                         .fontWeight(.semibold)
+                        .foregroundStyle(Color(.black))
                 }
                 ToolbarItem(placement: .topBarTrailing) {
                     Button(action: {}, label: {
@@ -83,6 +106,7 @@ struct CreatePostView: View {
                     .disabled(mindText.count == 0)
                 }
             }
+            .toolbar(.hidden, for: .tabBar)
         }
     }
 }

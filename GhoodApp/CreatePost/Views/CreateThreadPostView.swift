@@ -30,7 +30,7 @@ struct CreateThreadPostView: View {
                     
                 }
                 .padding()
-                TextField("Submit a post for admin approval...",text: $mindText)
+                TextField("Write something...",text: $mindText)
                     .padding(.horizontal)
                 
                 // Display selected photo if available
@@ -64,12 +64,13 @@ struct CreateThreadPostView: View {
                     
                     Spacer()
                     Button(action:{}, label: {
-                        Image(systemName: "face.smiling.fill")
+                        Image(systemName: "link")
                             .foregroundStyle(.blue)
+                            .fontWeight(.bold)
                     })
                     Spacer()
                     Button(action:{}, label: {
-                        Image(systemName: "photo.fill.on.rectangle.fill")
+                        Image(systemName: "chart.bar.fill")
                             .foregroundStyle(.orange)
                     })
                     Spacer()
