@@ -56,7 +56,7 @@ struct ThreadHeaderView: View {
                         .padding(.top,5)
                 }
                 NavigationLink {
-                    ThreadCategoryView()
+                    ThreadListView()
                         .navigationBarBackButtonHidden()
                 } label: {
                     Text(viewModel.threadposts[index].page?.pageCategory ?? "")

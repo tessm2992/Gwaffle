@@ -33,6 +33,7 @@ struct CreateThreadPostTileView: View {
                 .frame(width: 20,height: 20)
                 .foregroundStyle(.green)
         }
+        .padding(.vertical, 10)
         .padding(.horizontal)
         .fullScreenCover(isPresented: $showCreatePost, content: {
             CreateThreadPostView()

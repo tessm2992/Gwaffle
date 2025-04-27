@@ -1,5 +1,5 @@
 //
-//  ExploreThreadsView.swift
+//  ThreadListView.swift
 //  GhoodApp
 //
 //  Created by Tess Munsie on 4/27/25.
@@ -7,15 +7,10 @@
 
 import SwiftUI
 
-struct ExploreThreadsView: View {
+struct ThreadListView: View {
     private var ghoodPink: Color = Color(red: 255/255, green: 41/255, blue: 91/255)
 
     @Environment(\.dismiss) private var dismiss
-    
-    let rows = [
-           GridItem(.flexible()),
-           GridItem(.flexible())
-       ]
     
     var body: some View {
         NavigationStack {
@@ -24,7 +19,7 @@ struct ExploreThreadsView: View {
                     CapsuleSearchBarFour()
                         .padding(.bottom,10)
                     ForEach(0 ..< 8) { index in
-                        ExploreThreadCategoriesView()
+                        ThreadTileView(onFollow: { print("Followed!")})
                             .padding(.bottom,10)
                     }
                 }
@@ -40,9 +35,9 @@ struct ExploreThreadsView: View {
                 }
                 ToolbarItem(placement: .principal) {
                     Button(action: {dismiss()}, label: {
-                        Text("Explore Threads")
+                        Text("Pop Culture")
                             .foregroundStyle(Color(.black))
-                            .fontWeight(.bold)
+                            .font(.system(size: 17,weight: .semibold))
                     })
                 }
             }
@@ -51,5 +46,5 @@ struct ExploreThreadsView: View {
 }
 
 #Preview {
-    ExploreThreadsView()
+    ThreadListView()
 }

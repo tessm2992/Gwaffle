@@ -15,6 +15,7 @@ struct SideMenuView: View {
         GeometryReader { proxy in
             ScrollView {
                 VStack(alignment: .leading) {
+                    DividerThinView(width: proxy.size.width)
                     NavigationLink {
                         ExploreThreadsView()
                             .navigationBarBackButtonHidden()
@@ -23,16 +24,19 @@ struct SideMenuView: View {
                             .font(.system(size: 18, weight: .semibold))
                             .foregroundStyle(Color(ghoodPink))
                             .padding(.bottom, 10)
+                            .padding(.top, 10)
                     }
+                    
                     DividerThinView(width: proxy.size.width)
+                    
                     NavigationLink {
                         SideMenuRecentsView()
                             .navigationBarBackButtonHidden()
                     } label: {
-                        HStack(spacing: 20) {
+                        HStack {
                             Text("Recently Visited")
                                 .font(.system(size: 18, weight: .semibold))
-                                .foregroundStyle(Color(ghoodPink))
+                                .foregroundStyle(Color(.black))
                             Text("see all")
                                 .font(.system(size: 18))
                                 .foregroundStyle(Color(ghoodPink))
@@ -40,53 +44,55 @@ struct SideMenuView: View {
                         .padding(.top, 10)
                         .padding(.bottom, 10)
                     }
+                    
                     VStack {
                         ForEach(0..<3) { _ in
                             HStack {
                                 Image("threadpic")
                                     .resizable()
                                     .scaledToFill()
-                                    .frame(width: 40,height: 40)
+                                    .frame(width: 35,height: 35)
                                     .clipShape(Circle())
                                 Text("g/summerhousebravo")
                                     .font(.system(size: 16))
+                                    .foregroundStyle(Color(ghoodPink))
                             }
                         }
                     }
                     .padding(.bottom, 10)
+                    
                     DividerThinView(width: proxy.size.width)
-                    HStack(spacing: 20) {
-                        Text("My Threads")
-                            .font(.system(size: 18, weight: .semibold))
-                            .foregroundStyle(Color(ghoodPink))
-                        Text("see all")
-                            .font(.system(size: 18))
-                            .foregroundStyle(Color(ghoodPink))
-                    }
+                    
+                    Text("My Threads")
+                        .font(.system(size: 18, weight: .semibold))
+                        .foregroundStyle(Color(.black))
                     .padding(.bottom, 10)
                     .padding(.top, 10)
                     
                     VStack {
-                        ForEach(0..<15) { _ in
+                        ForEach(0..<10) { _ in
                             HStack {
                                 Image("threadpic")
                                     .resizable()
                                     .scaledToFill()
-                                    .frame(width: 40,height: 40)
+                                    .frame(width: 35,height: 35)
                                     .clipShape(Circle())
                                 Text("g/summerhousebravo")
                                     .font(.system(size: 16))
+                                    .foregroundStyle(Color(ghoodPink))
                             }
                         }
                     }
                 }
-                .padding()
-                .frame(maxWidth: .infinity, alignment: .leading)
-                .background(Color(ghoodLightPink))
-                .edgesIgnoringSafeArea(.horizontal)
+                .padding(.horizontal)
+                .padding(.top, 10) // Safe area inset to prevent clipping at top
+                .padding(.bottom, 50) // Safe area inset to prevent clipping at bottom
             }
             .scrollIndicators(.hidden)
+            .background(Color(ghoodLightPink))
         }
+        .background(Color(ghoodLightPink))
+        .edgesIgnoringSafeArea(.bottom)
     }
 }
 

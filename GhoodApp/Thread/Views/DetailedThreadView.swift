@@ -105,7 +105,7 @@ struct DetailedThreadView: View {
                     Button(action: {dismiss()}, label: {
                         Text(viewModel.threadposts[index].page?.pageTitle ?? "")
                             .foregroundStyle(Color(ghoodPink))
-                            .fontWeight(.bold)
+                            .font(.system(size: 17,weight: .semibold))
                     })
                 }
             }

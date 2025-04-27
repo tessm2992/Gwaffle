@@ -33,6 +33,16 @@ struct ThreadAboutView: View {
                             Text(viewModel.threadposts[index].page?.pageAbout ?? "")
                                 .font(.system(size: 15))
                                 .foregroundStyle(Color(.black))
+                            NavigationLink{
+                                ThreadListView()
+                                    .navigationBarBackButtonHidden()
+                            } label: {
+                                Text("Pop Culture")
+                                    .font(.system(size: 15))
+                                    .fontWeight(.semibold)
+                                    .foregroundStyle(.orange)
+                                    .frame(height: 30)
+                            }
                         }
                         .padding(.bottom)
                         
@@ -43,7 +53,8 @@ struct ThreadAboutView: View {
                                 .padding(.bottom, 3)
                             ForEach(0 ..< 2) { index in
                                 NavigationLink {
-                                    ProfileView()
+                                    ProfileView(showBackButton: true)
+                                        .navigationBarBackButtonHidden()
                                 } label: {
                                     HStack {
                                         Image("avatar")

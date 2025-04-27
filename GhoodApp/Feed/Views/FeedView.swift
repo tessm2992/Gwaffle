@@ -23,37 +23,33 @@ struct FeedView: View {
             ZStack {
                 VStack {
                     GeometryReader { proxy in
-                        ZStack {
-                            ghoodLightPink.ignoresSafeArea()
-                            
-                            ZStack(alignment: .topTrailing) {
-                                VStack(spacing: 0) {
-                                    HStack {
-                                        FeedFilter(selected: $selectedFeedFilter)
-                                        Spacer()
-                                        FilterDropDownButton(selected: $selectedDropDown, isExpanded: $isDropdownExpanded)
-                                    }
-                                    .padding(.vertical, 9)
-                                    ScrollView {
-                                        VStack {
-                                            ForEach(0 ..< viewModel.threadposts.count, id: \.self) { index in
-                                                ThreadPostView(viewModel: viewModel, index: index)
-                                                DividerView(width: proxy.size.width - 15)
-                                            }
-                                            Spacer()
+                        ZStack(alignment: .topTrailing) {
+                            VStack(spacing: 0) {
+                                HStack {
+                                    FeedFilter(selected: $selectedFeedFilter)
+                                    Spacer()
+                                    FilterDropDownButton(selected: $selectedDropDown, isExpanded: $isDropdownExpanded)
+                                }
+                                .padding(.vertical, 9)
+                                ScrollView {
+                                    VStack {
+                                        ForEach(0 ..< viewModel.threadposts.count, id: \.self) { index in
+                                            ThreadPostView(viewModel: viewModel, index: index)
+                                            DividerView(width: proxy.size.width - 5)
                                         }
-                                        .frame(maxWidth: .infinity)
+                                        Spacer()
                                     }
+                                    .frame(maxWidth: .infinity)
                                 }
-                                if isDropdownExpanded {
-                                    FilterDropDown(selected: $selectedDropDown, isExpanded: $isDropdownExpanded)
-                                        .frame(width: 180)
-                                        .offset(y: -7)
-                                        .offset(x: 38)
-                                        .transition(.opacity.combined(with: .move(edge: .top)))
-                                        .animation(.easeInOut(duration: 0.2), value: isDropdownExpanded)
-                                        .zIndex(1)
-                                }
+                            }
+                            if isDropdownExpanded {
+                                FilterDropDown(selected: $selectedDropDown, isExpanded: $isDropdownExpanded)
+                                    .frame(width: 180)
+                                    .offset(y: -7)
+                                    .offset(x: 38)
+                                    .transition(.opacity.combined(with: .move(edge: .top)))
+                                    .animation(.easeInOut(duration: 0.2), value: isDropdownExpanded)
+                                    .zIndex(1)
                             }
                         }
                     }

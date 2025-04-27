@@ -9,11 +9,10 @@ import SwiftUI
 
 struct ThreadTileView: View {
     let onFollow: () -> Void
-
     
     var body: some View {
         NavigationLink {
-            CommunityDiscoverView()
+            LoginView()
                 .navigationBarBackButtonHidden()
             } label: {
                 VStack(spacing: 0) {
@@ -28,7 +27,7 @@ struct ThreadTileView: View {
                                 Text("g/summerhousebravo")
                                     .font(.system(size: 15))
                                     .foregroundColor(.black)
-                                Text("19.7k members")
+                                Text("2.7k followers")
                                         .font(.system(size: 12))
                                         .foregroundStyle(Color(.systemGray))
                             }
