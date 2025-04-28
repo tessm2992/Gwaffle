@@ -39,10 +39,10 @@ struct ThreadCommentCell: View {
                         } label: {
                             Text(viewModel.threadcomments[index].owner?.userName ?? "")
                                 .font(.system(size: 13,weight: .semibold))
-                                .foregroundStyle(ghoodPink.opacity(0.7))
+                                .foregroundStyle(Color(.black))
                         }
                         Text(viewModel.threadcomments[index].text)
-                            .font(.system(size: 12))
+                            .font(.system(size: 16))
                             .foregroundStyle(Color(.black))
                             .padding(.top, 0)
                     }
@@ -75,9 +75,9 @@ struct ThreadCommentCell: View {
                             Text("3")
                                 .font(.system(size: 11))
                                 .foregroundStyle(Color(ghoodPink))
-                            Image(systemName: "hand.thumbsup.circle.fill")
+                            Image(systemName: "heart")
                                 .resizable()
-                                .frame(width: 18,height: 18)
+                                .frame(width: 20,height: 17)
                                 .foregroundStyle(Color(ghoodPink))
                         }
                     }

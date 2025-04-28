@@ -67,7 +67,7 @@ struct FeedView: View {
                                     .resizable()
                                     .scaledToFill()
                                     .frame(width: 15, height: 15)
-                                    .foregroundStyle(ghoodPink)
+                                    .foregroundStyle(.black)
                             }
                         }
                     }
@@ -81,7 +81,7 @@ struct FeedView: View {
                     ToolbarItem(placement: .topBarTrailing) {
                         HStack(spacing: 24) {
                             Image(systemName: "magnifyingglass")
-                                .foregroundStyle(Color(ghoodPink))
+                                .foregroundStyle(Color(.black))
                         }
                     }
                 }

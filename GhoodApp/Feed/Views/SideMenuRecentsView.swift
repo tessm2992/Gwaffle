@@ -26,7 +26,7 @@ struct SideMenuRecentsView: View {
                         }, label: {
                             Text("clear all")
                                 .font(.system(size: 18))
-                                .foregroundStyle(Color(ghoodPink))
+                                .foregroundStyle(Color(.black))
                         })
                     }
                     .padding(.bottom, 10)
@@ -62,7 +62,7 @@ struct SideMenuRecentsView: View {
                 .padding(.bottom, 50)
             }
             .scrollIndicators(.hidden)
-            .background(Color(ghoodLightPink))
+            .background(Color(.white))
             .navigationBarTitleDisplayMode(.inline)
         }
         .toolbar{

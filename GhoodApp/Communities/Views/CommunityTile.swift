@@ -22,7 +22,7 @@ struct CommunityTile: View {
                         .resizable()
                         .scaledToFill()
                         .frame(width: 50,height: 50)
-                        .clipShape(Circle())
+                        .clipShape(RoundedRectangle(cornerRadius: 15))
                     VStack(alignment: .leading,spacing: 0) {
                         Text("Tinx's Army")
                             .font(.system(size: 17,weight: .semibold))

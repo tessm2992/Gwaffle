@@ -43,10 +43,10 @@ struct NewDirectMessageView: View {
                 }
                 ToolbarItem(placement: .topBarTrailing) {
                     Button(action: {}, label: {
-                        Text("Create")
+                        Text("Chat")
                             .font(.subheadline)
                             .fontWeight(.semibold)
-                            .frame(width: 80,height: 35)
+                            .frame(width: 60,height: 35)
                             .foregroundStyle(searchText.count == 0 ? Color(.darkGray) : .white)
                             .background(searchText.count == 0 ? Color(.systemGray5) : ghoodPink)
                             .clipShape(RoundedRectangle(cornerRadius: 8))

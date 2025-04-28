@@ -29,7 +29,7 @@ struct ThreadView: View {
                 DividerView(width: proxy.size.width)
                 ForEach(0..<viewModel.threadposts.count, id: \.self) { index in
                     ThreadPostOtherView(viewModel: viewModel, index: index)
-                    DividerThinView(width: proxy.size.width - 15)
+                    DividerThinView(width: proxy.size.width)
                 }
             }
             .scrollIndicators(.hidden)
@@ -39,14 +39,14 @@ struct ThreadView: View {
             .toolbar{
                 ToolbarItem(placement: .topBarLeading) {
                     Button(action: {dismiss()}, label: {
-                        Image(systemName: "arrow.left")
-                            .foregroundStyle(Color(ghoodPink))
+                        Image(systemName: "chevron.left")
+                            .foregroundStyle(Color(.black))
                     })
                 }
                 ToolbarItem(placement: .topBarTrailing) {
                     Button(action: {}, label: {
                         Image(systemName: "magnifyingglass")
-                            .foregroundStyle(Color(ghoodPink))
+                            .foregroundStyle(Color(.black))
                     })
                 }
                 

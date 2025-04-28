@@ -15,14 +15,12 @@ struct CommunityListView: View {
     var body: some View {
         GeometryReader { proxy in
             NavigationStack {
-                VStack(spacing: 0) {
-                    HStack(spacing: -12) {
-                        HomeLogo(selectedTab: $selectedTab)
-                        Text("Communities")
-                            .font(.system(size: 20,weight: .bold))
-                            .foregroundStyle(Color(ghoodPink))
-                            .padding(.bottom,4)
-                    }
+                VStack(alignment: .leading, spacing: 0) {
+                    Text("Communities")
+                        .font(.system(size: 25,weight: .bold))
+                        .foregroundStyle(Color(.black))
+                        .padding(.bottom,15)
+                        .padding(.horizontal)
                     
                     ScrollView  {
                         CapsuleSearchBarTwo()

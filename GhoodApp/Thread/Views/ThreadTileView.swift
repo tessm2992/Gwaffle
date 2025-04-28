@@ -22,7 +22,7 @@ struct ThreadTileView: View {
                                 .resizable()
                                 .scaledToFill()
                                 .frame(width: 40,height: 40)
-                                .clipShape(Circle())
+                                .clipShape(RoundedRectangle(cornerRadius: 15))
                             VStack(alignment: .leading) {
                                 Text("g/summerhousebravo")
                                     .font(.system(size: 15))

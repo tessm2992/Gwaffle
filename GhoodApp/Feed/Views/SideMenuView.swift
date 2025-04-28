@@ -22,7 +22,7 @@ struct SideMenuView: View {
                     } label: {
                         Text("Explore Threads")
                             .font(.system(size: 18, weight: .bold))
-                            .foregroundStyle(Color(ghoodPink))
+                            .foregroundStyle(Color(.black))
                             .padding(.bottom, 10)
                             .padding(.top, 10)
                     }
@@ -39,7 +39,7 @@ struct SideMenuView: View {
                                 .foregroundStyle(Color(.black))
                             Text("see all")
                                 .font(.system(size: 18))
-                                .foregroundStyle(Color(ghoodPink))
+                                .foregroundStyle(Color(.black))
                         }
                         .padding(.top, 10)
                         .padding(.bottom, 10)
@@ -89,9 +89,8 @@ struct SideMenuView: View {
                 .padding(.bottom, 50) // Safe area inset to prevent clipping at bottom
             }
             .scrollIndicators(.hidden)
-            .background(Color(ghoodLightPink))
+            .background(Color(.white))
         }
-        .background(Color(ghoodLightPink))
         .edgesIgnoringSafeArea(.bottom)
     }
 }

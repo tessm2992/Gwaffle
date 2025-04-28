@@ -10,6 +10,17 @@ import SwiftUI
 struct TabBarView: View {
     @State private var selectedTab = 0
     
+    init() {
+        // Use UIKit's appearance API to customize tab bar
+        let appearance = UITabBarAppearance()
+        appearance.configureWithOpaqueBackground()
+        appearance.backgroundColor = .white
+        
+        // Apply to both standard and scrolling edge appearances
+        UITabBar.appearance().standardAppearance = appearance
+        UITabBar.appearance().scrollEdgeAppearance = appearance
+    }
+    
     var body: some View {
         ZStack(alignment: .bottom) {
             TabView(selection: $selectedTab) {
@@ -17,7 +28,6 @@ struct TabBarView: View {
                     .tabItem {
                         Image(systemName: "house")
                             .environment(\.symbolVariants, selectedTab == 0 ? .fill : .none)
-                        Text("Home")
                     }
                     .tag(0)
                 
@@ -25,21 +35,18 @@ struct TabBarView: View {
                     .tabItem {
                         Image(systemName: "person.3")
                             .environment(\.symbolVariants, selectedTab == 1 ? .fill : .none)
-                        Text("Communities")
                     }
                     .tag(1)
                 
                 CreateThreadPostView()
                     .tabItem {
                         Image(systemName: "plus.rectangle.fill")
-                        Text("Create")
                     }
                 
                 InboxMainView()
                     .tabItem {
                         Image(systemName: "bell")
                             .environment(\.symbolVariants, selectedTab == 3 ? .fill : .none)
-                        Text("Inbox")
                     }
                     .tag(3)
                 
@@ -47,10 +54,8 @@ struct TabBarView: View {
                     .tabItem {
                         Image(systemName: "person.crop.circle")
                             .environment(\.symbolVariants, selectedTab == 4 ? .fill : .none)
-                        Text("Profile")
                     }
                     .tag(4)
-                
             }
             .tint(Color(hex: "#FF295B"))
         }

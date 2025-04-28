@@ -33,7 +33,7 @@ struct ThreadPostView: View {
                             .resizable()
                             .scaledToFill()
                             .frame(width: 40,height: 40)
-                            .clipShape(Circle())
+                            .clipShape(RoundedRectangle(cornerRadius: 15))
                     }
                     VStack(alignment: .leading,spacing: 3) {
                         NavigationLink {
@@ -52,13 +52,13 @@ struct ThreadPostView: View {
                 }
                 .padding(.horizontal)
                 Text(viewModel.threadposts[index].postTitle)
-                    .font(.system(size: 14,weight: .semibold))
+                    .font(.system(size: 16,weight: .semibold))
                     .foregroundStyle(Color(.black))
                     .padding(.horizontal)
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .multilineTextAlignment(.leading)
                 Text(viewModel.threadposts[index].postSubTitle ?? "")
-                    .font(.system(size: 12))
+                    .font(.system(size: 16))
                     .foregroundStyle(Color(.black))
                     .padding(.horizontal)
                     .frame(maxWidth: .infinity, alignment: .leading)
@@ -75,9 +75,9 @@ struct ThreadPostView: View {
                     EmptyView()
                 }
                 HStack(spacing: 3) {
-                    Image(systemName: "hand.thumbsup.circle.fill")
+                    Image(systemName: "heart")
                         .resizable()
-                        .frame(width: 18,height: 18)
+                        .frame(width: 20,height: 17)
                         .foregroundStyle(Color(ghoodPink))
                     Text("\(viewModel.threadposts[index].postLikes)")
                         .foregroundStyle(Color(.systemGray))

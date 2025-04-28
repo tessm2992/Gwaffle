@@ -63,7 +63,7 @@ struct ThreadAboutView: View {
                                             .frame(width: 20,height: 20)
                                             .clipShape(Circle())
                                         Text("tessm345")
-                                            .font(.system(size: 15))
+                                            .font(.system(size: 15,weight: .semibold))
                                             .foregroundStyle(Color(.black))
                                     }
                                 }
@@ -82,8 +82,8 @@ struct ThreadAboutView: View {
                     .toolbar{
                         ToolbarItem(placement: .topBarLeading) {
                             Button(action: {dismiss()}, label: {
-                                Image(systemName: "arrow.left")
-                                    .foregroundStyle(Color(ghoodPink))
+                                Image(systemName: "chevron.left")
+                                    .foregroundStyle(Color(.black))
                             })
                         }
                         ToolbarItem(placement: .principal) {

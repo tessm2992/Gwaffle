@@ -41,7 +41,7 @@ struct ThreadPostOtherView: View {
                     } label: {
                         Text(viewModel.threadposts[index].owner?.userName ?? "")
                             .font(.system(size: 13,weight: .semibold))
-                            .foregroundStyle(ghoodPink.opacity(0.7))
+                            .foregroundStyle(Color(.gray))
                     }
                     Text("12h")
                         .font(.system(size: 13))
@@ -51,7 +51,7 @@ struct ThreadPostOtherView: View {
                 .padding(.horizontal)
                 .padding(.vertical,2)
                 Text(viewModel.threadposts[index].postTitle)
-                    .font(.system(size: 14,weight: .semibold))
+                    .font(.system(size: 16,weight: .semibold))
                     .foregroundStyle(Color(.black))
                     .padding(.horizontal)
                     .padding(.bottom, 0)
@@ -61,7 +61,7 @@ struct ThreadPostOtherView: View {
                     .padding(.horizontal)
                     .padding(.bottom, 0)
                 Text(viewModel.threadposts[index].postSubTitle ?? "")
-                    .font(.system(size: 12))
+                    .font(.system(size: 16))
                     .foregroundStyle(Color(.black))
                     .padding(.horizontal)
                     .padding(.top, 0)
@@ -80,9 +80,9 @@ struct ThreadPostOtherView: View {
                 }
                 
                 HStack(spacing: 3) {
-                    Image(systemName: "hand.thumbsup.circle.fill")
+                    Image(systemName: "heart")
                         .resizable()
-                        .frame(width: 18,height: 18)
+                        .frame(width: 20,height: 17)
                         .foregroundStyle(Color(ghoodPink))
                     Text("\(viewModel.threadposts[index].postLikes)")
                         .foregroundStyle(Color(ghoodPink))

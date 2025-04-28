@@ -26,7 +26,7 @@ struct ThreadHeaderView: View {
                     .resizable()
                     .scaledToFill()
                     .frame(width: 40,height: 40)
-                    .clipShape(Circle())
+                    .clipShape(RoundedRectangle(cornerRadius: 15))
                 VStack(alignment: .leading,spacing: 3) {
                     Text(viewModel.threadposts[index].page?.pageTitle ?? "")
                         .font(.system(size: 20,weight: .semibold))
