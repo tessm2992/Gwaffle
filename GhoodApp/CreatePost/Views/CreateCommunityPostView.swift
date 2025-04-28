@@ -8,7 +8,7 @@
 import SwiftUI
 import PhotosUI
 
-struct CreatePostView: View {
+struct CreateCommunityPostView: View {
     private var ghoodPink: Color = Color(red: 255/255, green: 41/255, blue: 91/255)
     @Environment(\.dismiss) private var dismiss
     @State private var mindText: String = ""
@@ -112,5 +112,5 @@ struct CreatePostView: View {
 }
 
 #Preview {
-    CreatePostView()
+    CreateCommunityPostView()
 }

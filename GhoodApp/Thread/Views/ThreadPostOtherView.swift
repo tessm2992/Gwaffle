@@ -69,13 +69,16 @@ struct ThreadPostOtherView: View {
                     .multilineTextAlignment(.leading)
                 if let postURL = viewModel.threadposts[index].postURL, !postURL.isEmpty {
                     Image(postURL)
-                            .resizable()
-                            .scaledToFill()
-                            .frame(maxWidth: .infinity, maxHeight: 400, alignment: .top)
-                            .clipped()
+                        .resizable()
+                        .scaledToFill()
+                        .frame(maxWidth: 370, maxHeight: 400, alignment: .top)
+                        .clipped()
+                        .clipShape(RoundedRectangle(cornerRadius: 8))
+                        .frame(maxWidth: .infinity, alignment: .center)
                 } else {
                     EmptyView()
                 }
+                
                 HStack(spacing: 3) {
                     Image(systemName: "hand.thumbsup.circle.fill")
                         .resizable()

@@ -35,7 +35,7 @@ struct FeedView: View {
                                         VStack {
                                             ForEach(0 ..< viewModel.threadposts.count, id: \.self) { index in
                                                 ThreadPostView(viewModel: viewModel, index: index)
-                                                DividerView(width: proxy.size.width - 5)
+                                                DividerView(width: proxy.size.width)
                                             }
                                             Spacer()
                                         }

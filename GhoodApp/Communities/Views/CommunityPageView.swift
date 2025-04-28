@@ -58,7 +58,7 @@ struct CommunityPageView: View {
                             VStack(spacing: 10) {
                                 CommunityHeader()
                                 DividerView(width: UIScreen.main.bounds.width)
-                                CreateCommunityPost()
+                                CreateCommunityPostTile()
                                 DividerView(width: UIScreen.main.bounds.width)
                             }
                             .padding(.top, 16)

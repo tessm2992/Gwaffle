@@ -30,8 +30,45 @@ struct CreateThreadPostView: View {
                     
                 }
                 .padding()
-                TextField("Write something...",text: $mindText)
-                    .padding(.horizontal)
+                VStack(alignment: .leading, spacing: 30) {
+                    NavigationLink{
+                        SelectThreadView()
+                            .navigationBarBackButtonHidden()
+                        } label: {
+                            HStack {
+                                Text("Select a thread")
+                                    .font(.headline)
+                                VStack {
+                                    Image(systemName: "chevron.up")
+                                    Image(systemName: "chevron.down")
+                                }
+                                .font(.system(size: 14))
+                            }
+                            .fontWeight(.semibold)
+                            .foregroundStyle(ghoodPink)
+                            .frame(width: 180, height: 35)
+                            .background(Color(ghoodPink.opacity(0.06)))
+                            .clipShape(RoundedRectangle(cornerRadius: 30))
+                    }
+                    TextField("Title",text: $mindText)
+                        .font(.system(size: 20,weight: .semibold))
+                    NavigationLink{
+                        AddTagsView()
+                            .navigationBarBackButtonHidden()
+                        } label: {
+                            Text("Add tags")
+                                .font(.headline)
+                                .fontWeight(.semibold)
+                                .foregroundStyle(ghoodPink)
+                                .frame(width: 100, height: 35)
+                                .overlay{
+                                    RoundedRectangle(cornerRadius: 30)
+                                        .stroke(ghoodPink,lineWidth: 1)
+                                }
+                    }
+                    TextField("Sub Title (optional)",text: $mindText)
+                }
+                .padding(.horizontal)
                 
                 // Display selected photo if available
                 if let selectedPhoto = selectedPhoto {

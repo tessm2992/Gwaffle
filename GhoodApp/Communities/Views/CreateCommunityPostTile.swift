@@ -1,5 +1,5 @@
 //
-//  CreateCommunityPost.swift
+//  CreateCommunityPostTile.swift
 //  GhoodApp
 //
 //  Created by Tess Munsie on 4/17/25.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct CreateCommunityPost: View {
+struct CreateCommunityPostTile: View {
     @State private var showCreatePost: Bool = false
     
     var body: some View {
@@ -35,11 +35,11 @@ struct CreateCommunityPost: View {
         }
         .padding(.horizontal)
         .fullScreenCover(isPresented: $showCreatePost, content: {
-            CreatePostView()
+            CreateCommunityPostView()
         })
     }
 }
 
 #Preview {
-    CreateCommunityPost()
+    CreateCommunityPostTile()
 }
