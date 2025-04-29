@@ -21,12 +21,13 @@ struct CommunityTile: View {
                     Image("TinxCoverPhoto")
                         .resizable()
                         .scaledToFill()
-                        .frame(width: 50,height: 50)
+                        .frame(width: 60,height: 60)
                         .clipShape(RoundedRectangle(cornerRadius: 15))
                     VStack(alignment: .leading,spacing: 0) {
                         Text("Tinx's Army")
-                            .font(.system(size: 17,weight: .semibold))
+                            .font(.system(size: 19,weight: .semibold))
                             .foregroundStyle(Color(.black))
+                            .padding(.bottom, 4)
                         HStack {
                             Circle()
                                 .frame(width: 5,height: 5)

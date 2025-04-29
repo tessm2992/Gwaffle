@@ -23,7 +23,7 @@ struct ThreadPostOtherView: View {
             DetailedThreadView(viewModel: viewModel, index: index)
                 .navigationBarBackButtonHidden()
         } label: {
-            VStack(alignment: .leading, spacing: 4) {
+            VStack(alignment: .leading, spacing: 7) {
                 HStack {
                     NavigationLink {
                         ProfileView(showBackButton: true)

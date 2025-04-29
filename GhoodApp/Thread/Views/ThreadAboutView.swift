@@ -26,18 +26,18 @@ struct ThreadAboutView: View {
                     VStack(alignment: .leading) {
                         VStack(alignment: .leading) {
                             Text("About")
-                                .font(.system(size: 20, weight: .semibold))
+                                .font(.system(size: 23, weight: .semibold))
                                 .foregroundStyle(Color(.black))
                                 .padding(.bottom, 3)
                             
                             Text(viewModel.threadposts[index].page?.pageAbout ?? "")
-                                .font(.system(size: 15))
+                                .font(.system(size: 16))
                                 .foregroundStyle(Color(.black))
                             NavigationLink{
                                 ThreadListView()
                                     .navigationBarBackButtonHidden()
                             } label: {
-                                Text("Pop Culture")
+                                Text(viewModel.threadposts[index].page?.pageCategory ?? "")
                                     .font(.system(size: 15))
                                     .fontWeight(.semibold)
                                     .foregroundStyle(.orange)
@@ -48,7 +48,7 @@ struct ThreadAboutView: View {
                         
                         VStack(alignment: .leading) {
                             Text("Admins")
-                                .font(.system(size: 20, weight: .semibold))
+                                .font(.system(size: 23, weight: .semibold))
                                 .foregroundStyle(Color(.black))
                                 .padding(.bottom, 3)
                             ForEach(0 ..< 2) { index in
@@ -87,9 +87,16 @@ struct ThreadAboutView: View {
                             })
                         }
                         ToolbarItem(placement: .principal) {
-                            Text(viewModel.threadposts[index].page?.pageTitle ?? "")
-                                .foregroundStyle(Color(ghoodPink))
-                                .font(.system(size: 17,weight: .semibold))
+                            HStack {
+                                Image(viewModel.threadposts[index].page?.pageURL ?? "")
+                                    .resizable()
+                                    .scaledToFill()
+                                    .frame(width: 35,height: 35)
+                                    .clipShape(RoundedRectangle(cornerRadius: 12))
+                                Text(viewModel.threadposts[index].page?.pageTitle ?? "")
+                                    .foregroundStyle(Color(ghoodPink))
+                                    .font(.system(size: 17,weight: .semibold))
+                            }
                         }
                     }
                 }

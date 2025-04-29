@@ -50,11 +50,13 @@ struct InboxMainView: View {
             }
             .navigationBarTitleDisplayMode(.inline)
             .toolbar{
-                ToolbarItem(placement: .principal) {
+                ToolbarItem(placement: .topBarLeading) {
                     HStack {
                         Text("Inbox")
-                            .foregroundStyle(Color(ghoodPink))
-                            .font(.system(size: 20,weight: .semibold))
+                            .font(.system(size: 25,weight: .bold))
+                            .foregroundStyle(Color(.black))
+                            .padding(.bottom,10)
+                            .padding(.horizontal)
                     }
                 }
             }

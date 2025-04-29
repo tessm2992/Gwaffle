@@ -17,8 +17,8 @@ struct FilterDropDownButton: View {
         }) {
             HStack(spacing: 6) {
                 Text(selected.rawValue)
-                    .font(.system(size: 11, weight: .semibold))
-                    .foregroundColor(ghoodPink)
+                    .font(.system(size: 12, weight: .semibold))
+                    .foregroundColor(.black)
 
                 Image(systemName: "chevron.down")
                     .resizable()

@@ -36,7 +36,7 @@ struct CommunityPostView: View {
                             } label: {
                                 Text("tessm234")
                                     .font(.system(size: 15,weight: .semibold))
-                                    .foregroundStyle(ghoodPink.opacity(0.7))
+                                    .foregroundStyle(Color(.black))
                             }
                             Text("2h")
                                 .font(.system(size: 11))
@@ -57,9 +57,9 @@ struct CommunityPostView: View {
                     .frame(height: 180)
                     .clipped()
                 HStack(spacing: 3) {
-                    Image(systemName: "hand.thumbsup.circle.fill")
+                    Image(systemName: "heart")
                         .resizable()
-                        .frame(width: 18,height: 18)
+                        .frame(width: 20,height: 17)
                         .foregroundStyle(Color(ghoodPink))
                     Text("18")
                         .foregroundStyle(Color(ghoodPink))

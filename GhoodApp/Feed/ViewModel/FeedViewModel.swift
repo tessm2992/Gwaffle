@@ -23,7 +23,7 @@ class FeedViewModel: ObservableObject {
     ]
     
     @Published var threadpage: [PageThread] = [
-        .init(id: "0", pageTitle: "g/summerhousebravo", pageAdmins: "0", pageFollowers: 234, pageURL: "threadpic", pageAbout: "Welcome to g/summerhousebravo where we discuss all things Summer House, Winter House, and Martha's Vineyard on Bravo!", pageCategory: "Pop Culture"),
+        .init(id: "0", pageTitle: "g/summerhousebravo", pageAdmins: "0", pageFollowers: 234, pageURL: "threadpic", pageAbout: "Welcome to g/summerhousebravo where we discuss all things Summer House, Winter House, and Martha's Vineyard on Bravo!", pageCategory: "✨Pop Culture"),
         .init(id: "1", pageTitle: "g/generalpopculture", pageAdmins: "1", pageFollowers: 400, pageURL: "popculture", pageAbout: "Welcome to g/generalpopculture where we discuss all things celebrity and pop culture news!", pageCategory: "Pop Culture"),
         .init(id: "2", pageTitle: "g/skincare", pageAdmins: "2", pageFollowers: 1221, pageURL: "skincare", pageAbout: "Welcome to g/skincare where we discuss all things skincare products, beauty regimes, anti-aging and treatments!", pageCategory: "Beauty & Wellness")
     ]

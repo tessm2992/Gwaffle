@@ -23,7 +23,7 @@ struct ThreadPostView: View {
             DetailedThreadView(viewModel: viewModel, index: index)
                 .navigationBarBackButtonHidden()
         } label: {
-            VStack(alignment: .leading,spacing: 6) {
+            VStack(alignment: .leading,spacing: 8) {
                 HStack {
                     NavigationLink {
                         ThreadView(viewModel: viewModel, index: index)
@@ -35,20 +35,29 @@ struct ThreadPostView: View {
                             .frame(width: 40,height: 40)
                             .clipShape(RoundedRectangle(cornerRadius: 15))
                     }
-                    VStack(alignment: .leading,spacing: 3) {
-                        NavigationLink {
-                            ThreadView(viewModel: viewModel, index: index)
-                                .navigationBarBackButtonHidden()
-                        } label: {
-                            Text(viewModel.threadposts[index].page?.pageTitle ?? "")
-                                .font(.system(size: 14,weight: .semibold))
-                                .foregroundStyle(Color(ghoodPink))
+                    VStack(alignment: .leading) {
+                        HStack {
+                            NavigationLink {
+                                ThreadView(viewModel: viewModel, index: index)
+                                    .navigationBarBackButtonHidden()
+                            } label: {
+                                Text(viewModel.threadposts[index].page?.pageTitle ?? "")
+                                    .font(.system(size: 14,weight: .semibold))
+                                    .foregroundStyle(Color(ghoodPink))
+                            }
+                            Spacer()
+                            Text("...")
+                                .font(.system(size: 27))
+                                .foregroundStyle(Color(.systemGray))
+                                .alignmentGuide(.top) { d in d[.top] }
                         }
-                        Text("12h")
-                            .font(.system(size: 11))
-                            .foregroundStyle(Color(.systemGray))
+                        HStack {
+                            Text("12h")
+                                .font(.system(size: 11))
+                                .foregroundStyle(Color(.systemGray))
+                            Spacer()
+                        }
                     }
-                    Spacer()
                 }
                 .padding(.horizontal)
                 Text(viewModel.threadposts[index].postTitle)

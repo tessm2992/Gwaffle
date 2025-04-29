@@ -28,7 +28,7 @@ struct FilterDropDown: View {
                     }) {
                         Text(option.rawValue)
                             .font(.system(size: 11))
-                            .foregroundColor(ghoodPink)
+                            .foregroundColor(.black)
                             .padding(.vertical, 6)
                             .padding(.horizontal, 12)
                             .background(

@@ -20,7 +20,7 @@ struct StaticCoverBanner: View {
                     .scaledToFill()
                     .frame(height: 180)
                     .offset(imageOffset)
-                    .clipped()
+                    .clipShape(RoundedRectangle(cornerRadius: 15))
             }
         }
         .frame(height: 180)

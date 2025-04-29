@@ -68,15 +68,14 @@ struct FeedView: View {
                                     .scaledToFill()
                                     .frame(width: 15, height: 15)
                                     .foregroundStyle(.black)
+                                    .padding(.horizontal,3)
                             }
                         }
                     }
                     ToolbarItem(placement: .topBarLeading) {
-                        Image("ghoodlogo")
-                            .resizable()
-                            .scaledToFill()
-                            .frame(width: 130, height: 170)
-                            .foregroundStyle(ghoodPink)
+                        Text("Threads")
+                            .font(.system(size: 25,weight: .bold))
+                            .foregroundStyle(Color(.black))
                     }
                     ToolbarItem(placement: .topBarTrailing) {
                         HStack(spacing: 24) {

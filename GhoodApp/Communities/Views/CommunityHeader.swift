@@ -22,13 +22,13 @@ struct CommunityHeader: View {
                     VStack(alignment: .leading,spacing: 3) {
                         HStack {
                             Text(groupName)
-                                .font(.system(size: 22,weight: .semibold))
-                                .foregroundStyle(Color(ghoodPink))
+                                .font(.system(size: 25,weight: .semibold))
+                                .foregroundStyle(Color(.black))
                             Image(systemName: "chevron.right")
                                 .resizable()
                                 .scaledToFill()
                                 .frame(width: 8, height: 8)
-                                .foregroundStyle(ghoodPink)
+                                .foregroundStyle(Color(.black))
                         }
                         HStack {
                             Image(systemName: "lock.fill")
@@ -49,11 +49,7 @@ struct CommunityHeader: View {
                 JoinButton()
             }
             .padding(.horizontal)
-            Text("Pop Culture")
-                .font(.system(size: 14,weight: .semibold))
-                .foregroundStyle(Color(.orange))
-                .padding(.top,5)
-                .padding(.horizontal)
+            CommunityAvatarsView()
         }
     }
     init(groupName: Binding<String> = .constant("Tinx's Army")) {

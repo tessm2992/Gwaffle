@@ -15,7 +15,7 @@ struct DividerView: View {
     }
     var body: some View {
         Rectangle()
-            .foregroundStyle(Color(ghoodPink.opacity(0.1)))
+            .foregroundStyle(Color(.systemGray6))
             .frame(width: width,height: 4)
     }
 }

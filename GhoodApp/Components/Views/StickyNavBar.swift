@@ -19,8 +19,8 @@ struct StickyNavBar: View {
         VStack(spacing: 0) {
             HStack {
                 Button(action: {dismiss()}, label: {
-                    Image(systemName: "arrow.left")
-                        .foregroundStyle(showHeaderInfo ? ghoodPink : ghoodPink)
+                    Image(systemName: "chevron.left")
+                        .foregroundStyle(showHeaderInfo ? .black : .black)
                 })
 
                 Spacer()
@@ -32,11 +32,11 @@ struct StickyNavBar: View {
                                 .resizable()
                                 .aspectRatio(contentMode: .fill)
                                 .frame(width: 24, height: 24)
-                                .clipShape(Circle())
+                                .clipShape(RoundedRectangle(cornerRadius: 8))
                         }
                         Text(groupName)
                             .font(.headline)
-                            .foregroundColor(ghoodPink)
+                            .foregroundColor(.black)
                     }
                     .transition(.opacity)
                 }
@@ -45,7 +45,7 @@ struct StickyNavBar: View {
 
                 Button(action: {}) {
                     Image(systemName: "magnifyingglass")
-                        .foregroundStyle(showHeaderInfo ? ghoodPink : ghoodPink)
+                        .foregroundStyle(showHeaderInfo ? .black : .black)
                 }
             }
             .padding(.horizontal)

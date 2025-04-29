@@ -65,7 +65,7 @@ struct ProfileView: View {
                         ToolbarItem(placement: .principal) {
                             HStack {
                                 Text("Profile")
-                                    .foregroundStyle(Color(ghoodPink))
+                                    .foregroundStyle(Color(.black))
                                     .font(.system(size: 20,weight: .semibold))
                             }
                         }
@@ -78,14 +78,15 @@ struct ProfileView: View {
                                     .resizable()
                                     .scaledToFill()
                                     .frame(width: 15, height: 15)
-                                    .foregroundStyle(ghoodPink)
+                                    .foregroundStyle(.black)
+                                    .padding(.horizontal,4)
                             }
                         }
                         if showBackButton {
                             ToolbarItem(placement: .topBarLeading) {
                                 Button(action: {dismiss()}, label: {
-                                    Image(systemName: "arrow.left")
-                                        .foregroundStyle(Color(ghoodPink))
+                                    Image(systemName: "chevron.left")
+                                        .foregroundStyle(Color(.black))
                                 })
                             }
                         }

@@ -21,9 +21,9 @@ struct CommunityAboutView: View {
                             Text("About")
                                 .font(.system(size: 20, weight: .semibold))
                                 .foregroundStyle(Color(.black))
-                                .padding(.bottom, 3)
+                                .padding(.bottom, 4)
                             Text("This is the community description. Any background of who the creator is or what the purpose of the group is will be featured here.")
-                                .font(.system(size: 15))
+                                .font(.system(size: 16))
                                 .foregroundStyle(Color(.black))
                                 .padding(.bottom,5)
                             NavigationLink{
@@ -31,7 +31,7 @@ struct CommunityAboutView: View {
                                     .navigationBarBackButtonHidden()
                                 } label: {
                                 Text("Creator Community")
-                                    .font(.system(size: 15))
+                                    .font(.system(size: 16))
                                     .fontWeight(.semibold)
                                     .foregroundStyle(.blue)
                                     .frame(height: 30)
@@ -45,7 +45,7 @@ struct CommunityAboutView: View {
                                     .frame(width: 12,height: 12)
                                 VStack(alignment: .leading) {
                                     Text("Private")
-                                        .font(.system(size: 15))
+                                        .font(.system(size: 16))
                                         .foregroundStyle(Color(.black))
                                     Text("Only members can see who's in the group and what they post.")
                                         .font(.system(size: 12))
@@ -60,7 +60,7 @@ struct CommunityAboutView: View {
                                     .frame(width: 12,height: 12)
                                 VStack(alignment: .leading) {
                                     Text("Visible")
-                                        .font(.system(size: 15))
+                                        .font(.system(size: 16))
                                         .foregroundStyle(Color(.black))
                                     Text("Anyone can find this group.")
                                         .font(.system(size: 12))
@@ -76,15 +76,15 @@ struct CommunityAboutView: View {
                                 .padding(.bottom, 3)
                             Text("1. No promotions or spam")
                                 .padding(2)
-                                .font(.system(size: 15))
+                                .font(.system(size: 16))
                                 .foregroundStyle(Color(.black))
                             Text("2. Be kind & respectful")
                                 .padding(2)
-                                .font(.system(size: 15))
+                                .font(.system(size: 16))
                                 .foregroundStyle(Color(.black))
                             Text("3. Respect everyone's privacy")
                                 .padding(2)
-                                .font(.system(size: 15))
+                                .font(.system(size: 16))
                                 .foregroundStyle(Color(.black))
                         }
                         .padding(.bottom)
@@ -124,14 +124,14 @@ struct CommunityAboutView: View {
                     .toolbar{
                         ToolbarItem(placement: .topBarLeading) {
                             Button(action: {dismiss()}, label: {
-                                Image(systemName: "arrow.left")
-                                    .foregroundStyle(Color(ghoodPink))
+                                Image(systemName: "chevron.left")
+                                    .foregroundStyle(Color(.black))
                             })
                         }
                         ToolbarItem(placement: .principal) {
                             Button(action: {dismiss()}, label: {
                                 Text("Tinx's Army")
-                                    .foregroundStyle(Color(ghoodPink))
+                                    .foregroundStyle(Color(.black))
                                     .font(.system(size: 20,weight: .semibold))
                             })
                         }

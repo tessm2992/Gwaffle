@@ -46,7 +46,7 @@ struct CommunityListView: View {
                         .padding(.horizontal)
                         DividerThinnestView(width: proxy.size.width - 15)
                         VStack {
-                            ForEach(0..<4) { _ in
+                            ForEach(0..<5) { _ in
                                 CommunityTile()
                                 DividerThinnestView(width: proxy.size.width - 15)
                             }
@@ -54,7 +54,7 @@ struct CommunityListView: View {
                         Spacer()
                             .frame(height: 20)
                         NavigationLink {
-                            CommunityExploreView()
+                            CommunityExploreNewView()
                                 .navigationBarBackButtonHidden()
                         } label: {
                             HStack {

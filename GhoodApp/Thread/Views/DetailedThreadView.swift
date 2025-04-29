@@ -41,7 +41,7 @@ struct DetailedThreadView: View {
                         } label: {
                             Text(viewModel.threadposts[index].owner?.userName ?? "")
                                 .font(.system(size: 13,weight: .semibold))
-                                .foregroundStyle(Color(.black))
+                                .foregroundStyle(Color(.gray))
                         }
                         Text("12h")
                             .font(.system(size: 13))
