@@ -13,7 +13,7 @@ struct InboxSearchBar: View {
     private var ghoodPink: Color = Color(red: 255/255, green: 41/255, blue: 91/255)
     
     var body: some View {
-        HStack {
+        HStack(alignment: .top) {
             HStack {
                 Image(systemName: "magnifyingglass")
                     .foregroundColor(ghoodPink.opacity(0.7))
@@ -27,7 +27,6 @@ struct InboxSearchBar: View {
             .padding(.vertical, 10)
             .background(Color(ghoodPink.opacity(0.06)))
             .clipShape(Capsule())
-            .padding(.horizontal)
             NavigationLink {
                 NewDirectMessageView()
                     .navigationBarBackButtonHidden()
@@ -36,6 +35,7 @@ struct InboxSearchBar: View {
                     .resizable()
                     .scaledToFill()
                     .frame(width: 24, height: 24)
+                    .padding(.vertical, 3)
                     .foregroundStyle(ghoodPink)
             }
         }

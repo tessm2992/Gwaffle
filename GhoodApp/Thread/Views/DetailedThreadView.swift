@@ -100,12 +100,17 @@ struct DetailedThreadView: View {
                             .foregroundStyle(Color(.black))
                     })
                 }
-                ToolbarItem(placement: .topBarLeading) {
-                    Button(action: {dismiss()}, label: {
+                ToolbarItem(placement: .principal) {
+                    HStack {
+                        Image(viewModel.threadposts[index].page?.pageURL ?? "")
+                            .resizable()
+                            .scaledToFill()
+                            .frame(width: 35,height: 35)
+                            .clipShape(RoundedRectangle(cornerRadius: 12))
                         Text(viewModel.threadposts[index].page?.pageTitle ?? "")
                             .foregroundStyle(Color(ghoodPink))
                             .font(.system(size: 17,weight: .semibold))
-                    })
+                    }
                 }
             }
             .toolbar(.hidden, for: .tabBar)

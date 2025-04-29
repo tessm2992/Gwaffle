@@ -30,8 +30,7 @@ struct NewDirectMessageView: View {
                 ToolbarItem(placement: .topBarLeading) {
                     Button(action: {dismiss()}, label: {
                         Image(systemName: "xmark")
-                            .foregroundStyle(Color(ghoodPink))
-                            .fontWeight(.bold)
+                            .foregroundStyle(Color(.black))
                     })
                 }
                 ToolbarItem(placement: .principal) {

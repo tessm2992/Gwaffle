@@ -1,13 +1,13 @@
 //
-//  ThreadTileView.swift
+//  ThreadTileOtherView.swift
 //  GhoodApp
 //
-//  Created by Tess Munsie on 4/27/25.
+//  Created by Tess Munsie on 4/28/25.
 //
 
 import SwiftUI
 
-struct ThreadTileView: View {
+struct ThreadTileOtherView: View {
     let onFollow: () -> Void
     
     var body: some View {
@@ -48,7 +48,7 @@ struct ThreadTileView: View {
                     .padding(10)
                     .background(Color.white)
                 }
-                .frame(width: 300)
+                .frame(width: 360)
                 .background(Color.white)
                 .cornerRadius(12)
                 .shadow(color: Color.black.opacity(0.1), radius: 5, x: 0, y: 2)
@@ -57,5 +57,5 @@ struct ThreadTileView: View {
 }
 
 #Preview {
-    ThreadTileView(onFollow: { print("Followed!")})
+    ThreadTileOtherView(onFollow: { print("Followed!")})
 }

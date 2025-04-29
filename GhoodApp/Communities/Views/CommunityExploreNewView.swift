@@ -16,49 +16,57 @@ struct CommunityExploreNewView: View {
         NavigationStack {
             GeometryReader { proxy in
                 ScrollView {
-                    CapsuleSearchBar()
-                        .padding(.bottom,10)
-                    VStack {
-                        CommunityExploreNewTileView(
-                            onFollow: { print("Joined") }
-                        )
-                        CommunityExploreNewTileView(
-                            onFollow: { print("Joined") }
-                        )
-                        CommunityExploreNewTileView(
-                            onFollow: { print("Joined") }
-                        )
-                        CommunityExploreNewTileView(
-                            onFollow: { print("Joined") }
-                        )
-                        CommunityExploreNewTileView(
-                            onFollow: { print("Joined") }
-                        )
-                        CommunityExploreNewTileView(
-                            onFollow: { print("Joined") }
-                        )
+                    VStack(alignment: .leading) {
+                        CapsuleSearchBar()
+                            .padding(.bottom,10)
+                        Text("COMMUNITIES FOR...")
+                            .font(.system(size: 15, weight: .semibold))
+                        HStack {
+                            CommunityTagTile(communityTag: "Creator Community")
+                            CommunityTagTile(communityTag: "Local & Neighborhood")
+                            CommunityTagTile(communityTag: "Social")
+                        }
+                        HStack {
+                            CommunityTagTile(communityTag: "Family & Parenting")
+                            CommunityTagTile(communityTag: "Support")
+                            CommunityTagTile(communityTag: "Hobbies")
+                            CommunityTagTile(communityTag: "Identity")
+                        }
+                        .padding(.bottom, 15)
+                        ForEach(0 ..< 6) { index in
+                            NavigationLink {
+                                CommunityExploreNewTileView(
+                                    onFollow: { print("Joined") }
+                                )
+                            } label: {
+                                CommunityExploreNewTileView(
+                                    onFollow: { print("Joined") }
+                                )
+                            }
                         }
                     }
+                    .padding(.horizontal)
                 }
-                .scrollIndicators(.hidden)
-                .toolbar{
-                    ToolbarItem(placement: .topBarLeading) {
-                        Button(action: {dismiss()}, label: {
-                            Image(systemName: "chevron.left")
-                                .foregroundStyle(Color(.black))
-                        })
-                    }
-                    ToolbarItem(placement: .principal) {
-                        Button(action: {dismiss()}, label: {
-                            Text("Explore Communities")
-                                .foregroundStyle(Color(.black))
-                                .fontWeight(.bold)
-                        })
-                    }
+            }
+            .scrollIndicators(.hidden)
+            .toolbar{
+                ToolbarItem(placement: .topBarLeading) {
+                    Button(action: {dismiss()}, label: {
+                        Image(systemName: "chevron.left")
+                            .foregroundStyle(Color(.black))
+                    })
+                }
+                ToolbarItem(placement: .principal) {
+                    Button(action: {dismiss()}, label: {
+                        Text("Explore Communities")
+                            .foregroundStyle(Color(.black))
+                            .fontWeight(.bold)
+                    })
                 }
             }
         }
     }
+}
 
 #Preview {
     CommunityExploreNewView()

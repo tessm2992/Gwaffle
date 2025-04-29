@@ -27,14 +27,16 @@ struct CommunityAboutView: View {
                                 .foregroundStyle(Color(.black))
                                 .padding(.bottom,5)
                             NavigationLink{
-                                CommunityDiscoverView()
+                                CommunityExploreNewView()
                                     .navigationBarBackButtonHidden()
                                 } label: {
                                 Text("Creator Community")
-                                    .font(.system(size: 16))
-                                    .fontWeight(.semibold)
-                                    .foregroundStyle(.blue)
-                                    .frame(height: 30)
+                                    .font(.system(size: 12, weight: .semibold))
+                                    .foregroundColor(.black)
+                                    .padding(.horizontal, 10)
+                                    .padding(.vertical, 5)
+                                    .background(Color(.systemGray6))
+                                    .cornerRadius(10)
                             }
                             }
                             .padding(.bottom, 5)

@@ -83,8 +83,7 @@ struct CreateCommunityPostView: View {
                         dismiss()
                     }, label: {
                         Image(systemName: "xmark")
-                            .foregroundColor(ghoodPink)
-                            .fontWeight(.bold)
+                            .foregroundColor(.black)
                     })
                 }
                 ToolbarItem(placement: .principal) {

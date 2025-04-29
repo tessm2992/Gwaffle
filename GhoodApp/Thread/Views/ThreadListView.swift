@@ -19,8 +19,8 @@ struct ThreadListView: View {
                     CapsuleSearchBarFour()
                         .padding(.bottom,10)
                     ForEach(0 ..< 8) { index in
-                        ThreadTileView(onFollow: { print("Followed!")})
-                            .padding(.bottom,10)
+                        ThreadTileOtherView(onFollow: { print("Followed!")})
+                            .padding(.bottom,6)
                     }
                 }
             }

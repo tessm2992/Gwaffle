@@ -14,6 +14,8 @@ enum FeedFilterOption: String, CaseIterable, Equatable {
 
 struct FeedFilter: View {
     @Binding var selected: FeedFilterOption
+    
+    let ghoodPink: Color = Color(red: 255/255, green: 41/255, blue: 91/255)
 
     var body: some View {
         HStack(spacing: 10) {
@@ -23,15 +25,15 @@ struct FeedFilter: View {
                 }) {
                     Text(option.rawValue)
                         .font(.system(size: 12, weight: .semibold))
-                        .foregroundColor(selected == option ? .white : Color.pink)
+                        .foregroundColor(selected == option ? .white : ghoodPink)
                         .padding(.vertical, 6)
                         .padding(.horizontal, 12)
                         .background(
                             RoundedRectangle(cornerRadius: 8)
-                                .fill(selected == option ? Color.pink : Color.clear)
+                                .fill(selected == option ? ghoodPink : Color.clear)
                                 .overlay(
                                     RoundedRectangle(cornerRadius: 8)
-                                        .stroke(Color.pink, lineWidth: 1)
+                                        .stroke(ghoodPink, lineWidth: 1)
                                 )
                         )
                 }

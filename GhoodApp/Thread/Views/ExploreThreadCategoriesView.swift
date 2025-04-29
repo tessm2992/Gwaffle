@@ -26,14 +26,16 @@ struct ExploreThreadCategoriesView: View {
                     } label: {
                         HStack {
                             Text("Pop Culture")
-                                .font(.system(size: 20,weight: .semibold))
-                                .foregroundStyle(Color(ghoodPink))
+                                .font(.system(size: 15,weight: .semibold))
+                                .foregroundStyle(Color(.black))
+                                .textCase(.uppercase)
                             Spacer()
                             Image(systemName: "chevron.right")
-                                .foregroundStyle(Color(ghoodPink))
+                                .foregroundStyle(Color(.black))
                                 .fontWeight(.bold)
                         }
                         .padding(.horizontal)
+                        .padding(.bottom, -3)
                     }
                     ScrollView(.horizontal, showsIndicators: false) {
                         LazyHGrid(rows: rows, spacing: 16) {

@@ -34,7 +34,7 @@ struct CommunityPostView: View {
                                 ProfileView(showBackButton: true)
                                     .navigationBarBackButtonHidden()
                             } label: {
-                                Text("tessm234")
+                                Text("Tess M")
                                     .font(.system(size: 15,weight: .semibold))
                                     .foregroundStyle(Color(.black))
                             }

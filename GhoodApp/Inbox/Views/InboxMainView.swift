@@ -9,7 +9,10 @@ import SwiftUI
 
 struct InboxMainView: View {
     @State private var selectedTab = 0
-    private let tabTitles = ["Notifications", "Messages"]
+    
+    let ghoodPink: Color = Color(red: 255/255, green: 41/255, blue: 91/255)
+    
+    private let tabTitles = ["NOTIFICATIONS", "MESSAGES"]
 
     var body: some View {
         NavigationStack {
@@ -23,14 +26,14 @@ struct InboxMainView: View {
                             }
                         }) {
                             Text(tabTitles[index])
-                                .fontWeight(selectedTab == index ? .bold : .regular)
-                                .foregroundColor(selectedTab == index ? .pink : .gray)
+                                .fontWeight(selectedTab == index ? .semibold : .regular)
+                                .foregroundColor(selectedTab == index ? .black : .gray)
                                 .padding(.vertical, 10)
                                 .frame(maxWidth: .infinity)
                                 .overlay(
                                     Rectangle()
                                         .frame(height: 2)
-                                        .foregroundColor(selectedTab == index ? .pink : .clear),
+                                        .foregroundColor(selectedTab == index ? ghoodPink : .clear),
                                     alignment: .bottom
                                 )
                         }

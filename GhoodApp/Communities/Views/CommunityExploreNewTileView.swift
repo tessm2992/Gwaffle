@@ -13,52 +13,63 @@ struct CommunityExploreNewTileView: View {
     
     var body: some View {
         NavigationLink {
-            LoginView()
+            CommunityPageView()
                 .navigationBarBackButtonHidden()
             } label: {
                 VStack(spacing: 0) {
-                    VStack(alignment: .leading, spacing: 8) {
-                        HStack {
+                    VStack(alignment: .leading) {
+                        HStack(alignment: .top) {
                             Image("TinxCoverPhoto")
                                 .resizable()
                                 .scaledToFill()
-                                .frame(width: 90,height: 90)
+                                .frame(width: 110,height: 110)
                                 .clipShape(RoundedRectangle(cornerRadius: 15))
-                            VStack(alignment: .leading) {
-                                Text("Tinx's Army")
-                                    .font(.system(size: 20, weight: .semibold))
-                                    .foregroundColor(.black)
-                                Text("2.7k followers")
+                            VStack(alignment: .leading, spacing: 6) {
+                                HStack {
+                                    Text("Tinx's Army")
+                                        .font(.system(size: 20, weight: .semibold))
+                                        .foregroundColor(.black)
+                                    Spacer()
+                                    Button(action: onFollow) {
+                                        Text("Join")
+                                            .font(.subheadline)
+                                            .fontWeight(.semibold)
+                                            .foregroundColor(.white)
+                                            .padding(.horizontal, 12)
+                                            .padding(.vertical, 4)
+                                            .background(Color(ghoodPink))
+                                            .cornerRadius(20)
+                                    }
+                                }
+                                Text("19.7k members")
                                     .font(.system(size: 12, weight: .semibold))
                                         .foregroundStyle(Color(.systemGray))
-                                Text("This is the community description. Any ...")
+                                Text("This is the community description. Any background on the group's premise ...")
                                     .font(.system(size: 12))
                                     .foregroundColor(.black)
-                            }
-                            Spacer()
-                            Button(action: onFollow) {
-                                Text("Join")
-                                    .font(.subheadline)
-                                    .fontWeight(.semibold)
-                                    .foregroundColor(.white)
-                                    .padding(.horizontal, 14)
-                                    .padding(.vertical, 8)
-                                    .background(Color(ghoodPink))
-                                    .cornerRadius(20)
+                                HStack {
+                                    Text("Creator Community")
+                                        .font(.system(size: 12, weight: .semibold))
+                                        .foregroundColor(.black)
+                                        .padding(.horizontal, 10)
+                                        .padding(.vertical, 5)
+                                        .background(Color(.systemGray6))
+                                        .cornerRadius(10)
+                                }
                             }
                         }
                     }
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                    .padding(10)
-                    .background(Color.white)
                 }
-                .frame(width: 360)
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .padding(10)
                 .background(Color.white)
-                .cornerRadius(12)
-                .shadow(color: Color.black.opacity(0.1), radius: 5, x: 0, y: 2)
+            }
+            .frame(width: 360)
+            .background(Color.white)
+            .cornerRadius(12)
+            .shadow(color: Color.black.opacity(0.1), radius: 5, x: 0, y: 2)
         }
     }
-}
 
 #Preview {
     CommunityExploreNewTileView(onFollow: { print("Followed!")})
