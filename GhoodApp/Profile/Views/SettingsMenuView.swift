@@ -77,7 +77,6 @@ struct SettingsMenuView: View {
                                     .frame(width: 24)
                                 Text("Logout")
                             }
-                            .font(.system(size: 17,weight: .semibold))
                             HStack {
                                 Image(systemName: "trash")
                                     .frame(width: 24)
@@ -96,8 +95,8 @@ struct SettingsMenuView: View {
         .toolbar{
             ToolbarItem(placement: .topBarLeading) {
                 Button(action: {dismiss()}, label: {
-                    Image(systemName: "arrow.left")
-                        .foregroundStyle(Color(ghoodPink))
+                    Image(systemName: "chevron.left")
+                        .foregroundStyle(Color(.black))
                 })
             }
         }

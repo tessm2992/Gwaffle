@@ -41,7 +41,7 @@ struct CommunityListView: View {
                             }
                         })
                         .fullScreenCover(isPresented: $showCreateGroup, content: {
-                            CreateNewGroupView()
+                            CreateNewCommunityView()
                         })
                         .padding(.horizontal)
                         DividerThinnestView(width: proxy.size.width - 15)
