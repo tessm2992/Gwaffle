@@ -63,12 +63,27 @@ struct SideMenuView: View {
                     
                     DividerThinView(width: proxy.size.width)
                     
-                    Text("My Threads")
+                    Text("Your Threads")
                         .font(.system(size: 18, weight: .semibold))
                         .foregroundStyle(Color(.black))
                     .padding(.bottom, 10)
                     .padding(.top, 10)
                     
+                    NavigationLink {
+                        CreateNewThreadPageView()
+                            .navigationBarBackButtonHidden()
+                        } label: {
+                            HStack(spacing: 10) {
+                                Image(systemName: "plus")
+                                    .resizable()
+                                    .scaledToFill()
+                                    .frame(width: 20,height: 20)
+                                Text("Create a thread")
+                                    .font(.system(size: 17, weight: .semibold))
+                            }
+                    }
+                    .foregroundStyle(Color(.systemGray))
+                   
                     VStack {
                         ForEach(0..<10) { _ in
                             HStack {
