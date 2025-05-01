@@ -25,21 +25,29 @@ struct ProfileView: View {
                     VStack {
                         HStack {
                             Spacer()
-                            VStack(spacing: 5) {
+                            VStack(spacing: 13) {
                                 Image("avatar")
                                     .resizable()
                                     .scaledToFill()
                                     .frame(width: 110,height: 110)
                                     .clipShape(Circle())
-                                Text("@tessm345")
-                                    .font(.system(size: 25,weight: .bold))
-                                    .foregroundStyle(Color(.black))
+                                HStack {
+                                    Text("Tess M")
+                                    Text("|")
+                                        .foregroundStyle(Color(.systemGray))
+                                    Text("@tessm345")
+                                }
+                                .font(.system(size: 25,weight: .bold))
+                                .foregroundStyle(Color(.black))
+                              
                                 HStack {
                                     Text("28 y/o")
+                                    Circle()
+                                        .frame(width: 3, height: 3)
                                     Text("Seattle, WA")
                                 }
-                                .font(.system(size: 17,weight: .bold))
-                                .foregroundStyle(Color(.systemGray2))
+                                .font(.system(size: 15, weight: .semibold))
+                                .foregroundStyle(Color(.systemGray))
                                 NavigationLink{
                                     EditProfileView()
                                         .navigationBarBackButtonHidden()
@@ -62,13 +70,6 @@ struct ProfileView: View {
                     }
                     .scrollIndicators(.hidden)
                     .toolbar{
-                        ToolbarItem(placement: .principal) {
-                            HStack {
-                                Text("Profile")
-                                    .foregroundStyle(Color(.black))
-                                    .font(.system(size: 20,weight: .semibold))
-                            }
-                        }
                         ToolbarItem(placement: .topBarTrailing) {
                             NavigationLink{
                                 SettingsMenuView()

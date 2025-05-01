@@ -53,7 +53,7 @@ struct ThreadAboutView: View {
                                 .padding(.bottom, 3)
                             ForEach(0 ..< 2) { index in
                                 NavigationLink {
-                                    ProfileView(showBackButton: true)
+                                    ProfileVisitorView(showBackButton: true, showNickname: false)
                                         .navigationBarBackButtonHidden()
                                 } label: {
                                     HStack {

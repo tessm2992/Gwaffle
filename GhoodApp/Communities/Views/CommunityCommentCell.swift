@@ -15,7 +15,7 @@ struct CommunityCommentCell: View {
         VStack(alignment: .leading, spacing: 4) {
             HStack(alignment: .top, spacing: 8) {
                 NavigationLink {
-                    ProfileView(showBackButton: true)
+                    ProfileVisitorView(showBackButton: true, showNickname: true)
                         .navigationBarBackButtonHidden()
                 } label: {
                     Image("avatar")
@@ -27,7 +27,7 @@ struct CommunityCommentCell: View {
                 VStack(alignment: .leading) {
                     VStack(alignment: .leading,spacing: 4) {
                         NavigationLink {
-                            ProfileView(showBackButton: true)
+                            ProfileVisitorView(showBackButton: true, showNickname: true)
                                 .navigationBarBackButtonHidden()
                         } label: {
                             Text("tessm345")

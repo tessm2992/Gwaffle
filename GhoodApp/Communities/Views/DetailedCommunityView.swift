@@ -19,7 +19,7 @@ struct DetailedCommunityView: View {
                 VStack(alignment: .leading, spacing: 6) {
                     HStack {
                         NavigationLink {
-                            ProfileView(showBackButton: true)
+                            ProfileVisitorView(showBackButton: true, showNickname: true)
                                 .navigationBarBackButtonHidden()
                         } label: {
                             Image("avatar")
@@ -29,7 +29,7 @@ struct DetailedCommunityView: View {
                                 .clipShape(Circle())
                         }
                         NavigationLink {
-                            ProfileView(showBackButton: true)
+                            ProfileVisitorView(showBackButton: true, showNickname: true)
                                 .navigationBarBackButtonHidden()
                         } label: {
                             Text("tessm345")

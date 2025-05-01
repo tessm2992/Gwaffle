@@ -26,7 +26,7 @@ struct ThreadPostOtherView: View {
             VStack(alignment: .leading, spacing: 7) {
                 HStack {
                     NavigationLink {
-                        ProfileView(showBackButton: true)
+                        ProfileVisitorView(showBackButton: true, showNickname: false)
                             .navigationBarBackButtonHidden()
                     } label: {
                         Image(viewModel.threadposts[index].owner?.profileImageName ?? "")
@@ -36,7 +36,7 @@ struct ThreadPostOtherView: View {
                             .clipShape(Circle())
                     }
                     NavigationLink {
-                        ProfileView(showBackButton: true)
+                        ProfileVisitorView(showBackButton: true, showNickname: false)
                             .navigationBarBackButtonHidden()
                     } label: {
                         Text(viewModel.threadposts[index].owner?.userName ?? "")

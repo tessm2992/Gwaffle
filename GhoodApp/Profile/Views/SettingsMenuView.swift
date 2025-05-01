@@ -12,29 +12,84 @@ struct SettingsMenuView: View {
     
     var body: some View {
         NavigationStack {
-            ScrollView {
-                VStack(alignment: .leading) {
-                    VStack(alignment: .leading, spacing: 20) {
-                        HStack {
-                            Image(systemName: "gearshape")
-                                .frame(width: 24)
-                            Text("Settings")
+            GeometryReader { proxy in
+                ScrollView {
+                    VStack(alignment: .leading, spacing: 15) {
+                        VStack(alignment: .leading, spacing: 20) {
+                            Text("PREFERENCES")
+                                .font(.system(size: 14,weight: .semibold))
+                                .foregroundStyle(Color(.systemGray))
+                            HStack {
+                                Image(systemName: "bell")
+                                    .frame(width: 24)
+                                Text("Notifications")
+                            }
+                            HStack {
+                                Image(systemName: "lock")
+                                    .frame(width: 24)
+                                Text("Privacy")
+                            }
                         }
-                        HStack {
-                            Image(systemName: "questionmark.circle")
-                                .frame(width: 24)
-                            Text("Help Center")
+                        .padding(.horizontal)
+                        
+                        DividerView(width: proxy.size.width)
+                        
+                        VStack(alignment: .leading, spacing: 20) {
+                            Text("SUPPORT")
+                                .font(.system(size: 14,weight: .semibold))
+                                .foregroundStyle(Color(.systemGray))
+                            HStack {
+                                Image(systemName: "gearshape")
+                                    .frame(width: 24)
+                                Text("Settings")
+                            }
+                            HStack {
+                                Image(systemName: "shield.slash")
+                                    .frame(width: 24)
+                                Text("Blocked Users")
+                            }
+                            HStack {
+                                Image(systemName: "questionmark.circle")
+                                    .frame(width: 24)
+                                Text("Help Center")
+                            }
+                            HStack {
+                                Image(systemName: "arrowshape.turn.up.right")
+                                    .frame(width: 24)
+                                Text("Send Feedback")
+                            }
+                            HStack {
+                                Image(systemName: "text.page")
+                                    .frame(width: 24)
+                                Text("Legal")
+                            }
                         }
-                        HStack {
-                            Image(systemName: "rectangle.portrait.and.arrow.right")
-                                .frame(width: 24)
-                            Text("Sign Out")
+                        .padding(.horizontal)
+                        
+                        DividerView(width: proxy.size.width)
+                        
+                        VStack(alignment: .leading, spacing: 20) {
+                            Text("ACCOUNT")
+                                .font(.system(size: 14,weight: .semibold))
+                                .foregroundStyle(Color(.systemGray))
+                            HStack {
+                                Image(systemName: "rectangle.portrait.and.arrow.right")
+                                    .frame(width: 24)
+                                Text("Logout")
+                            }
+                            .font(.system(size: 17,weight: .semibold))
+                            HStack {
+                                Image(systemName: "trash")
+                                    .frame(width: 24)
+                                Text("Delete Account")
+                            }
+                            .foregroundColor(.red)
                         }
+                        .padding(.horizontal)
                     }
-                    .foregroundStyle(Color(ghoodPink))
+                    .foregroundStyle(Color(.black))
                 }
                 .frame(maxWidth: .infinity, alignment: .leading)
-                .padding(.horizontal)
             }
         }
         .scrollIndicators(.hidden)

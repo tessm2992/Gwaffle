@@ -22,7 +22,7 @@ struct ThreadCommentCell: View {
         VStack(alignment: .leading, spacing: 4) {
             HStack(alignment: .top, spacing: 8) {
                 NavigationLink {
-                    ProfileView(showBackButton: true)
+                    ProfileVisitorView(showBackButton: true, showNickname: false)
                         .navigationBarBackButtonHidden()
                 } label: {
                     Image(viewModel.threadcomments[index].owner?.profileImageName ?? "")
@@ -34,7 +34,7 @@ struct ThreadCommentCell: View {
                 VStack(alignment: .leading) {
                     VStack(alignment: .leading,spacing: 4) {
                         NavigationLink {
-                            ProfileView(showBackButton: true)
+                            ProfileVisitorView(showBackButton: true, showNickname: false)
                                 .navigationBarBackButtonHidden()
                         } label: {
                             Text(viewModel.threadcomments[index].owner?.userName ?? "")
