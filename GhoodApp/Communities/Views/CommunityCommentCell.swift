@@ -30,9 +30,9 @@ struct CommunityCommentCell: View {
                             ProfileVisitorView(showBackButton: true, showNickname: true)
                                 .navigationBarBackButtonHidden()
                         } label: {
-                            Text("tessm345")
+                            Text("Tess M")
                                 .font(.system(size: 13,weight: .semibold))
-                                .foregroundStyle(ghoodPink.opacity(0.7))
+                                .foregroundStyle(Color(.black))
                         }
                         Text("This is the text for a coment. It can vary in size depending on how long the comment is.")
                             .font(.system(size: 12))

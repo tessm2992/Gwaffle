@@ -32,9 +32,9 @@ struct DetailedCommunityView: View {
                             ProfileVisitorView(showBackButton: true, showNickname: true)
                                 .navigationBarBackButtonHidden()
                         } label: {
-                            Text("tessm345")
+                            Text("Tess M")
                                 .font(.system(size: 13,weight: .semibold))
-                                .foregroundStyle(ghoodPink.opacity(0.7))
+                                .foregroundStyle(Color(.black))
                         }
                         Text("12h")
                             .font(.system(size: 13))
@@ -54,9 +54,9 @@ struct DetailedCommunityView: View {
                         .padding(.horizontal)
                         .padding(.top, 0)
                     HStack(spacing: 4) {
-                        Image(systemName: "hand.thumbsup.circle.fill")
+                        Image(systemName: "heart")
                             .resizable()
-                            .frame(width: 18,height: 18)
+                            .frame(width: 20,height: 17)
                             .foregroundStyle(Color(ghoodPink))
                         Text("24")
                             .foregroundStyle(Color(ghoodPink))
@@ -77,14 +77,14 @@ struct DetailedCommunityView: View {
             .toolbar{
                 ToolbarItem(placement: .topBarLeading) {
                     Button(action: {dismiss()}, label: {
-                        Image(systemName: "arrow.left")
-                            .foregroundStyle(Color(ghoodPink))
+                        Image(systemName: "chevron.left")
+                            .foregroundStyle(Color(.black))
                     })
                 }
-                ToolbarItem(placement: .topBarLeading) {
+                ToolbarItem(placement: .principal) {
                     Button(action: {dismiss()}, label: {
                         Text("Tinx's Army")
-                            .foregroundStyle(Color(ghoodPink))
+                            .foregroundStyle(Color(.black))
                             .fontWeight(.bold)
                     })
                 }
