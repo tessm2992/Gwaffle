@@ -46,10 +46,7 @@ struct ThreadPostView: View {
                                     .foregroundStyle(Color(ghoodPink))
                             }
                             Spacer()
-                            Text("...")
-                                .font(.system(size: 27))
-                                .foregroundStyle(Color(.systemGray))
-                                .alignmentGuide(.top) { d in d[.top] }
+                
                         }
                         HStack {
                             Text("12h")

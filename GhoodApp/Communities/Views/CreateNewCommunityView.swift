@@ -18,7 +18,7 @@ struct CreateNewCommunityView: View {
     var body: some View {
         NavigationStack {
             VStack(alignment: .leading, spacing: 40) {
-                VStack {
+                VStack(alignment: .leading) {
                     // Group Name TextField
                     TextField("Name your community", text: $groupName)
                         .padding(.horizontal, 12)
@@ -26,12 +26,24 @@ struct CreateNewCommunityView: View {
                         .font(.system(size: 25, weight: .semibold))
                         .foregroundStyle(Color(.black))
                     
-                    // Group Description TextField
-                    TextField("Describe your community...", text: $groupDescription)
-                        .padding(.horizontal, 12)
-                        .padding(.vertical, 20)
-                        .font(.system(size: 20))
-                        .foregroundStyle(Color(.black))
+                    // Group Description with TextEditor for wrapping
+                    ZStack(alignment: .topLeading) {
+                        TextEditor(text: $groupDescription)
+                            .padding(.horizontal, 8)
+                            .font(.system(size: 20))
+                            .foregroundStyle(Color(.black))
+                            .frame(minHeight: 80)
+                            .scrollContentBackground(.hidden)
+                        
+                        if groupDescription.isEmpty {
+                            Text("Describe your community...")
+                                .padding(.horizontal, 12)
+                                .padding(.vertical, 8)
+                                .font(.system(size: 20))
+                                .foregroundColor(.gray)
+                                .allowsHitTesting(false)
+                        }
+                    }
                 }
                 
                 // Tags NavigationLink
@@ -60,7 +72,7 @@ struct CreateNewCommunityView: View {
                 }
                 
                 // Toggles for Private and Hide options
-                VStack(spacing: 30) {
+                VStack(alignment: .leading, spacing: 30) {
                     Toggle(isOn: $isPrivateOn) {
                         VStack(alignment: .leading) {
                             Text("Private group")
@@ -71,6 +83,7 @@ struct CreateNewCommunityView: View {
                         }
                     }
                     .toggleStyle(SwitchToggleStyle(tint: ghoodPink))
+                    
                     Toggle(isOn: $isHideOn) {
                         VStack(alignment: .leading) {
                             Text("Hide group")
@@ -80,6 +93,7 @@ struct CreateNewCommunityView: View {
                                 .foregroundStyle(Color(.systemGray))
                         }
                     }
+                    .toggleStyle(SwitchToggleStyle(tint: ghoodPink))
                 }
                 Spacer()
             }
