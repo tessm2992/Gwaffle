@@ -35,7 +35,7 @@ struct CommunityCommentCell: View {
                                 .foregroundStyle(Color(.black))
                         }
                         Text("This is the text for a coment. It can vary in size depending on how long the comment is.")
-                            .font(.system(size: 12))
+                            .font(.system(size: 16))
                             .foregroundStyle(Color(.black))
                             .padding(.top, 0)
                     }

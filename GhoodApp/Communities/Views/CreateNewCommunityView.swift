@@ -35,20 +35,28 @@ struct CreateNewCommunityView: View {
                 }
                 
                 // Tags NavigationLink
-                NavigationLink {
-                    AddCommunityTagsView()
-                        .navigationBarBackButtonHidden()
-                } label: {
-                    HStack(spacing: 4) {
-                        Image(systemName: "tag.fill")
-                        Text("Tags")
+                VStack(alignment: .leading, spacing: 10) {
+                    Text("COMMUNITY TYPE")
+                        .font(.headline)
+                        .fontWeight(.semibold)
+                        .foregroundStyle(Color(.systemGray))
+                    
+                    // Tags NavigationLink
+                    NavigationLink {
+                        AddCommunityTagsView()
+                            .navigationBarBackButtonHidden()
+                    } label: {
+                        HStack(spacing: 4) {
+                            Image(systemName: "tag.fill")
+                            Text("Tags")
+                        }
+                        .font(.headline)
+                        .fontWeight(.semibold)
+                        .foregroundStyle(.black)
+                        .frame(width: 90, height: 35)
+                        .background(Color(.systemGray5))
+                        .clipShape(RoundedRectangle(cornerRadius: 30))
                     }
-                    .font(.headline)
-                    .fontWeight(.semibold)
-                    .foregroundStyle(.black)
-                    .frame(width: 90, height: 35)
-                    .background(Color(.systemGray5))
-                    .clipShape(RoundedRectangle(cornerRadius: 30))
                 }
                 
                 // Toggles for Private and Hide options

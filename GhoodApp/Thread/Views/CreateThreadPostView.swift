@@ -27,6 +27,7 @@ struct CreateThreadPostView: View {
                         .frame(width: 40,height: 40)
                         .clipShape(Circle())
                     Text("tessm345")
+                        .foregroundStyle(.black)
                     
                 }
                 .padding()
@@ -45,13 +46,13 @@ struct CreateThreadPostView: View {
                                 .font(.system(size: 14))
                             }
                             .fontWeight(.semibold)
-                            .foregroundStyle(ghoodPink)
+                            .foregroundStyle(.black)
                             .frame(width: 180, height: 35)
-                            .background(Color(ghoodPink.opacity(0.06)))
+                            .background(Color(.systemGray6))
                             .clipShape(RoundedRectangle(cornerRadius: 30))
                     }
                     TextField("Title",text: $mindText)
-                        .font(.system(size: 20,weight: .semibold))
+                        .font(.system(size: 25,weight: .semibold))
                     NavigationLink{
                         AddTagsView()
                             .navigationBarBackButtonHidden()
@@ -67,6 +68,7 @@ struct CreateThreadPostView: View {
                                 }
                     }
                     TextField("Sub Title (optional)",text: $mindText)
+                        .font(.system(size: 20,weight: .semibold))
                 }
                 .padding(.horizontal)
                 

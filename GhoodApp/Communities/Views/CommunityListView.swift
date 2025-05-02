@@ -60,10 +60,10 @@ struct CommunityListView: View {
                             HStack {
                                 Text("Explore Communities")
                                     .font(.system(size: 20,weight: .semibold))
-                                    .foregroundStyle(Color(ghoodPink))
+                                    .foregroundStyle(Color(.black))
                                 Spacer()
                                 Image(systemName: "chevron.right")
-                                    .foregroundStyle(Color(ghoodPink))
+                                    .foregroundStyle(Color(.black))
                                     .fontWeight(.bold)
                             }
                             .padding(.horizontal)

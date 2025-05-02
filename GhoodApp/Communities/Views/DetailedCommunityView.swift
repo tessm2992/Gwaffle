@@ -43,16 +43,11 @@ struct DetailedCommunityView: View {
                     }
                     .padding(.horizontal)
                     .padding(.vertical,2)
-                    Text("This is the header of the posts. It can be one or two sentences")
-                        .font(.system(size: 14,weight: .semibold))
+                    Text("This is the body of the posts. It can a lot of sentences so I'm typing this as a placeholder. I can ask questions or just post something related to the community page topic")
+                        .font(.system(size: 16))
                         .foregroundStyle(Color(.black))
                         .padding(.horizontal)
                         .padding(.bottom, 0)
-                    Text("This is a placeholder subtitle thread. It's where more context from the header is placed. This is optional and can be longer than the header comment")
-                        .font(.system(size: 12))
-                        .foregroundStyle(Color(.black))
-                        .padding(.horizontal)
-                        .padding(.top, 0)
                     HStack(spacing: 4) {
                         Image(systemName: "heart")
                             .resizable()

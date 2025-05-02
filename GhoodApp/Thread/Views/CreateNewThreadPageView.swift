@@ -15,65 +15,103 @@ struct CreateNewThreadPageView: View {
     @State private var isPrivateOn: Bool = false
     @State private var isHideOn: Bool = false
     @State private var selectedImage: UIImage? = nil // Image state for uploaded image
+    @State private var showImagePicker: Bool = false // To trigger ImagePicker
     
     var body: some View {
         NavigationStack {
             VStack(alignment: .leading, spacing: 30) {
-                VStack {
-                    // Rounded rectangle image (or placeholder)
-                    ZStack {
-                        Rectangle()
-                            .foregroundColor(.gray.opacity(0.3))
-                            .frame(width: 100, height: 100)
-                            .clipShape(RoundedRectangle(cornerRadius: 20))
-                        if let selectedImage = selectedImage {
-                            Image(uiImage: selectedImage)
-                                .resizable()
-                                .scaledToFill()
-                                .frame(width: 120, height: 120)
-                                .clipShape(RoundedRectangle(cornerRadius: 20))
-                                .clipped()
-                        } else {
-                            Image(systemName: "photo.fill")
-                                .resizable()
-                                .scaledToFit()
-                                .frame(width: 60, height: 60)
-                                .foregroundColor(.gray)
+                // Image upload section
+                HStack {
+                    Button {
+                        showImagePicker = true
+                    } label: {
+                        ZStack {
+                            if let selectedImage = selectedImage {
+                                Image(uiImage: selectedImage)
+                                    .resizable()
+                                    .scaledToFill()
+                                    .frame(width: 120, height: 120)
+                                    .clipShape(RoundedRectangle(cornerRadius: 25))
+                                    .clipped()
+                            } else {
+                                Image("uploadplaceholder")
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(width: 120, height: 120)
+                                    .clipShape(RoundedRectangle(cornerRadius: 25))
+                            }
+                            
+                            // Pencil icon with improved shadow
+                            ZStack {
+                                Circle()
+                                    .frame(width: 40, height: 40)
+                                    .foregroundColor(.white)
+                                    .shadow(color: .black.opacity(0.3), radius: 3, x: 0, y: 1)
+                                    .offset(x: 48, y: 45)
+                                
+                                Image(systemName: "square.and.pencil")
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(width: 20, height: 20)
+                                    .foregroundColor(.black)
+                                    .offset(x: 49, y: 45)
+                            }
                         }
                     }
-                    
-                    // Upload button
-                    Button(action: {
-                        // Add image picking logic here
-                        // For now, we'll simulate an image pick
-                        self.selectedImage = UIImage(named: "exampleImage") // Replace with actual image picker
-                    }) {
-                        Text("Upload Image")
-                            .font(.subheadline)
-                            .fontWeight(.semibold)
-                            .foregroundColor(.white)
-                            .frame(width: 120, height: 35)
-                            .background(ghoodPink)
-                            .clipShape(RoundedRectangle(cornerRadius: 30))
+                    Spacer()
+                }
+                .sheet(isPresented: $showImagePicker) {
+                    ImagePicker(selectedImage: $selectedImage)
+                }
+                
+                // Group Name TextField - improved alignment
+                VStack(alignment: .leading, spacing: 8) {
+                    HStack(spacing: 0) {
+                        Text("g/")
+                            .font(.system(size: 25, weight: .semibold))
+                        TextField("threadname", text: $groupName)
+                            .padding(.vertical, 5)
+                            .font(.system(size: 25, weight: .semibold))
+                            .textInputAutocapitalization(.never)
+                            .foregroundStyle(Color(.black))
                     }
                 }
                 
-                // Group Name TextField
-                TextField("Thread title", text: $groupName)
-                    .padding(.horizontal, 12)
-                    .padding(.vertical, 5)
-                    .font(.system(size: 25, weight: .semibold))
-                    .foregroundStyle(Color(.black))
-                
-                // Group Description TextField
-                TextField("Describe the thread...", text: $groupDescription)
-                    .padding(.horizontal, 12)
-                    .padding(.vertical, 5)
-                    .font(.system(size: 20))
-                    .foregroundStyle(Color(.black))
+                // Group Description TextField with character limit and text wrapping
+                VStack(alignment: .leading, spacing: 5) {
+                    ZStack(alignment: .topLeading) {
+                        TextEditor(text: $groupDescription)
+                            .frame(minHeight: 100)
+                            .font(.system(size: 20))
+                            .foregroundStyle(Color(.black))
+                            .background(Color.clear)
+                            .lineLimit(nil)
+                            .onChange(of: groupDescription) { newValue in
+                                if newValue.count > 200 {
+                                    groupDescription = String(newValue.prefix(250))
+                                }
+                            }
+                        
+                        if groupDescription.isEmpty {
+                            Text("Describe the thread...")
+                                .font(.system(size: 20))
+                                .foregroundColor(.gray.opacity(0.7))
+                                .padding(.top, 8)
+                                .padding(.leading, 5)
+                        }
+                    }
+                    
+                    Text("\(groupDescription.count)/200")
+                        .font(.caption)
+                        .foregroundColor(groupDescription.count >= 200 ? .red : .gray)
+                        .frame(maxWidth: .infinity, alignment: .trailing)
+                }
                 
                 VStack(alignment: .leading, spacing: 10) {
                     Text("THREAD CATEGORY")
+                        .font(.headline)
+                        .fontWeight(.semibold)
+                        .foregroundStyle(Color(.systemGray))
                     
                     // Tags NavigationLink
                     NavigationLink {
@@ -95,6 +133,9 @@ struct CreateNewThreadPageView: View {
                 
                 VStack(alignment: .leading, spacing: 10) {
                     Text("THREAD TAGS")
+                        .font(.headline)
+                        .fontWeight(.semibold)
+                        .foregroundStyle(Color(.systemGray))
                     
                     // Tags NavigationLink
                     NavigationLink {
@@ -145,6 +186,49 @@ struct CreateNewThreadPageView: View {
         }
     }
 }
+
+// Add this ImagePicker struct to handle the photo library selection
+struct ImagePicker: UIViewControllerRepresentable {
+    @Binding var selectedImage: UIImage?
+    @Environment(\.presentationMode) private var presentationMode
+    
+    func makeUIViewController(context: Context) -> UIImagePickerController {
+        let picker = UIImagePickerController()
+        picker.delegate = context.coordinator
+        picker.sourceType = .photoLibrary
+        picker.allowsEditing = true
+        return picker
+    }
+    
+    func updateUIViewController(_ uiViewController: UIImagePickerController, context: Context) {}
+    
+    func makeCoordinator() -> Coordinator {
+        Coordinator(self)
+    }
+    
+    class Coordinator: NSObject, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+        let parent: ImagePicker
+        
+        init(_ parent: ImagePicker) {
+            self.parent = parent
+        }
+        
+        func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
+            if let editedImage = info[.editedImage] as? UIImage {
+                parent.selectedImage = editedImage
+            } else if let originalImage = info[.originalImage] as? UIImage {
+                parent.selectedImage = originalImage
+            }
+            
+            parent.presentationMode.wrappedValue.dismiss()
+        }
+        
+        func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+            parent.presentationMode.wrappedValue.dismiss()
+        }
+    }
+}
+
 
 
 #Preview {

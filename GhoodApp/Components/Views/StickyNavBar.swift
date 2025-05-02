@@ -20,6 +20,9 @@ struct StickyNavBar: View {
             HStack {
                 Button(action: {dismiss()}, label: {
                     Image(systemName: "chevron.left")
+                        .resizable()
+                        .scaledToFill()
+                        .frame(width: 10, height: 10)
                         .foregroundStyle(showHeaderInfo ? .black : .black)
                 })
 

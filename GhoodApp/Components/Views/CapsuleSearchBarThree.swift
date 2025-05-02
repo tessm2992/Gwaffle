@@ -17,7 +17,7 @@ struct CapsuleSearchBarThree: View {
             Image(systemName: "magnifyingglass")
                 .foregroundColor(ghoodPink.opacity(0.7))
 
-            TextField("Search for a username", text: $searchText)
+            TextField("Search for a user", text: $searchText)
                 .foregroundStyle(Color(.black))
                 .font(.system(size: 14))
         }

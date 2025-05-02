@@ -9,6 +9,8 @@ import SwiftUI
 
 struct SettingsMenuView: View {
     @Environment(\.dismiss) private var dismiss
+    @State private var showFeedbackSheet = false
+    @State private var feedbackText = ""
     
     var body: some View {
         NavigationStack {
@@ -53,10 +55,15 @@ struct SettingsMenuView: View {
                                     .frame(width: 24)
                                 Text("Help Center")
                             }
-                            HStack {
-                                Image(systemName: "arrowshape.turn.up.right")
-                                    .frame(width: 24)
-                                Text("Send Feedback")
+                            Button {
+                                showFeedbackSheet = true
+                            } label: {
+                                HStack {
+                                    Image(systemName: "arrowshape.turn.up.right")
+                                        .frame(width: 24)
+                                    Text("Send Feedback")
+                                }
+                                .foregroundStyle(Color(.black))
                             }
                             HStack {
                                 Image(systemName: "text.page")
@@ -99,6 +106,11 @@ struct SettingsMenuView: View {
                         .foregroundStyle(Color(.black))
                 })
             }
+        }
+        .sheet(isPresented: $showFeedbackSheet) {
+            FeedbackSheetView(feedbackText: $feedbackText, isPresented: $showFeedbackSheet)
+                .presentationDetents([.medium, .height(300)])
+                .presentationDragIndicator(.visible)
         }
     }
 }

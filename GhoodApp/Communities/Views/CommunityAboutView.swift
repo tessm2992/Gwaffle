@@ -98,7 +98,8 @@ struct CommunityAboutView: View {
                                 .padding(.bottom, 3)
                             ForEach(0 ..< 2) { index in
                                 NavigationLink {
-                                    ProfileVisitorView(showBackButton: false, showNickname: true)
+                                    ProfileVisitorView(showBackButton: true, showNickname: true)
+                                        .navigationBarBackButtonHidden()
                                 } label: {
                                     HStack {
                                         Image("avatar")

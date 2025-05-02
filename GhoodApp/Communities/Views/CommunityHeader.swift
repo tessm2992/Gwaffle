@@ -49,7 +49,13 @@ struct CommunityHeader: View {
                 JoinButton()
             }
             .padding(.horizontal)
-            CommunityAvatarsView()
+            NavigationLink {
+                MembersMainView()
+                    .navigationBarBackButtonHidden()
+            } label: {
+                CommunityAvatarsView()
+            }
+            
         }
     }
     init(groupName: Binding<String> = .constant("Tinx's Army")) {

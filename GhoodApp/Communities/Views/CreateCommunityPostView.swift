@@ -26,7 +26,7 @@ struct CreateCommunityPostView: View {
                         .scaledToFill()
                         .frame(width: 40,height: 40)
                         .clipShape(Circle())
-                    Text("tessm345")
+                    Text("Tess M")
                     
                 }
                 .padding()
