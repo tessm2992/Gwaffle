@@ -74,7 +74,7 @@ struct FeedView: View {
                     }
                     ToolbarItem(placement: .topBarLeading) {
                         Text("Threads")
-                            .font(.system(size: 25,weight: .bold))
+                            .font(.custom("Anton-Regular", size: 28))
                             .foregroundStyle(Color(.black))
                     }
                     ToolbarItem(placement: .topBarTrailing) {

@@ -6,6 +6,10 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		61056B282DC547BA0027FC4C /* Anton-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 61056B272DC547BA0027FC4C /* Anton-Regular.ttf */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		610158232DAFD6130075B9AA /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -27,11 +31,25 @@
 		610158142DAFD60C0075B9AA /* GhoodApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GhoodApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		610158222DAFD6130075B9AA /* GhoodAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GhoodAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6101582C2DAFD6130075B9AA /* GhoodAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GhoodAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		61056B272DC547BA0027FC4C /* Anton-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Anton-Regular.ttf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		61056B2A2DC549720027FC4C /* Exceptions for "GhoodApp" folder in "GhoodApp" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 610158132DAFD60C0075B9AA /* GhoodApp */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		610158162DAFD60C0075B9AA /* GhoodApp */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				61056B2A2DC549720027FC4C /* Exceptions for "GhoodApp" folder in "GhoodApp" target */,
+			);
 			path = GhoodApp;
 			sourceTree = "<group>";
 		};
@@ -79,6 +97,7 @@
 				610158252DAFD6130075B9AA /* GhoodAppTests */,
 				6101582F2DAFD6130075B9AA /* GhoodAppUITests */,
 				610158152DAFD60C0075B9AA /* Products */,
+				61056B272DC547BA0027FC4C /* Anton-Regular.ttf */,
 			);
 			sourceTree = "<group>";
 		};
@@ -212,6 +231,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				61056B282DC547BA0027FC4C /* Anton-Regular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -393,6 +413,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = GhoodApp/Info.plist;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -430,6 +451,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = GhoodApp/Info.plist;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;

@@ -56,7 +56,7 @@ struct InboxMainView: View {
                 ToolbarItem(placement: .topBarLeading) {
                     HStack {
                         Text("Inbox")
-                            .font(.system(size: 25,weight: .bold))
+                            .font(.custom("Anton-Regular", size: 28))
                             .foregroundStyle(Color(.black))
                             .padding(.bottom,10)
                             .padding(.horizontal)

@@ -55,7 +55,7 @@ struct CreateNewCommunityView: View {
                     
                     // Tags NavigationLink
                     NavigationLink {
-                        AddCommunityTagsView()
+                        TagSelectorView()
                             .navigationBarBackButtonHidden()
                     } label: {
                         HStack(spacing: 4) {

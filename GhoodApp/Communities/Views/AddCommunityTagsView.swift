@@ -17,6 +17,7 @@ struct AddCommunityTagsView: View {
         NavigationStack {
             VStack(alignment: .leading, spacing: 40) {
                 Text("Hi")
+                    .font(.custom("Anton-Regular", size: 50))
             }
             .padding(.horizontal)
             .toolbar{
