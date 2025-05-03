@@ -14,7 +14,7 @@ class TagSelectorViewModel: ObservableObject {
         Tag(id: 1, name: "Local"),
         Tag(id: 2, name: "Social"),
         Tag(id: 3, name: "Support"),
-        Tag(id: 4, name: "Interest-based"),
+        Tag(id: 4, name: "Interests"),
         Tag(id: 5, name: "Professional"),
         Tag(id: 6, name: "Activism"),
         Tag(id: 7, name: "Creator Community")

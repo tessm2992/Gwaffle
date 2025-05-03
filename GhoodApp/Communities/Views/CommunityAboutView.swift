@@ -16,20 +16,20 @@ struct CommunityAboutView: View {
         NavigationStack {
             GeometryReader { proxy in
                 ScrollView {
-                    VStack(alignment: .leading) {
+                    VStack(alignment: .leading, spacing: 15) {
                         VStack(alignment: .leading) {
                             Text("About")
-                                .font(.system(size: 20, weight: .semibold))
+                                .font(.system(size: 23, weight: .semibold))
                                 .foregroundStyle(Color(.black))
-                                .padding(.bottom, 4)
+                                .padding(.bottom, 3)
                             Text("This is the community description. Any background of who the creator is or what the purpose of the group is will be featured here.")
                                 .font(.system(size: 16))
                                 .foregroundStyle(Color(.black))
-                                .padding(.bottom,5)
+                                .padding(.bottom, 5)
                             NavigationLink{
                                 CommunityExploreNewView()
                                     .navigationBarBackButtonHidden()
-                                } label: {
+                            } label: {
                                 Text("Creator Community")
                                     .font(.system(size: 12, weight: .semibold))
                                     .foregroundColor(.black)
@@ -38,8 +38,7 @@ struct CommunityAboutView: View {
                                     .background(Color(.systemGray6))
                                     .cornerRadius(10)
                             }
-                            }
-                            .padding(.bottom, 5)
+                            .padding(.vertical, 8)
                             HStack(spacing: 10) {
                                 Image(systemName: "lock.fill")
                                     .resizable()
@@ -70,10 +69,11 @@ struct CommunityAboutView: View {
                                 }
                             }
                             .padding(.bottom)
+                        }
                         
                         VStack(alignment: .leading) {
                             Text("Rules")
-                                .font(.system(size: 20, weight: .semibold))
+                                .font(.system(size: 23, weight: .semibold))
                                 .foregroundStyle(Color(.black))
                                 .padding(.bottom, 3)
                             Text("1. No promotions or spam")
@@ -93,7 +93,7 @@ struct CommunityAboutView: View {
                         
                         VStack(alignment: .leading) {
                             Text("Admins")
-                                .font(.system(size: 20, weight: .semibold))
+                                .font(.system(size: 23, weight: .semibold))
                                 .foregroundStyle(Color(.black))
                                 .padding(.bottom, 3)
                             ForEach(0 ..< 2) { index in
@@ -107,8 +107,8 @@ struct CommunityAboutView: View {
                                             .scaledToFill()
                                             .frame(width: 20,height: 20)
                                             .clipShape(Circle())
-                                        Text("tessm345")
-                                            .font(.system(size: 15))
+                                        Text("Tess M")
+                                            .font(.system(size: 16))
                                             .foregroundStyle(Color(.black))
                                     }
                                 }

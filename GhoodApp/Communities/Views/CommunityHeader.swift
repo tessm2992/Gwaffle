@@ -37,10 +37,14 @@ struct CommunityHeader: View {
                                 .frame(width: 9, height: 9)
                             Text("Private group")
                                 .font(.system(size: 12))
-                            Text("19.7k")
-                                .font(.system(size: 12,weight: .semibold))
-                            Text("members")
-                                .font(.system(size: 12))
+                            Circle()
+                                .frame(width: 3, height: 3)
+                            HStack(spacing: 4) {
+                                Text("19.7k")
+                                    .font(.system(size: 12,weight: .semibold))
+                                Text("members")
+                                    .font(.system(size: 12))
+                            }
                         }
                         .foregroundStyle(Color(.systemGray))
                     }

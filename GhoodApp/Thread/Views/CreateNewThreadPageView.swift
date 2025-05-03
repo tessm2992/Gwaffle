@@ -81,7 +81,7 @@ struct CreateNewThreadPageView: View {
                 VStack(alignment: .leading, spacing: 5) {
                     ZStack(alignment: .topLeading) {
                         TextEditor(text: $groupDescription)
-                            .frame(minHeight: 100)
+                            .frame(minHeight: 60)
                             .font(.system(size: 20))
                             .foregroundStyle(Color(.black))
                             .background(Color.clear)
@@ -109,30 +109,6 @@ struct CreateNewThreadPageView: View {
                 
                 VStack(alignment: .leading, spacing: 10) {
                     Text("THREAD CATEGORY")
-                        .font(.headline)
-                        .fontWeight(.semibold)
-                        .foregroundStyle(Color(.systemGray))
-                    
-                    // Tags NavigationLink
-                    NavigationLink {
-                        AddCommunityTagsView()
-                            .navigationBarBackButtonHidden()
-                    } label: {
-                        HStack(spacing: 4) {
-                            Image(systemName: "tag.fill")
-                            Text("Tags")
-                        }
-                        .font(.headline)
-                        .fontWeight(.semibold)
-                        .foregroundStyle(.black)
-                        .frame(width: 90, height: 35)
-                        .background(Color(.systemGray5))
-                        .clipShape(RoundedRectangle(cornerRadius: 30))
-                    }
-                }
-                
-                VStack(alignment: .leading, spacing: 10) {
-                    Text("THREAD TAGS")
                         .font(.headline)
                         .fontWeight(.semibold)
                         .foregroundStyle(Color(.systemGray))

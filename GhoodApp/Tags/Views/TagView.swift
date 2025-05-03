@@ -22,8 +22,8 @@ struct TagView: TagItemView {
                 .font(.subheadline)
                 .padding(.horizontal, 12)
                 .padding(.vertical, 6)
-                .background(isSelected ? Color.blue : Color.gray.opacity(0.2))
-                .foregroundColor(isSelected ? .white : .primary)
+                .background(isSelected ? Color(.systemGray2) : Color.gray.opacity(0.2))
+                .foregroundColor(isSelected ? .black : .primary)
                 .cornerRadius(16)
         }
     }

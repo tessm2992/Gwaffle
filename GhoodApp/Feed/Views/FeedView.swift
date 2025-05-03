@@ -78,10 +78,8 @@ struct FeedView: View {
                             .foregroundStyle(Color(.black))
                     }
                     ToolbarItem(placement: .topBarTrailing) {
-                        HStack(spacing: 24) {
-                            Image(systemName: "magnifyingglass")
-                                .foregroundStyle(Color(.black))
-                        }
+                        Image(systemName: "magnifyingglass")
+                            .foregroundStyle(Color(.black))
                     }
                 }
                 if showMenu {

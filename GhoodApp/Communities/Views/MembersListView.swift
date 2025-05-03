@@ -12,26 +12,34 @@ struct MembersListView: View {
     
     var body: some View {
         NavigationStack {
-            ScrollView {
-                VStack(alignment: .leading) {
-                    CapsuleSearchBarThree()
-                    ForEach(0 ..< 2) { index in
-                        NavigationLink {
-                            ProfileVisitorView(showBackButton: false, showNickname: true)
-                        } label: {
-                            HStack {
-                                Image("avatar")
-                                    .resizable()
-                                    .scaledToFill()
-                                    .frame(width: 20,height: 20)
-                                    .clipShape(Circle())
-                                Text("tessm345")
-                                    .font(.system(size: 15))
-                                    .foregroundStyle(Color(.black))
+            GeometryReader { proxy in
+                ScrollView {
+                    VStack(alignment: .leading, spacing: 15) {
+                        CapsuleSearchBarThree()
+                            .padding(.top, 15)
+                        VStack(alignment: .leading) {
+                            ForEach(0 ..< 15) { index in
+                                NavigationLink {
+                                    ProfileVisitorView(showBackButton: false, showNickname: true)
+                                        .navigationBarBackButtonHidden()
+                                } label: {
+                                    HStack(spacing: 8) {
+                                        Image("avatar")
+                                            .resizable()
+                                            .scaledToFill()
+                                            .frame(width: 50,height: 50)
+                                            .clipShape(Circle())
+                                        Text("Tess M")
+                                            .font(.system(size: 18))
+                                            .foregroundStyle(Color(.black))
+                                    }
+                                    .padding(.horizontal)
+                                }
+                                DividerThinnestView(width: proxy.size.width)
                             }
+                            .padding(.vertical, 3)
                         }
                     }
-                    .padding(.horizontal)
                 }
             }
         }

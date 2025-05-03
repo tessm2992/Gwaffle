@@ -57,17 +57,17 @@ struct CreateThreadPostView: View {
                         AddTagsView()
                             .navigationBarBackButtonHidden()
                         } label: {
-                            Text("Add tags")
+                            Text("Add tags (optional)")
                                 .font(.headline)
                                 .fontWeight(.semibold)
                                 .foregroundStyle(ghoodPink)
-                                .frame(width: 100, height: 35)
+                                .frame(width: 180, height: 35)
                                 .overlay{
                                     RoundedRectangle(cornerRadius: 30)
                                         .stroke(ghoodPink,lineWidth: 1)
                                 }
                     }
-                    TextField("Sub Title (optional)",text: $mindText)
+                    TextField("Sub title (optional)",text: $mindText)
                         .font(.system(size: 20,weight: .semibold))
                 }
                 .padding(.horizontal)

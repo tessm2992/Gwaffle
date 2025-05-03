@@ -27,8 +27,8 @@ struct SelectedTagView: TagItemView {
         }
         .padding(.horizontal, 12)
         .padding(.vertical, 6)
-        .background(Color.blue.opacity(0.1))
-        .foregroundColor(.blue)
+        .background(Color.pink.opacity(0.1))
+        .foregroundColor(.pink)
         .cornerRadius(16)
     }
 }

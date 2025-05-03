@@ -8,8 +8,27 @@
 import SwiftUI
 
 struct SelectThreadView: View {
+    @Environment(\.dismiss) private var dismiss
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        ScrollView {
+            CapsuleSearchBarTwo()
+            ForEach(0..<4) { _ in
+                SelectThreadSearchView()
+                    .padding(.vertical, 5)
+                DividerThinnestView(width: UIScreen.main.bounds.width)
+            }
+        }
+        .toolbar {
+            ToolbarItem(placement: .topBarLeading) {
+                Button(action: {
+                    dismiss()
+                }, label: {
+                    Image(systemName: "xmark")
+                        .foregroundColor(.black)
+                })
+            }
+        }
     }
 }
 

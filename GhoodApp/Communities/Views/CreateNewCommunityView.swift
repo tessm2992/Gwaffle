@@ -15,6 +15,16 @@ struct CreateNewCommunityView: View {
     @State private var isPrivateOn: Bool = false
     @State private var isHideOn: Bool = false
     
+    // Add character limit constant
+    private let maxDescriptionLength = 400
+    
+    // Add function to limit text input
+    private func limitText() {
+        if groupDescription.count > maxDescriptionLength {
+            groupDescription = String(groupDescription.prefix(maxDescriptionLength))
+        }
+    }
+    
     var body: some View {
         NavigationStack {
             VStack(alignment: .leading, spacing: 40) {
@@ -34,6 +44,9 @@ struct CreateNewCommunityView: View {
                             .foregroundStyle(Color(.black))
                             .frame(minHeight: 80)
                             .scrollContentBackground(.hidden)
+                            .onChange(of: groupDescription) { newValue in
+                                limitText()
+                            }
                         
                         if groupDescription.isEmpty {
                             Text("Describe your community...")
@@ -42,6 +55,19 @@ struct CreateNewCommunityView: View {
                                 .font(.system(size: 20))
                                 .foregroundColor(.gray)
                                 .allowsHitTesting(false)
+                        }
+                        
+                        // Character count display - positioned at bottom right
+                        VStack {
+                            Spacer()
+                            HStack {
+                                Spacer()
+                                Text("\(groupDescription.count)/\(maxDescriptionLength)")
+                                    .font(.caption)
+                                    .foregroundColor(groupDescription.count >= 360 ? ghoodPink : Color(.systemGray))
+                                    .padding(.bottom, 4)
+                                    .padding(.trailing, 8)
+                            }
                         }
                     }
                 }

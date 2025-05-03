@@ -18,13 +18,16 @@ struct StickyNavBar: View {
     var body: some View {
         VStack(spacing: 0) {
             HStack {
-                Button(action: {dismiss()}, label: {
+                // Make sure the button has a proper hit area
+                Button(action: {dismiss()}) {
                     Image(systemName: "chevron.left")
                         .resizable()
                         .scaledToFill()
                         .frame(width: 10, height: 10)
-                        .foregroundStyle(showHeaderInfo ? .black : .black)
-                })
+                        .foregroundStyle(.black)
+                        .padding(10) // Add padding to increase tap area
+                }
+                .contentShape(Rectangle()) // Expand touch area
 
                 Spacer()
 
@@ -48,13 +51,16 @@ struct StickyNavBar: View {
 
                 Button(action: {}) {
                     Image(systemName: "magnifyingglass")
-                        .foregroundStyle(showHeaderInfo ? .black : .black)
+                        .foregroundStyle(.black)
+                        .padding(10) // Add padding for consistency
                 }
+                .contentShape(Rectangle()) // Expand touch area
             }
             .padding(.horizontal)
             .frame(height: 44)
             .padding(.top, topInset)
-            .background(showHeaderInfo ? Color.white : Color.clear)
+            // Add semi-transparent background always to ensure button interaction works
+            .background(showHeaderInfo ? Color.white : Color.white.opacity(0.01))
             .shadow(color: showHeaderInfo ? Color.black.opacity(0.1) : Color.clear, radius: 4, y: 2)
         }
     }
