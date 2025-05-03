@@ -1,13 +1,13 @@
 //
-//  ThreadCommentCell.swift
+//  ThreadReplyCell.swift
 //  GhoodApp
 //
-//  Created by Tess Munsie on 4/18/25.
+//  Created by Tess Munsie on 5/3/25.
 //
 
 import SwiftUI
 
-struct ThreadCommentCell: View {
+struct ThreadReplyCell: View {
     let ghoodPink: Color = Color(red: 255/255, green: 41/255, blue: 91/255)
     
     @StateObject private var viewModel = FeedViewModel()
@@ -21,6 +21,7 @@ struct ThreadCommentCell: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 4) {
             HStack(alignment: .top, spacing: 8) {
+                Spacer(minLength: 30)
                 NavigationLink {
                     ProfileVisitorView(showBackButton: true, showNickname: false)
                         .navigationBarBackButtonHidden()
@@ -28,17 +29,30 @@ struct ThreadCommentCell: View {
                     Image(viewModel.threadcomments[index].owner?.profileImageName ?? "")
                         .resizable()
                         .scaledToFill()
-                        .frame(width: 35,height: 35)
+                        .frame(width: 25,height: 25)
                         .clipShape(Circle())
                 }
                 VStack(alignment: .leading) {
                     VStack(alignment: .leading,spacing: 4) {
-                        NavigationLink {
-                            ProfileVisitorView(showBackButton: true, showNickname: false)
-                                .navigationBarBackButtonHidden()
-                        } label: {
-                            Text(viewModel.threadcomments[index].owner?.userName ?? "")
-                                .font(.system(size: 13,weight: .semibold))
+                        HStack {
+                            NavigationLink {
+                                ProfileVisitorView(showBackButton: true, showNickname: false)
+                                    .navigationBarBackButtonHidden()
+                            } label: {
+                                Text(viewModel.threadcomments[index].owner?.userName ?? "")
+                                    .font(.system(size: 13,weight: .semibold))
+                            }
+                            Image(systemName: "arrowtriangle.right.fill")
+                                .resizable()
+                                .scaledToFill()
+                                .frame(width: 8,height: 8)
+                            NavigationLink {
+                                ProfileVisitorView(showBackButton: true, showNickname: false)
+                                    .navigationBarBackButtonHidden()
+                            } label: {
+                                Text(viewModel.threadcomments[index].owner?.userName ?? "")
+                                    .font(.system(size: 13,weight: .semibold))
+                            }
                         }
                         .foregroundStyle(Color(.systemGray))
                         
@@ -80,6 +94,5 @@ struct ThreadCommentCell: View {
 }
 
 #Preview {
-    ThreadCommentCell(viewModel: FeedViewModel(), index: 0)
+    ThreadReplyCell(viewModel: FeedViewModel(), index: 0)
 }
-

@@ -30,7 +30,7 @@ struct CreateCommunityPostView: View {
                     
                 }
                 .padding()
-                TextField("Submit something for admin approval...",text: $mindText)
+                TextField("Write something...",text: $mindText)
                     .padding(.horizontal)
                 
                 // Display selected photo if available

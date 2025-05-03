@@ -101,8 +101,8 @@ struct EditProfileView: View {
         .toolbar{
             ToolbarItem(placement: .topBarLeading) {
                 Button(action: {dismiss()}, label: {
-                    Image(systemName: "arrow.left")
-                        .foregroundStyle(Color(ghoodPink))
+                    Image(systemName: "chevron.left")
+                        .foregroundStyle(Color(.black))
                 })
             }
             ToolbarItem(placement: .principal) {

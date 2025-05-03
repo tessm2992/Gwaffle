@@ -35,7 +35,7 @@ struct ThreadPostView: View {
                             .frame(width: 40,height: 40)
                             .clipShape(RoundedRectangle(cornerRadius: 15))
                     }
-                    VStack(alignment: .leading) {
+                    VStack(alignment: .leading, spacing: 4) {
                         HStack {
                             NavigationLink {
                                 ThreadView(viewModel: viewModel, index: index)
@@ -56,17 +56,14 @@ struct ThreadPostView: View {
                         }
                     }
                 }
-                .padding(.horizontal)
                 Text(viewModel.threadposts[index].postTitle)
                     .font(.system(size: 16,weight: .semibold))
                     .foregroundStyle(Color(.black))
-                    .padding(.horizontal)
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .multilineTextAlignment(.leading)
                 Text(viewModel.threadposts[index].postSubTitle ?? "")
                     .font(.system(size: 16))
                     .foregroundStyle(Color(.black))
-                    .padding(.horizontal)
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .multilineTextAlignment(.leading)
                 if let postURL = viewModel.threadposts[index].postURL, !postURL.isEmpty {
@@ -87,13 +84,15 @@ struct ThreadPostView: View {
                         .foregroundStyle(Color(ghoodPink))
                     Text("\(viewModel.threadposts[index].postLikes)")
                         .foregroundStyle(Color(.systemGray))
+                        .font(.system(size: 13))
                     Spacer()
                     Text("43 comments")
                         .foregroundStyle(Color(ghoodPink))
+                        .font(.system(size: 13))
                 }
-                .padding(.horizontal)
-                .font(.system(size: 13))
             }
+            .padding(.horizontal)
+            .padding(.vertical, 4)
         }
     }
 }

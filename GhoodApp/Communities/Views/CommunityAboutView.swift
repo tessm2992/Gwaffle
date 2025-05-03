@@ -25,13 +25,12 @@ struct CommunityAboutView: View {
                             Text("This is the community description. Any background of who the creator is or what the purpose of the group is will be featured here.")
                                 .font(.system(size: 16))
                                 .foregroundStyle(Color(.black))
-                                .padding(.bottom, 5)
                             NavigationLink{
                                 CommunityExploreNewView()
                                     .navigationBarBackButtonHidden()
                             } label: {
                                 Text("Creator Community")
-                                    .font(.system(size: 12, weight: .semibold))
+                                    .font(.system(size: 16, weight: .semibold))
                                     .foregroundColor(.black)
                                     .padding(.horizontal, 10)
                                     .padding(.vertical, 5)

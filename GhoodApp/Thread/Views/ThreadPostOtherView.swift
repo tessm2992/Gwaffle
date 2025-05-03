@@ -23,7 +23,7 @@ struct ThreadPostOtherView: View {
             DetailedThreadView(viewModel: viewModel, index: index)
                 .navigationBarBackButtonHidden()
         } label: {
-            VStack(alignment: .leading, spacing: 7) {
+            VStack(alignment: .leading, spacing: 8) {
                 HStack {
                     NavigationLink {
                         ProfileVisitorView(showBackButton: true, showNickname: false)
@@ -41,30 +41,22 @@ struct ThreadPostOtherView: View {
                     } label: {
                         Text(viewModel.threadposts[index].owner?.userName ?? "")
                             .font(.system(size: 13,weight: .semibold))
-                            .foregroundStyle(Color(.gray))
+                            .foregroundStyle(Color(.systemGray))
                     }
                     Text("12h")
                         .font(.system(size: 13))
                         .foregroundStyle(Color(.systemGray))
                     Spacer()
                 }
-                .padding(.horizontal)
-                .padding(.vertical,2)
                 Text(viewModel.threadposts[index].postTitle)
                     .font(.system(size: 16,weight: .semibold))
                     .foregroundStyle(Color(.black))
-                    .padding(.horizontal)
-                    .padding(.bottom, 0)
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .multilineTextAlignment(.leading)
                 BadgeTag(badge: .paige)
-                    .padding(.horizontal)
-                    .padding(.bottom, 0)
                 Text(viewModel.threadposts[index].postSubTitle ?? "")
                     .font(.system(size: 16))
                     .foregroundStyle(Color(.black))
-                    .padding(.horizontal)
-                    .padding(.top, 0)
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .multilineTextAlignment(.leading)
                 if let postURL = viewModel.threadposts[index].postURL, !postURL.isEmpty {
@@ -86,13 +78,15 @@ struct ThreadPostOtherView: View {
                         .foregroundStyle(Color(ghoodPink))
                     Text("\(viewModel.threadposts[index].postLikes)")
                         .foregroundStyle(Color(ghoodPink))
+                        .font(.system(size: 13))
                     Spacer()
                     Text("43 comments")
                         .foregroundStyle(Color(ghoodPink))
+                        .font(.system(size: 13))
                 }
-                .padding(.horizontal)
-                .font(.system(size: 13))
             }
+            .padding(.horizontal)
+            .padding(.vertical, 4)
         }
     }
 }

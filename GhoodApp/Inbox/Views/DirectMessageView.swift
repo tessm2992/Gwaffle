@@ -59,6 +59,7 @@ struct DirectMessageView: View {
                 ToolbarItem(placement: .topBarLeading) {
                     NavigationLink {
                         ProfileVisitorView(showBackButton: true, showNickname: false)
+                            .navigationBarBackButtonHidden()
                     } label: {
                         HStack {
                             Image("avatar")

@@ -9,7 +9,7 @@ import SwiftUI
 
 struct SwipeableTabsView: View {
     @State private var selectedTab = 0
-    private let tabTitles = ["Posts", "Comments"]
+    private let tabTitles = ["POSTS", "COMMENTS"]
 
     
     var body: some View {
@@ -24,7 +24,7 @@ struct SwipeableTabsView: View {
                     }) {
                         Text(tabTitles[index])
                             .fontWeight(selectedTab == index ? .bold : .regular)
-                            .foregroundColor(selectedTab == index ? .pink : .gray)
+                            .foregroundColor(selectedTab == index ? Color(.black) : .gray)
                             .padding(.vertical, 10)
                             .frame(maxWidth: .infinity)
                             .overlay(
