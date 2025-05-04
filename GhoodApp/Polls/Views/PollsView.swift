@@ -16,35 +16,31 @@ struct PollsView: View {
             ScrollView {
                 VStack {
                     CapsuleSearchBarFive()
-                    ZStack {
-                        Color.white.edgesIgnoringSafeArea(.all)
-                        
-                        ScrollView {
-                            LazyVStack(spacing: 20) {
-                                ForEach(viewModel.polls) { poll in
-                                    PollView(poll: poll, viewModel: viewModel)
-                                        .padding(.horizontal)
-                                }
-                            }
-                            .padding(.vertical)
+                        .padding(.top, 5)
+                    LazyVStack(spacing: 15) {
+                        ForEach(viewModel.polls) { poll in
+                            PollView(poll: poll, viewModel: viewModel)
+                                .padding(.horizontal)
                         }
                     }
-                    .toolbar{
-                        ToolbarItem(placement: .topBarLeading) {
-                            HStack {
-                                Text("Polls")
-                                    .font(.custom("Anton-Regular", size: 28))
-                                    .foregroundStyle(Color(.black))
-                                    .padding(.bottom,10)
-                                    .padding(.horizontal)
-                            }
-                        }
+                    .padding(.vertical, 8)
+                }
+            }
+            .toolbar{
+                ToolbarItem(placement: .topBarLeading) {
+                    HStack {
+                        Text("Polls")
+                            .font(.system(size: 28, weight: .semibold))
+                            .foregroundStyle(Color(.black))
+                            .padding(.bottom,10)
+                            .padding(.horizontal)
                     }
                 }
             }
         }
     }
 }
+
 
 
 #Preview {

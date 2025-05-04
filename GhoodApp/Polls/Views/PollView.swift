@@ -14,6 +14,29 @@ struct PollView: View {
     
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
+            HStack {
+                Image("threadpic")
+                    .resizable()
+                    .scaledToFill()
+                    .frame(width: 40,height: 40)
+                    .clipShape(RoundedRectangle(cornerRadius: 15))
+                
+                VStack(alignment: .leading, spacing: 4) {
+                    HStack {
+                        Text("g/summmerhousebravo")
+                            .font(.system(size: 14,weight: .semibold))
+                            .foregroundStyle(Color(ghoodPink))
+                        Spacer()
+            
+                    }
+                    HStack {
+                        Text("12h")
+                            .font(.system(size: 11))
+                            .foregroundStyle(Color(.systemGray))
+                        Spacer()
+                    }
+                }
+            }
             Text(poll.question)
                 .font(.system(size: 20))
                 .fontWeight(.bold)
@@ -43,6 +66,7 @@ struct PollView: View {
         .overlay(
             RoundedRectangle(cornerRadius: 12)
                 .stroke(Color(.systemGray4), lineWidth: 1)
+            
         )
     }
 }

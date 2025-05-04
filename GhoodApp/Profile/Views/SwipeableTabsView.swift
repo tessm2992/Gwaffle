@@ -24,12 +24,12 @@ struct SwipeableTabsView: View {
                     }) {
                         Text(tabTitles[index])
                             .fontWeight(selectedTab == index ? .bold : .regular)
-                            .foregroundColor(selectedTab == index ? Color(.black) : .gray)
+                            .foregroundColor(selectedTab == index ? .black.opacity(0.7) : .gray)
                             .padding(.vertical, 10)
                             .frame(maxWidth: .infinity)
                             .overlay(
                                 Rectangle()
-                                    .frame(height: 2)
+                                    .frame(height: 1)
                                     .foregroundColor(selectedTab == index ? .pink : .clear),
                                 alignment: .bottom
                             )

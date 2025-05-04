@@ -17,7 +17,7 @@ struct SideMenuRecentsView: View {
         NavigationStack {
             ScrollView {
                 VStack(alignment: .leading) {
-                    HStack(spacing: 20) {
+                    HStack(spacing: 65) {
                         Text("Recently Visited")
                             .font(.system(size: 18, weight: .semibold))
                             .foregroundStyle(Color(.black))
@@ -39,8 +39,8 @@ struct SideMenuRecentsView: View {
                                     Image("threadpic")
                                         .resizable()
                                         .scaledToFill()
-                                        .frame(width: 35, height: 35)
-                                        .clipShape(Circle())
+                                        .frame(width: 35,height: 35)
+                                        .clipShape(RoundedRectangle(cornerRadius: 11))
                                     Text("g/summerhousebravo")
                                         .font(.system(size: 16))
                                         .foregroundStyle(Color(ghoodPink))
@@ -68,8 +68,8 @@ struct SideMenuRecentsView: View {
         .toolbar{
             ToolbarItem(placement: .topBarLeading) {
                 Button(action: {dismiss()}, label: {
-                    Image(systemName: "arrow.left")
-                        .foregroundStyle(Color(ghoodPink))
+                    Image(systemName: "chevron.left")
+                        .foregroundStyle(Color(.black))
                 })
             }
         }
@@ -79,3 +79,5 @@ struct SideMenuRecentsView: View {
 #Preview {
     SideMenuRecentsView()
 }
+
+

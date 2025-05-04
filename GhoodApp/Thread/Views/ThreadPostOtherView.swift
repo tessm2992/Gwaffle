@@ -77,16 +77,19 @@ struct ThreadPostOtherView: View {
                         .frame(width: 20,height: 17)
                         .foregroundStyle(Color(ghoodPink))
                     Text("\(viewModel.threadposts[index].postLikes)")
-                        .foregroundStyle(Color(ghoodPink))
-                        .font(.system(size: 13))
+                        .foregroundStyle(Color(.black.opacity(0.7)))
+                        .font(.system(size: 14))
                     Spacer()
                     Text("43 comments")
-                        .foregroundStyle(Color(ghoodPink))
-                        .font(.system(size: 13))
+                        .foregroundStyle(Color(.black.opacity(0.7)))
+                        .font(.system(size: 14))
                 }
             }
             .padding(.horizontal)
-            .padding(.vertical, 4)
+            .padding(.vertical)
+            .background(Color(.white))
+            .cornerRadius(20)
+            .shadow(color: Color.black.opacity(0.1), radius: 5, x: 0, y: 2)
         }
     }
 }

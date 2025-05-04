@@ -23,13 +23,15 @@ struct ThreadView: View {
     var body: some View {
         GeometryReader { proxy in
             ScrollView {
-                ThreadHeaderView(viewModel: viewModel, index: index)
-                DividerView(width: proxy.size.width)
-                CreateThreadPostTileView()
-                DividerView(width: proxy.size.width)
-                ForEach(0..<viewModel.threadposts.count, id: \.self) { index in
-                    ThreadPostOtherView(viewModel: viewModel, index: index)
-                    DividerThinView(width: proxy.size.width)
+                VStack{
+                    ThreadHeaderView(viewModel: viewModel, index: index)
+                    DividerView(width: proxy.size.width)
+                    CreateThreadPostTileView()
+                    DividerView(width: proxy.size.width)
+                    ForEach(0..<viewModel.threadposts.count, id: \.self) { index in
+                        ThreadPostOtherView(viewModel: viewModel, index: index)
+                    }
+                    .padding(.vertical, 0)
                 }
             }
             .scrollIndicators(.hidden)

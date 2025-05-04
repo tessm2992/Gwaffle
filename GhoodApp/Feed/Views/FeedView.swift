@@ -30,15 +30,14 @@ struct FeedView: View {
                                         Spacer()
                                         FilterDropDownButton(selected: $selectedDropDown, isExpanded: $isDropdownExpanded)
                                     }
-                                    .padding(.vertical, 9)
+                                    .padding(.vertical, 7)
                                     ScrollView {
                                         VStack {
                                             ForEach(0 ..< viewModel.threadposts.count, id: \.self) { index in
                                                 ThreadPostView(viewModel: viewModel, index: index)
-                                                DividerView(width: proxy.size.width)
                                             }
-                                            Spacer()
                                         }
+                                        .padding(.top)
                                         .frame(maxWidth: .infinity)
                                     }
                                 }
@@ -74,7 +73,7 @@ struct FeedView: View {
                     }
                     ToolbarItem(placement: .topBarLeading) {
                         Text("Threads")
-                            .font(.custom("Anton-Regular", size: 28))
+                            .font(.system(size: 28, weight: .semibold))
                             .foregroundStyle(Color(.black))
                     }
                     ToolbarItem(placement: .topBarTrailing) {
@@ -111,6 +110,5 @@ struct FeedView: View {
 #Preview {
     FeedView()
 }
-
 
 

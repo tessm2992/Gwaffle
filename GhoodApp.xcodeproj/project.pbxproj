@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		61056B282DC547BA0027FC4C /* Anton-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 61056B272DC547BA0027FC4C /* Anton-Regular.ttf */; };
+		61056BBB2DC7EA4D0027FC4C /* SF-Pro-Display-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 61056BBA2DC7EA4D0027FC4C /* SF-Pro-Display-Bold.otf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -32,6 +33,7 @@
 		610158222DAFD6130075B9AA /* GhoodAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GhoodAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6101582C2DAFD6130075B9AA /* GhoodAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GhoodAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		61056B272DC547BA0027FC4C /* Anton-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Anton-Regular.ttf"; sourceTree = "<group>"; };
+		61056BBA2DC7EA4D0027FC4C /* SF-Pro-Display-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Bold.otf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -98,6 +100,7 @@
 				6101582F2DAFD6130075B9AA /* GhoodAppUITests */,
 				610158152DAFD60C0075B9AA /* Products */,
 				61056B272DC547BA0027FC4C /* Anton-Regular.ttf */,
+				61056BBA2DC7EA4D0027FC4C /* SF-Pro-Display-Bold.otf */,
 			);
 			sourceTree = "<group>";
 		};
@@ -232,6 +235,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				61056B282DC547BA0027FC4C /* Anton-Regular.ttf in Resources */,
+				61056BBB2DC7EA4D0027FC4C /* SF-Pro-Display-Bold.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

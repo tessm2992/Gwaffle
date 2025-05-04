@@ -84,7 +84,7 @@ struct TabBarView: View {
                     }
                     .tag(4)
             }
-            .tint(Color(hex: "#FF295B"))
+            .tint(Color(.black))
         }
     }
 }

@@ -16,11 +16,12 @@ struct CommunityExploreNewView: View {
         NavigationStack {
             GeometryReader { proxy in
                 ScrollView {
+                    CapsuleSearchBar()
+                        .padding(.bottom,10)
                     VStack(alignment: .leading) {
-                        CapsuleSearchBar()
-                            .padding(.bottom,10)
                         Text("COMMUNITIES FOR...")
-                            .font(.system(size: 15, weight: .semibold))
+                            .font(.system(size: 15,weight: .semibold))
+                            .foregroundStyle(Color(.systemGray))
                         HStack {
                             CommunityTagTile(communityTag: "Creator Community")
                             CommunityTagTile(communityTag: "Local & Neighborhood")

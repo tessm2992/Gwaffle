@@ -24,7 +24,7 @@ struct FilterDropDownButton: View {
                     .resizable()
                     .frame(width: 10, height: 5)
                     .rotationEffect(.degrees(isExpanded ? 180 : 0))
-                    .foregroundColor(ghoodPink)
+                    .foregroundColor(.black)
             }
             .padding(.vertical, 8)
             .padding(.horizontal, 12)

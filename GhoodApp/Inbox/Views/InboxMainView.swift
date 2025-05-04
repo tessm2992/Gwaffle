@@ -27,12 +27,12 @@ struct InboxMainView: View {
                         }) {
                             Text(tabTitles[index])
                                 .fontWeight(selectedTab == index ? .semibold : .regular)
-                                .foregroundColor(selectedTab == index ? .black : .gray)
+                                .foregroundColor(selectedTab == index ? .black.opacity(0.7) : Color(.systemGray2))
                                 .padding(.vertical, 10)
                                 .frame(maxWidth: .infinity)
                                 .overlay(
                                     Rectangle()
-                                        .frame(height: 2)
+                                        .frame(height: 1)
                                         .foregroundColor(selectedTab == index ? ghoodPink : .clear),
                                     alignment: .bottom
                                 )
@@ -56,7 +56,7 @@ struct InboxMainView: View {
                 ToolbarItem(placement: .topBarLeading) {
                     HStack {
                         Text("Inbox")
-                            .font(.custom("Anton-Regular", size: 28))
+                            .font(.system(size: 28, weight: .semibold))
                             .foregroundStyle(Color(.black))
                             .padding(.bottom,10)
                             .padding(.horizontal)

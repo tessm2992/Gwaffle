@@ -18,22 +18,22 @@ struct FeedFilter: View {
     let ghoodPink: Color = Color(red: 255/255, green: 41/255, blue: 91/255)
 
     var body: some View {
-        HStack(spacing: 10) {
+        HStack(spacing: 5) {
             ForEach(FeedFilterOption.allCases, id: \.self) { option in
                 Button(action: {
                     selected = option
                 }) {
                     Text(option.rawValue)
                         .font(.system(size: 12, weight: .semibold))
-                        .foregroundColor(selected == option ? .white : ghoodPink)
+                        .foregroundColor(selected == option ? .white : Color.gray)
                         .padding(.vertical, 6)
                         .padding(.horizontal, 12)
                         .background(
                             RoundedRectangle(cornerRadius: 8)
-                                .fill(selected == option ? ghoodPink : Color.clear)
+                                .fill(selected == option ? .blue.opacity(0.7) : Color.white)
                                 .overlay(
                                     RoundedRectangle(cornerRadius: 8)
-                                        .stroke(ghoodPink, lineWidth: 1)
+                                        .stroke(.gray, lineWidth: 0.6)
                                 )
                         )
                 }
@@ -43,8 +43,9 @@ struct FeedFilter: View {
     }
 }
 
-
-#Preview {
-    @Previewable @State var selected: FeedFilterOption = .sortFollowing
-    return FeedFilter(selected: $selected)
+// Preview
+struct FeedFilter_Previews: PreviewProvider {
+    static var previews: some View {
+        FeedFilter(selected: .constant(.sortFollowing))
+    }
 }

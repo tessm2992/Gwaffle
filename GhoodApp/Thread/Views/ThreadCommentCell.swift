@@ -38,7 +38,7 @@ struct ThreadCommentCell: View {
                                 .navigationBarBackButtonHidden()
                         } label: {
                             Text(viewModel.threadcomments[index].owner?.userName ?? "")
-                                .font(.system(size: 13,weight: .semibold))
+                                .font(.system(size: 14,weight: .semibold))
                         }
                         .foregroundStyle(Color(.systemGray))
                         
@@ -49,13 +49,13 @@ struct ThreadCommentCell: View {
                         
                         HStack(spacing: 9) {
                             Text("2h")
-                                .font(.system(size: 13))
+                                .font(.system(size: 14))
                                 .foregroundStyle(Color(.systemGray))
                                 .padding(.top, 2)
                             Button(action: {},
                                    label: {
                                 Text("Reply")
-                                    .font(.system(size: 13,weight: .semibold))
+                                    .font(.system(size: 14,weight: .semibold))
                                     .foregroundStyle(Color(.systemGray))
                                     .padding(.top, 2)
                             })
@@ -66,8 +66,8 @@ struct ThreadCommentCell: View {
                                     .frame(width: 20,height: 17)
                                     .foregroundStyle(Color(ghoodPink))
                                 Text("3")
-                                    .font(.system(size: 13))
-                                    .foregroundStyle(Color(ghoodPink))
+                                    .foregroundStyle(Color(.black.opacity(0.7)))
+                                    .font(.system(size: 14))
                             }
                         }
                     }

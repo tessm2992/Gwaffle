@@ -27,11 +27,11 @@ struct ExploreThreadCategoriesView: View {
                         HStack {
                             Text("Pop Culture")
                                 .font(.system(size: 15,weight: .semibold))
-                                .foregroundStyle(Color(.black))
+                                .foregroundStyle(Color(.systemGray))
                                 .textCase(.uppercase)
                             Spacer()
                             Image(systemName: "chevron.right")
-                                .foregroundStyle(Color(.black))
+                                .foregroundStyle(Color(.systemGray))
                                 .fontWeight(.bold)
                         }
                         .padding(.horizontal)

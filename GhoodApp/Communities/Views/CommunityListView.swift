@@ -17,7 +17,7 @@ struct CommunityListView: View {
             NavigationStack {
                 VStack(alignment: .leading, spacing: 0) {
                     Text("Communities")
-                        .font(.custom("Anton-Regular", size: 28))
+                        .font(.system(size: 28, weight: .semibold))
                         .foregroundStyle(Color(.black))
                         .padding(.bottom,15)
                         .padding(.horizontal)

@@ -33,7 +33,7 @@ struct SideMenuView: View {
                         SideMenuRecentsView()
                             .navigationBarBackButtonHidden()
                     } label: {
-                        HStack {
+                        HStack(spacing: 65) {
                             Text("Recently Visited")
                                 .font(.system(size: 18, weight: .semibold))
                                 .foregroundStyle(Color(.black))
@@ -45,14 +45,14 @@ struct SideMenuView: View {
                         .padding(.bottom, 10)
                     }
                     
-                    VStack {
+                    VStack(alignment: .leading, spacing: 20) {
                         ForEach(0..<3) { _ in
                             HStack {
                                 Image("threadpic")
                                     .resizable()
                                     .scaledToFill()
                                     .frame(width: 35,height: 35)
-                                    .clipShape(Circle())
+                                    .clipShape(RoundedRectangle(cornerRadius: 11))
                                 Text("g/summerhousebravo")
                                     .font(.system(size: 16))
                                     .foregroundStyle(Color(ghoodPink))
@@ -69,29 +69,29 @@ struct SideMenuView: View {
                     .padding(.bottom, 10)
                     .padding(.top, 10)
                     
-                    NavigationLink {
-                        CreateNewThreadPageView()
-                            .navigationBarBackButtonHidden()
-                        } label: {
-                            HStack(spacing: 10) {
-                                Image(systemName: "plus")
-                                    .resizable()
-                                    .scaledToFill()
-                                    .frame(width: 20,height: 20)
-                                Text("Create a thread")
-                                    .font(.system(size: 17, weight: .semibold))
-                            }
-                    }
-                    .foregroundStyle(Color(.systemGray))
-                   
-                    VStack {
+                    VStack(alignment: .leading, spacing: 20) {
+                        NavigationLink {
+                            CreateNewThreadPageView()
+                                .navigationBarBackButtonHidden()
+                            } label: {
+                                HStack {
+                                    Image(systemName: "plus.circle.fill")
+                                        .resizable()
+                                        .scaledToFill()
+                                        .frame(width: 35,height: 35)
+                                        .foregroundColor(Color(.systemGray3))
+                                    Text("Create a thread")
+                                        .font(.system(size: 16))
+                                }
+                        }
+                        .foregroundStyle(Color(.black))
                         ForEach(0..<10) { _ in
                             HStack {
                                 Image("threadpic")
                                     .resizable()
                                     .scaledToFill()
                                     .frame(width: 35,height: 35)
-                                    .clipShape(Circle())
+                                    .clipShape(RoundedRectangle(cornerRadius: 11))
                                 Text("g/summerhousebravo")
                                     .font(.system(size: 16))
                                     .foregroundStyle(Color(ghoodPink))
@@ -113,3 +113,5 @@ struct SideMenuView: View {
 #Preview {
     SideMenuView()
 }
+
+

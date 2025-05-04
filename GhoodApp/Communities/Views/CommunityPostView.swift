@@ -35,7 +35,7 @@ struct CommunityPostView: View {
                                     .navigationBarBackButtonHidden()
                             } label: {
                                 Text("Tess M")
-                                    .font(.system(size: 15,weight: .semibold))
+                                    .font(.system(size: 14,weight: .semibold))
                                     .foregroundStyle(Color(.black))
                             }
                             Text("2h")
@@ -45,7 +45,7 @@ struct CommunityPostView: View {
                         }
                     }
                     Text("I'm elaborating on the head of this post. So I'm asking everyone else for advice. You know what I mean? Or no?")
-                        .font(.system(size: 14))
+                        .font(.system(size: 16))
                         .foregroundStyle(Color(.black))
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .multilineTextAlignment(.leading)
@@ -62,16 +62,15 @@ struct CommunityPostView: View {
                         .frame(width: 20,height: 17)
                         .foregroundStyle(Color(ghoodPink))
                     Text("18")
-                        .foregroundStyle(Color(ghoodPink))
+                        .foregroundStyle(Color(.black.opacity(0.7)))
                     Spacer()
                     Text("43 comments")
-                        .foregroundStyle(Color(ghoodPink))
+                        .foregroundStyle(Color(.black.opacity(0.7)))
                 }
-                .font(.system(size: 13))
+                .font(.system(size: 14))
                 .padding(.horizontal)
             }
-            .padding(.top,6)
-            .padding(.bottom,6)
+            .padding(.vertical,15)
         }
     }
 }

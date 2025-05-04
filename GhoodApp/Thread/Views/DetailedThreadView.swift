@@ -24,7 +24,7 @@ struct DetailedThreadView: View {
         GeometryReader { proxy in
             ScrollView {
                 VStack(alignment: .leading) {
-                    VStack(alignment: .leading, spacing: 6) {
+                    VStack(alignment: .leading, spacing: 15) {
                         HStack {
                             NavigationLink {
                                 ProfileVisitorView(showBackButton: true, showNickname: false)
@@ -41,7 +41,7 @@ struct DetailedThreadView: View {
                                     .navigationBarBackButtonHidden()
                             } label: {
                                 Text(viewModel.threadposts[index].owner?.userName ?? "")
-                                    .font(.system(size: 13,weight: .semibold))
+                                    .font(.system(size: 14,weight: .semibold))
                                     .foregroundStyle(Color(.systemGray))
                             }
                             Text("12h")
@@ -73,14 +73,16 @@ struct DetailedThreadView: View {
                             .frame(width: 20,height: 17)
                             .foregroundStyle(Color(ghoodPink))
                         Text("\(viewModel.threadposts[index].postLikes)")
-                            .foregroundStyle(Color(ghoodPink))
-                            .font(.system(size: 13))
+                            .foregroundStyle(Color(.black.opacity(0.7)))
+                            .font(.system(size: 14))
                         Spacer()
                         Text("43 comments")
-                            .foregroundStyle(Color(ghoodPink))
-                            .font(.system(size: 13))
+                            .foregroundStyle(Color(.black.opacity(0.7)))
+                            .font(.system(size: 14))
                     }
                     .padding(.horizontal)
+                    .padding(.bottom, 10)
+                    DividerThinnestView(width: proxy.size.width)
                     ThreadCommentCell(viewModel: viewModel, index: index)
                     ThreadCommentCell(viewModel: viewModel, index: index)
                     ThreadReplyCell(viewModel: viewModel, index: index)

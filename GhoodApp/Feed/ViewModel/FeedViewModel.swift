@@ -16,10 +16,11 @@ class FeedViewModel: ObservableObject {
     ]
     
     @Published var threadposts: [PostThread] = [
-        .init(id: "0", userId: "2", threadId: "0", postTitle: "Are Craig and Paige broken up?", postSubTitle: "i heard that they broke up.", postLikes: 2, postURL: "craigpaige", isVideo: false),
+        .init(id: "0", userId: "2", threadId: "2", postTitle: "What are anti-aging treatments that actually work?", postSubTitle: "I've tried retinol and IPL, but neither really made a difference.", postLikes: 8, postURL: "", isVideo: false),
         .init(id: "1", userId: "1", threadId: "1", postTitle: "Did anyone hear how sydney sweeney want to glen powell's sister's wedding?", postSubTitle: "there are pictures of them dancing. looks like they might be dating.", postLikes: 15, postURL: "sydneyglen", isVideo: false),
         .init(id: "2", userId: "0", threadId: "0", postTitle: "Paige and her anxiety", postSubTitle: "I've never related more to her. Her anxiety this past episode and then saying, 'oh, and I'm supposed to get my period today.' I felt it to the core. I am so glad she seems to be happy with her decision to leave Craig", postLikes: 45, postURL: "", isVideo: false),
-        .init(id: "3", userId: "2", threadId: "2", postTitle: "Microneedling treatments?", postSubTitle: "Anyone ever try microneedling treatments for antiaging? I've been reading about it online and have heard mixed reviews on how effective it is.", postLikes: 56, postURL: "", isVideo: false)
+        .init(id: "3", userId: "2", threadId: "2", postTitle: "Microneedling treatments?", postSubTitle: "Anyone ever try microneedling treatments for antiaging? I've been reading about it online and have heard mixed reviews on how effective it is.", postLikes: 56, postURL: "", isVideo: false),
+        .init(id: "4", userId: "2", threadId: "0", postTitle: "Are Craig and Paige broken up?", postSubTitle: "i heard that they broke up.", postLikes: 2, postURL: "craigpaige", isVideo: false),
     ]
     
     @Published var threadpage: [PageThread] = [
