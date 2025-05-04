@@ -31,17 +31,44 @@ struct TabBarView: View {
                     }
                     .tag(0)
                 
-                CommunityListView(selectedTab: $selectedTab)
+                PollsView(viewModel: {
+                    let viewModel = PostViewModel()
+                    // Add sample polls with some votes
+                    let poll1 = Poll(
+                        question: "What's your favorite season?",
+                        options: [
+                            PollOption(text: "Spring", votes: 12),
+                            PollOption(text: "Summer", votes: 28),
+                            PollOption(text: "Fall", votes: 15),
+                            PollOption(text: "Winter", votes: 8)
+                        ],
+                        allowMultipleVotes: false
+                    )
+                    let poll2 = Poll(
+                        question: "Which social media platforms do you use?",
+                        options: [
+                            PollOption(text: "Instagram", votes: 42),
+                            PollOption(text: "Twitter", votes: 35),
+                            PollOption(text: "Facebook", votes: 20),
+                            PollOption(text: "TikTok", votes: 38)
+                        ],
+                        allowMultipleVotes: true
+                    )
+                    viewModel.polls = [poll1, poll2]
+                    return viewModel
+                }())
                     .tabItem {
-                        Image(systemName: "person.3")
+                        Image(systemName: "chart.bar")
                             .environment(\.symbolVariants, selectedTab == 1 ? .fill : .none)
                     }
                     .tag(1)
                 
-                CreateThreadPostView()
+                CommunityListView(selectedTab: $selectedTab)
                     .tabItem {
-                        Image(systemName: "plus.rectangle.fill")
+                        Image(systemName: "person.3")
+                            .environment(\.symbolVariants, selectedTab == 2 ? .fill : .none)
                     }
+                    .tag(2)
                 
                 InboxMainView()
                     .tabItem {

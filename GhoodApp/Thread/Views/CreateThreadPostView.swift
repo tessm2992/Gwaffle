@@ -11,144 +11,249 @@ import PhotosUI
 struct CreateThreadPostView: View {
     private var ghoodPink: Color = Color(red: 255/255, green: 41/255, blue: 91/255)
     @Environment(\.dismiss) private var dismiss
+    @StateObject private var viewModel = PostViewModel()
     @State private var mindText: String = ""
     @State private var selectedPhotoItem: PhotosPickerItem?
     @State private var selectedPhoto: UIImage?
     @State private var showPhotoPicker = false
+    @State private var showingPollCreation = false
+    @State private var hasPoll = false
+    @State private var pollQuestion = ""
+    @State private var pollOptions: [String] = ["", ""]
+    @State private var allowMultipleVotes = false
     
     var body: some View {
-        NavigationStack {
-            VStack(alignment: .leading) {
-                Divider()
-                HStack {
-                    Image("avatar")
-                        .resizable()
-                        .scaledToFill()
-                        .frame(width: 40,height: 40)
-                        .clipShape(Circle())
-                    Text("tessm345")
-                        .foregroundStyle(.black)
-                    
-                }
-                .padding()
-                VStack(alignment: .leading, spacing: 30) {
-                    NavigationLink{
-                        SelectThreadView()
-                            .navigationBarBackButtonHidden()
-                        } label: {
-                            HStack {
-                                Text("Select a thread")
-                                    .font(.headline)
-                                VStack {
-                                    Image(systemName: "chevron.up")
-                                    Image(systemName: "chevron.down")
-                                }
-                                .font(.system(size: 14))
-                            }
-                            .fontWeight(.semibold)
-                            .foregroundStyle(.black)
-                            .frame(width: 180, height: 35)
-                            .background(Color(.systemGray6))
-                            .clipShape(RoundedRectangle(cornerRadius: 30))
-                    }
-                    TextField("Title",text: $mindText)
-                        .font(.system(size: 25,weight: .semibold))
-                    NavigationLink{
-                        AddTagsView()
-                            .navigationBarBackButtonHidden()
-                        } label: {
-                            Text("Add tags (optional)")
-                                .font(.headline)
-                                .fontWeight(.semibold)
-                                .foregroundStyle(ghoodPink)
-                                .frame(width: 180, height: 35)
-                                .overlay{
-                                    RoundedRectangle(cornerRadius: 30)
-                                        .stroke(ghoodPink,lineWidth: 1)
-                                }
-                    }
-                    TextField("Sub title (optional)",text: $mindText)
-                        .font(.system(size: 20,weight: .semibold))
-                }
-                .padding(.horizontal)
-                
-                // Display selected photo if available
-                if let selectedPhoto = selectedPhoto {
-                    Image(uiImage: selectedPhoto)
-                        .resizable()
-                        .scaledToFit()
-                        .frame(maxHeight: 200)
+        // Use NavigationView instead of NavigationStack for better compatibility
+        NavigationView {
+            VStack(spacing: 0) {
+                // Main content
+                ScrollView {
+                    VStack(alignment: .leading, spacing: 0) {
+                        // Header
+                        HStack {
+                            Image("avatar")
+                                .resizable()
+                                .scaledToFill()
+                                .frame(width: 40, height: 40)
+                                .clipShape(Circle())
+                            Text("tessm345")
+                                .foregroundStyle(.black)
+                        }
                         .padding()
-                }
-                
-                Spacer()
-                Divider()
-                HStack {
-                    Spacer()
-                    
-                    // Photo/Video picker button
-                    PhotosPicker(selection: $selectedPhotoItem,
-                                matching: .any(of: [.images, .videos])) {
-                        Image(systemName: "photo.fill.on.rectangle.fill")
-                            .foregroundStyle(.green)
-                    }
-                    .onChange(of: selectedPhotoItem) { oldValue, newValue in
-                        Task {
-                            if let data = try? await newValue?.loadTransferable(type: Data.self),
-                               let uiImage = UIImage(data: data) {
-                                selectedPhoto = uiImage
+                        
+                        // Content
+                        VStack(alignment: .leading, spacing: 20) {
+                            // Thread Selection
+                            NavigationLink {
+                                SelectThreadView()
+                                    .navigationBarBackButtonHidden()
+                            } label: {
+                                HStack {
+                                    Text("Select a thread")
+                                        .font(.headline)
+                                    VStack {
+                                        Image(systemName: "chevron.up")
+                                        Image(systemName: "chevron.down")
+                                    }
+                                    .font(.system(size: 14))
+                                }
+                                .fontWeight(.semibold)
+                                .foregroundStyle(.black)
+                                .frame(width: 180, height: 35)
+                                .background(Color(.systemGray6))
+                                .clipShape(RoundedRectangle(cornerRadius: 30))
+                            }
+                            
+                            // Title
+                            TextField("Title", text: $mindText)
+                                .font(.system(size: 25, weight: .semibold))
+                            
+                            // Tags
+                            NavigationLink {
+                                AddTagsView()
+                                    .navigationBarBackButtonHidden()
+                            } label: {
+                                Text("Add tags (optional)")
+                                    .font(.headline)
+                                    .fontWeight(.semibold)
+                                    .foregroundStyle(ghoodPink)
+                                    .frame(width: 180, height: 35)
+                                    .overlay {
+                                        RoundedRectangle(cornerRadius: 30)
+                                            .stroke(ghoodPink, lineWidth: 1)
+                                    }
+                            }
+                            
+                            // Subtitle
+                            TextField("Sub title (optional)", text: $mindText)
+                                .font(.system(size: 20))
+                            
+                            // Poll Preview
+                            if hasPoll {
+                                VStack(alignment: .leading, spacing: 12) {
+                                    Text(pollQuestion)
+                                        .font(.headline)
+                                        .foregroundColor(.black)
+                                    
+                                    ForEach(pollOptions.filter { !$0.isEmpty }, id: \.self) { option in
+                                        HStack {
+                                            RoundedRectangle(cornerRadius: 4)
+                                                .stroke(Color.gray.opacity(0.3), lineWidth: 1)
+                                                .frame(width: 24, height: 24)
+                                            
+                                            Text(option)
+                                                .foregroundColor(.primary)
+                                        }
+                                    }
+                                    
+                                    if allowMultipleVotes {
+                                        Text("Multiple votes allowed")
+                                            .font(.caption)
+                                            .foregroundColor(.secondary)
+                                    }
+                                    
+                                    Button(action: {
+                                        showingPollCreation = true
+                                    }) {
+                                        Text("Edit Poll")
+                                            .foregroundColor(.blue)
+                                    }
+                                }
+                                .padding(.vertical, 8)
                             }
                         }
+                        .padding(.horizontal)
+                        
+                        // Photo Preview
+                        if let selectedPhoto = selectedPhoto {
+                            Image(uiImage: selectedPhoto)
+                                .resizable()
+                                .scaledToFit()
+                                .frame(maxHeight: 200)
+                                .padding()
+                        }
+                        
+                        Spacer(minLength: 0)
                     }
-                    
-                    Spacer()
-                    Button(action:{}, label: {
-                        Image(systemName: "link")
-                            .foregroundStyle(.blue)
-                            .fontWeight(.bold)
-                    })
-                    Spacer()
-                    Button(action:{}, label: {
-                        Image(systemName: "chart.bar.fill")
-                            .foregroundStyle(.orange)
-                    })
-                    Spacer()
                 }
+                
+                // Bottom Toolbar
+                VStack(spacing: 0) {
+                    Divider()
+                    HStack {
+                        Spacer()
+                        
+                        PhotosPicker(selection: $selectedPhotoItem,
+                                    matching: .any(of: [.images, .videos])) {
+                            Image(systemName: "photo.fill.on.rectangle.fill")
+                                .foregroundStyle(.green)
+                        }
+                        .onChange(of: selectedPhotoItem) { oldValue, newValue in
+                            Task {
+                                if let data = try? await newValue?.loadTransferable(type: Data.self),
+                                   let uiImage = UIImage(data: data) {
+                                    selectedPhoto = uiImage
+                                }
+                            }
+                        }
+                        
+                        Spacer()
+                        Button(action: {}) {
+                            Image(systemName: "link")
+                                .foregroundStyle(.blue)
+                                .fontWeight(.bold)
+                        }
+                        Spacer()
+                        Button(action: {
+                            showingPollCreation = true
+                        }) {
+                            Image(systemName: "chart.bar.fill")
+                                .foregroundStyle(hasPoll ? .orange : .orange)
+                        }
+                        Spacer()
+                    }
+                    .padding(.vertical, 8)
+                }
+            }
+            // Critical: Navigation title and top bar items
+            .navigationTitle("Create Post")
             .navigationBarTitleDisplayMode(.inline)
-            }
-            .toolbar {
-                ToolbarItem(placement: .topBarLeading) {
-                    Button(action: {
-                        dismiss()
-                    }, label: {
-                        Image(systemName: "xmark")
-                            .foregroundColor(.black)
-                    })
-                }
-                ToolbarItem(placement: .principal) {
-                    Text("Create Post")
-                        .font(.headline)
+            // Key fix: Navigation bar items explicitly defined here
+            .navigationBarItems(
+                leading: Button(action: {
+                    dismiss()
+                }) {
+                    Image(systemName: "xmark")
+                        .foregroundColor(.black)
+                        .imageScale(.large)
+                },
+                trailing: Button(action: {
+                    var pollId: UUID? = nil
+                    if hasPoll && !pollQuestion.isEmpty && pollOptions.filter({ !$0.isEmpty }).count >= 2 {
+                        pollId = viewModel.createPoll(
+                            question: pollQuestion,
+                            options: pollOptions.filter { !$0.isEmpty },
+                            allowMultipleVotes: allowMultipleVotes
+                        )
+                    }
+                    viewModel.createPost(text: mindText, pollId: pollId)
+                    dismiss()
+                }) {
+                    Text("Post")
+                        .font(.subheadline)
                         .fontWeight(.semibold)
-                        .foregroundStyle(Color(.black))
+                        .frame(width: 80, height: 35)
+                        .foregroundStyle(mindText.count == 0 && !hasPoll ? Color(.darkGray) : .white)
+                        .background(mindText.count == 0 && !hasPoll ? Color(.systemGray5) : ghoodPink)
+                        .clipShape(RoundedRectangle(cornerRadius: 8))
                 }
-                ToolbarItem(placement: .topBarTrailing) {
-                    Button(action: {}, label: {
-                        Text("Post")
-                            .font(.subheadline)
-                            .fontWeight(.semibold)
-                            .frame(width: 80,height: 35)
-                            .foregroundStyle(mindText.count == 0 ? Color(.darkGray) : .white)
-                            .background(mindText.count == 0 ? Color(.systemGray5) : ghoodPink)
-                            .clipShape(RoundedRectangle(cornerRadius: 8))
-                    })
-                    .disabled(mindText.count == 0)
-                }
+                .disabled(mindText.count == 0 && !hasPoll)
+            )
+        }
+        // Sheet presentation for poll creation
+        .sheet(isPresented: $showingPollCreation) {
+            NavigationView {
+                CreatePollView(
+                    pollQuestion: $pollQuestion,
+                    pollOptions: $pollOptions,
+                    allowMultipleVotes: $allowMultipleVotes,
+                    onDone: {
+                        hasPoll = true
+                        showingPollCreation = false
+                    },
+                    onCancel: {
+                        showingPollCreation = false
+                    }
+                )
             }
-            .toolbar(.hidden, for: .tabBar)
         }
     }
 }
 
 #Preview {
-    CreateThreadPostView()
+    CreateThreadPostView(
+        mindText: "This is a sample post with a poll",
+        hasPoll: true,
+        pollQuestion: "What's your favorite season?",
+        pollOptions: ["Spring", "Summer", "Fall", "Winter"],
+        allowMultipleVotes: false
+    )
+    .previewDisplayName("Post with Poll")
+}
+
+// Add initializer to CreateThreadPostView
+extension CreateThreadPostView {
+    init(
+        mindText: String = "",
+        hasPoll: Bool = false,
+        pollQuestion: String = "",
+        pollOptions: [String] = ["", ""],
+        allowMultipleVotes: Bool = false
+    ) {
+        _mindText = State(initialValue: mindText)
+        _hasPoll = State(initialValue: hasPoll)
+        _pollQuestion = State(initialValue: pollQuestion)
+        _pollOptions = State(initialValue: pollOptions)
+        _allowMultipleVotes = State(initialValue: allowMultipleVotes)
+    }
 }

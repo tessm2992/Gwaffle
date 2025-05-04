@@ -28,7 +28,7 @@ struct CreateThreadPostTileView: View {
                         .resizable()
                         .scaledToFill()
                         .frame(width: 20,height: 20)
-                        .foregroundStyle(.green)
+                        .foregroundStyle(Color(.systemGray3))
                 }
             })
         }
