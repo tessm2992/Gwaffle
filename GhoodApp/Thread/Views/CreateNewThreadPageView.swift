@@ -115,7 +115,7 @@ struct CreateNewThreadPageView: View {
                     
                     // Tags NavigationLink
                     NavigationLink {
-                        AddCommunityTagsView()
+                        AddThreadTypeView()
                             .navigationBarBackButtonHidden()
                     } label: {
                         HStack(spacing: 4) {
