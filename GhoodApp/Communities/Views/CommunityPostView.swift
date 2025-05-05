@@ -9,14 +9,16 @@ import SwiftUI
 
 struct CommunityPostView: View {
     private var ghoodPink: Color = Color(red: 255/255, green: 41/255, blue: 91/255)
-
     
+    // Optional image name — pass nil if no image
+    var optionalImageName: String? = nil
+
     var body: some View {
         NavigationLink {
             DetailedCommunityView()
                 .navigationBarBackButtonHidden()
         } label: {
-            VStack(alignment: .leading,spacing: 6) {
+            VStack(alignment: .leading, spacing: 11) {
                 VStack(alignment: .leading) {
                     HStack {
                         NavigationLink {
@@ -26,16 +28,16 @@ struct CommunityPostView: View {
                             Image("avatar")
                                 .resizable()
                                 .scaledToFill()
-                                .frame(width: 30,height: 30)
+                                .frame(width: 30, height: 30)
                                 .clipShape(Circle())
                         }
-                        VStack(alignment: .leading, spacing: 0){
+                        VStack(alignment: .leading, spacing: 0) {
                             NavigationLink {
                                 ProfileVisitorView(showBackButton: true, showNickname: true)
                                     .navigationBarBackButtonHidden()
                             } label: {
                                 Text("Tess M")
-                                    .font(.system(size: 14,weight: .semibold))
+                                    .font(.system(size: 14, weight: .semibold))
                                     .foregroundStyle(Color(.black))
                             }
                             Text("2h")
@@ -51,16 +53,21 @@ struct CommunityPostView: View {
                         .multilineTextAlignment(.leading)
                 }
                 .padding(.horizontal)
-                Image("threadpic")
-                    .resizable()
-                    .scaledToFill()
-                    .frame(height: 180)
-                    .clipped()
+
+                // Only show the image if it exists
+                if let imageName = optionalImageName {
+                    Image(imageName)
+                        .resizable()
+                        .scaledToFill()
+                        .frame(height: 180)
+                        .clipped()
+                }
+
                 HStack(spacing: 3) {
                     Image(systemName: "heart")
                         .resizable()
-                        .frame(width: 20,height: 17)
-                        .foregroundStyle(Color(ghoodPink))
+                        .frame(width: 20, height: 17)
+                        .foregroundStyle(ghoodPink)
                     Text("18")
                         .foregroundStyle(Color(.black.opacity(0.7)))
                     Spacer()
@@ -70,7 +77,7 @@ struct CommunityPostView: View {
                 .font(.system(size: 14))
                 .padding(.horizontal)
             }
-            .padding(.vertical,15)
+            .padding(.vertical, 15)
         }
     }
 }

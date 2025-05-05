@@ -1,5 +1,5 @@
 //
-//  CommunityExploreNewView.swift
+//  CommunityExploreView.swift
 //  GhoodApp
 //
 //  Created by Tess Munsie on 4/28/25.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct CommunityExploreNewView: View {
+struct CommunityExploreView: View {
     private var ghoodPink: Color = Color(red: 255/255, green: 41/255, blue: 91/255)
 
     @Environment(\.dismiss) private var dismiss
@@ -24,23 +24,23 @@ struct CommunityExploreNewView: View {
                             .foregroundStyle(Color(.systemGray))
                         HStack {
                             CommunityTagTile(communityTag: "Creator Community")
-                            CommunityTagTile(communityTag: "Local & Neighborhood")
+                            CommunityTagTile(communityTag: "Local")
                             CommunityTagTile(communityTag: "Social")
                         }
                         HStack {
-                            CommunityTagTile(communityTag: "Family & Parenting")
+                            CommunityTagTile(communityTag: "Interests")
                             CommunityTagTile(communityTag: "Support")
-                            CommunityTagTile(communityTag: "Hobbies")
-                            CommunityTagTile(communityTag: "Identity")
+                            CommunityTagTile(communityTag: "Professional")
+                            CommunityTagTile(communityTag: "Activism")
                         }
                         .padding(.bottom, 15)
                         ForEach(0 ..< 6) { index in
                             NavigationLink {
-                                CommunityExploreNewTileView(
+                                CommunityExploreTileView(
                                     onFollow: { print("Joined") }
                                 )
                             } label: {
-                                CommunityExploreNewTileView(
+                                CommunityExploreTileView(
                                     onFollow: { print("Joined") }
                                 )
                             }
@@ -70,5 +70,5 @@ struct CommunityExploreNewView: View {
 }
 
 #Preview {
-    CommunityExploreNewView()
+    CommunityExploreView()
 }

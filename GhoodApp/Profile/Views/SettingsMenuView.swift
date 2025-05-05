@@ -41,11 +41,6 @@ struct SettingsMenuView: View {
                                 .font(.system(size: 14,weight: .semibold))
                                 .foregroundStyle(Color(.systemGray))
                             HStack {
-                                Image(systemName: "gearshape")
-                                    .frame(width: 24)
-                                Text("Settings")
-                            }
-                            HStack {
                                 Image(systemName: "shield.slash")
                                     .frame(width: 24)
                                 Text("Blocked Users")
@@ -80,16 +75,20 @@ struct SettingsMenuView: View {
                                 .font(.system(size: 14,weight: .semibold))
                                 .foregroundStyle(Color(.systemGray))
                             HStack {
-                                Image(systemName: "rectangle.portrait.and.arrow.right")
-                                    .frame(width: 24)
-                                Text("Logout")
-                            }
-                            HStack {
                                 Image(systemName: "trash")
                                     .frame(width: 24)
                                 Text("Delete Account")
                             }
                             .foregroundColor(.red)
+                            Text("Log out")
+                                .font(.headline)
+                                .fontWeight(.semibold)
+                                .foregroundStyle(ghoodPink)
+                                .frame(width: proxy.size.width - 30, height: 44)
+                                .overlay{
+                                    RoundedRectangle(cornerRadius: 30)
+                                        .stroke(ghoodPink,lineWidth: 1)
+                                }
                         }
                         .padding(.horizontal)
                     }

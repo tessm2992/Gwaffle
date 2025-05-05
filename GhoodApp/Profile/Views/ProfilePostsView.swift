@@ -11,7 +11,7 @@ struct ProfilePostsView: View {
     
     var body: some View {
         ScrollView {
-            VStack {
+            VStack(spacing: 0) {
                 ForEach(0..<5) { _ in
                     CommunityPostView()
                     Divider()

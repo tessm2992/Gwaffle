@@ -119,8 +119,8 @@ struct CreateNewThreadPageView: View {
                             .navigationBarBackButtonHidden()
                     } label: {
                         HStack(spacing: 4) {
-                            Image(systemName: "tag.fill")
-                            Text("Tags")
+                            Image(systemName: "plus")
+                            Text("Add")
                         }
                         .font(.headline)
                         .fontWeight(.semibold)

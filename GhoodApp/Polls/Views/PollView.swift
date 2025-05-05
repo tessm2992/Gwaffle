@@ -105,7 +105,7 @@ struct PollOptionView: View {
                             .frame(width: 24, height: 24)
                             .background(
                                 isSelected ?
-                                RoundedRectangle(cornerRadius: 4).fill(Color.blue) :
+                                RoundedRectangle(cornerRadius: 4).fill(Color.blue.opacity(0.7)) :
                                 RoundedRectangle(cornerRadius: 4).fill(Color.clear)
                             )
                         

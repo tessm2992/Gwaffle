@@ -16,7 +16,7 @@ struct DetailedCommunityView: View {
     var body: some View {
         GeometryReader { proxy in
             ScrollView {
-                VStack(alignment: .leading, spacing: 6) {
+                VStack(alignment: .leading, spacing: 11) {
                     HStack {
                         NavigationLink {
                             ProfileVisitorView(showBackButton: true, showNickname: true)
@@ -33,7 +33,7 @@ struct DetailedCommunityView: View {
                                 .navigationBarBackButtonHidden()
                         } label: {
                             Text("Tess M")
-                                .font(.system(size: 13,weight: .semibold))
+                                .font(.system(size: 14,weight: .semibold))
                                 .foregroundStyle(Color(.black))
                         }
                         Text("12h")
@@ -62,6 +62,7 @@ struct DetailedCommunityView: View {
                     .padding(.horizontal)
                     .padding(.bottom)
                     .font(.system(size: 13))
+                    DividerThinnestView(width: proxy.size.width)
                     ForEach(0 ..< 5, id: \.self) { index in
                         CommunityCommentCell()
                     }

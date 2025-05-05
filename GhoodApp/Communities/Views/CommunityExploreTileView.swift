@@ -1,5 +1,5 @@
 //
-//  CommunityExploreNewTileView.swift
+//  CommunityExploreTileView.swift
 //  GhoodApp
 //
 //  Created by Tess Munsie on 4/28/25.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct CommunityExploreNewTileView: View {
+struct CommunityExploreTileView: View {
     let onFollow: () -> Void
     let ghoodPink: Color = Color(red: 255/255, green: 41/255, blue: 91/255)
     
@@ -72,5 +72,5 @@ struct CommunityExploreNewTileView: View {
     }
 
 #Preview {
-    CommunityExploreNewTileView(onFollow: { print("Followed!")})
+    CommunityExploreTileView(onFollow: { print("Followed!")})
 }

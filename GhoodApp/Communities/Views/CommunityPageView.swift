@@ -27,7 +27,6 @@ struct CommunityPageView: View {
             .first?.safeAreaInsets.top ?? 44
     }
     
-    
     var body: some View {
         ZStack(alignment: .top) {
             // Main scroll view with content

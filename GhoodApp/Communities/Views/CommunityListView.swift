@@ -54,7 +54,7 @@ struct CommunityListView: View {
                         Spacer()
                             .frame(height: 20)
                         NavigationLink {
-                            CommunityExploreNewView()
+                            CommunityExploreView()
                                 .navigationBarBackButtonHidden()
                         } label: {
                             HStack {

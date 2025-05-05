@@ -9,7 +9,7 @@ import SwiftUI
 
 struct TagSelectorHeaderView: View {
     var body: some View {
-        Text("COMMUNITY TAGS (Select all that apply)")
+        Text("COMMUNITY TYPE (Select all that apply)")
             .font(.headline)
             .fontWeight(.semibold)
             .foregroundStyle(Color(.systemGray))

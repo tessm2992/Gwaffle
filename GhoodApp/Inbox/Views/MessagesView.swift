@@ -14,8 +14,8 @@ struct MessagesView: View {
                 InboxSearchBar()
                 ForEach(0..<10) { _ in
                     MessagesCell()
-                    Divider()
                 }
+                .padding(.vertical, 8)
             }
         }
     }

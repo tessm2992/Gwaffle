@@ -35,7 +35,6 @@ struct MembersListView: View {
                                     }
                                     .padding(.horizontal)
                                 }
-                                DividerThinnestView(width: proxy.size.width)
                             }
                             .padding(.vertical, 3)
                         }

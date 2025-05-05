@@ -109,7 +109,19 @@ struct CreatePollView: View {
                         
                         // Allow Multiple Votes Toggle
                         HStack {
-                            Text("Allow Multiple Votes")
+                            Text("Allow others to add options")
+                                .foregroundColor(.black)
+                            
+                            Spacer()
+                            
+                            Toggle("", isOn: $allowMultipleVotes)
+                                .labelsHidden()
+                        }
+                        .padding(.top, 8)
+                        
+                        // Allow Multiple Votes Toggle
+                        HStack {
+                            Text("Allow others to vote for multiple")
                                 .foregroundColor(.black)
                             
                             Spacer()

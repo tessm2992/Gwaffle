@@ -26,7 +26,7 @@ struct CommunityAboutView: View {
                                 .font(.system(size: 16))
                                 .foregroundStyle(Color(.black))
                             NavigationLink{
-                                CommunityExploreNewView()
+                                CommunityExploreView()
                                     .navigationBarBackButtonHidden()
                             } label: {
                                 Text("Creator Community")

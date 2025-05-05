@@ -22,5 +22,5 @@ struct CommunityTagTile: View {
 }
 
 #Preview {
-    CommunityTagTile(communityTag: "Creator")
+    CommunityTagTile(communityTag: "Creator Community")
 }
