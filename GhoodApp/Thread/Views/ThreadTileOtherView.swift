@@ -12,6 +12,7 @@ struct ThreadTileOtherView: View {
     
     var body: some View {
         NavigationLink {
+            //the LoginView is a placeholder - it should be ThreadPageView (but viewmodel gets messed up)
             LoginView()
                 .navigationBarBackButtonHidden()
             } label: {

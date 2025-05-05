@@ -18,7 +18,7 @@ struct AddNameView: View {
                     Text("What's your name?")
                         .font(.title2)
                         .fontWeight(.semibold)
-                    Text("You can choose to keep your name hidden from your profile")
+                    Text("Your name will only be visible when joining Communities")
                         .font(.footnote)
                         .padding(.bottom, 20)
                     VStack(spacing: 24) {
@@ -56,16 +56,6 @@ struct AddNameView: View {
                         .foregroundStyle(Color(ghoodPink))
                         .fontWeight(.bold)
                 })
-            }
-            ToolbarItem(placement: .topBarTrailing) {
-                NavigationLink {
-                    UserNamePasswordView()
-                        .navigationBarBackButtonHidden()
-                    } label: {
-                        Text("Skip")
-                            .foregroundStyle(Color(ghoodPink))
-                            .fontWeight(.semibold)
-                }
             }
         }
     }
