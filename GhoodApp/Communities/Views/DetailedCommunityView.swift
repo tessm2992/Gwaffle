@@ -34,7 +34,7 @@ struct DetailedCommunityView: View {
                         } label: {
                             Text("Tess M")
                                 .font(.system(size: 14,weight: .semibold))
-                                .foregroundStyle(Color(.black))
+                                .foregroundStyle(Color(.systemGray))
                         }
                         Text("12h")
                             .font(.system(size: 13))
@@ -54,16 +54,18 @@ struct DetailedCommunityView: View {
                             .frame(width: 20,height: 17)
                             .foregroundStyle(Color(ghoodPink))
                         Text("24")
-                            .foregroundStyle(Color(ghoodPink))
+                            .foregroundStyle(Color(.black.opacity(0.7)))
                         Spacer()
                         Text("43 comments")
-                            .foregroundStyle(Color(ghoodPink))
+                            .foregroundStyle(Color(.black.opacity(0.7)))
                     }
                     .padding(.horizontal)
-                    .padding(.bottom)
+                    .padding(.vertical, 10)
                     .font(.system(size: 13))
                     DividerThinnestView(width: proxy.size.width)
-                    ForEach(0 ..< 5, id: \.self) { index in
+                    CommunityCommentCell()
+                    CommunityReplyCell()
+                    ForEach(0 ..< 4, id: \.self) { index in
                         CommunityCommentCell()
                     }
                 }

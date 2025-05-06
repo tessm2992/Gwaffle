@@ -18,8 +18,8 @@ struct PollView: View {
                 Image("threadpic")
                     .resizable()
                     .scaledToFill()
-                    .frame(width: 40,height: 40)
-                    .clipShape(RoundedRectangle(cornerRadius: 15))
+                    .frame(width: 30,height: 30)
+                    .clipShape(RoundedRectangle(cornerRadius: 10))
                 
                 VStack(alignment: .leading, spacing: 4) {
                     HStack {
@@ -38,7 +38,7 @@ struct PollView: View {
                 }
             }
             Text(poll.question)
-                .font(.system(size: 20))
+                .font(.system(size: 18))
                 .fontWeight(.bold)
                 .foregroundColor(.black)
                 .padding(.bottom, 4)
@@ -101,11 +101,11 @@ struct PollOptionView: View {
                 }) {
                     ZStack {
                         RoundedRectangle(cornerRadius: 4)
-                            .stroke(Color.black, lineWidth: 1)
-                            .frame(width: 24, height: 24)
+                            .stroke(Color.black.opacity(0.7), lineWidth: 1)
+                            .frame(width: 20, height: 20)
                             .background(
                                 isSelected ?
-                                RoundedRectangle(cornerRadius: 4).fill(Color.blue.opacity(0.7)) :
+                                RoundedRectangle(cornerRadius: 4).fill(Color.black.opacity(0.7)) :
                                 RoundedRectangle(cornerRadius: 4).fill(Color.clear)
                             )
                         
@@ -133,7 +133,7 @@ struct PollOptionView: View {
             .padding(.vertical, 10)
             .padding(.horizontal, 12)
         }
-        .frame(height: 44)
+        .frame(height: 40)
         .background(Color.gray.opacity(0.1))
         .cornerRadius(8)
     }

@@ -14,9 +14,44 @@ struct PollsView: View {
     var body: some View {
         NavigationStack {
             ScrollView {
-                VStack {
+                VStack(alignment: .leading) {
                     CapsuleSearchBarFive()
                         .padding(.top, 5)
+                    VStack(alignment: .leading) {
+                        Text("POLLS RELATED TO...")
+                            .font(.system(size: 15,weight: .semibold))
+                            .foregroundStyle(Color(.systemGray))
+                        HStack {
+                            Text("🎙️ Banter")
+                                .padding(.horizontal, 11)
+                                .padding(.vertical,8)
+                                .foregroundColor(.teal)
+                                .background(Color.teal.opacity(0.05))
+                                .clipShape(Capsule())
+                            Text("🍿 Pop Culture")
+                                .padding(.horizontal, 11)
+                                .padding(.vertical, 8)
+                                .foregroundColor(.orange)
+                                .background(Color.orange.opacity(0.05))
+                                .clipShape(Capsule())
+                        }
+                        HStack {
+                            Text("🎨 Lifestyle")
+                                .padding(.horizontal, 11)
+                                .padding(.vertical,8)
+                                .foregroundColor(.blue)
+                                .background(Color.blue.opacity(0.05))
+                                .clipShape(Capsule())
+                            Text("❤️‍🔥 Relationships")
+                                .padding(.horizontal, 11)
+                                .padding(.vertical, 8)
+                                .foregroundColor(Color(hex: "#FF4C29"))
+                                .background(Color(hex: "#FF4C29").opacity(0.05))
+                                .clipShape(Capsule())
+                        }
+                    }
+                    .padding(.horizontal)
+                    .padding(.vertical, 5)
                     LazyVStack(spacing: 15) {
                         ForEach(viewModel.polls) { poll in
                             PollView(poll: poll, viewModel: viewModel)

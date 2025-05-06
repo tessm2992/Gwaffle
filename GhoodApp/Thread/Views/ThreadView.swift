@@ -12,6 +12,9 @@ struct ThreadView: View {
     private var ghoodLightPink: Color = Color(red: 255/255, green: 250/255, blue: 251/255)
     @Environment(\.dismiss) private var dismiss
     
+    @State private var selectedDropDown: FilterDropDownOption = .mostRecent
+    @State private var isDropdownExpanded = false
+    
     @StateObject private var viewModel = FeedViewModel()
     private var index: Int
     
@@ -28,6 +31,11 @@ struct ThreadView: View {
                     DividerView(width: proxy.size.width)
                     CreateThreadPostTileView()
                     DividerView(width: proxy.size.width)
+                    HStack {
+                        FilterDropDownButton(selected: $selectedDropDown, isExpanded: $isDropdownExpanded)
+                        Spacer()
+                    }
+                    .padding(.bottom, 0)
                     ForEach(0..<viewModel.threadposts.count, id: \.self) { index in
                         ThreadPostOtherView(viewModel: viewModel, index: index)
                     }

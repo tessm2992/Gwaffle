@@ -51,10 +51,10 @@ struct SideMenuView: View {
                                 Image("threadpic")
                                     .resizable()
                                     .scaledToFill()
-                                    .frame(width: 35,height: 35)
-                                    .clipShape(RoundedRectangle(cornerRadius: 11))
+                                    .frame(width: 28,height: 28)
+                                    .clipShape(RoundedRectangle(cornerRadius: 9))
                                 Text("g/summerhousebravo")
-                                    .font(.system(size: 16))
+                                    .font(.system(size: 15))
                                     .foregroundStyle(Color(ghoodPink))
                             }
                         }
@@ -78,10 +78,10 @@ struct SideMenuView: View {
                                     Image(systemName: "plus.circle.fill")
                                         .resizable()
                                         .scaledToFill()
-                                        .frame(width: 35,height: 35)
+                                        .frame(width: 28,height: 28)
                                         .foregroundColor(Color(.systemGray3))
                                     Text("Create a thread")
-                                        .font(.system(size: 16))
+                                        .font(.system(size: 15))
                                 }
                         }
                         .foregroundStyle(Color(.black))
@@ -90,10 +90,10 @@ struct SideMenuView: View {
                                 Image("threadpic")
                                     .resizable()
                                     .scaledToFill()
-                                    .frame(width: 35,height: 35)
-                                    .clipShape(RoundedRectangle(cornerRadius: 11))
+                                    .frame(width: 28,height: 28)
+                                    .clipShape(RoundedRectangle(cornerRadius: 9))
                                 Text("g/summerhousebravo")
-                                    .font(.system(size: 16))
+                                    .font(.system(size: 15))
                                     .foregroundStyle(Color(ghoodPink))
                             }
                         }

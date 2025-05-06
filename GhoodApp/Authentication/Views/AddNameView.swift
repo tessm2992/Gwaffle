@@ -46,14 +46,14 @@ struct AddNameView: View {
                     HStack { Spacer()}
                     Spacer()
                 }
-                .background(Color(ghoodLightPink))
+                .background(Color(hex: "#F7F7F3"))
             }
         }
         .toolbar{
             ToolbarItem(placement: .topBarLeading) {
                 Button(action: {dismiss()}, label: {
-                    Image(systemName: "arrow.left")
-                        .foregroundStyle(Color(ghoodPink))
+                    Image(systemName: "chevron.left")
+                        .foregroundStyle(Color(.black.opacity(0.7)))
                         .fontWeight(.bold)
                 })
             }

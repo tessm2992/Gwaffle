@@ -24,7 +24,7 @@ struct DetailedThreadView: View {
         GeometryReader { proxy in
             ScrollView {
                 VStack(alignment: .leading) {
-                    VStack(alignment: .leading, spacing: 15) {
+                    VStack(alignment: .leading, spacing: 12) {
                         HStack {
                             NavigationLink {
                                 ProfileVisitorView(showBackButton: true, showNickname: false)
@@ -82,6 +82,7 @@ struct DetailedThreadView: View {
                     }
                     .padding(.horizontal)
                     .padding(.bottom, 10)
+                    .padding(.top, 5)
                     DividerThinnestView(width: proxy.size.width)
                     ThreadCommentCell(viewModel: viewModel, index: index)
                     ThreadCommentCell(viewModel: viewModel, index: index)

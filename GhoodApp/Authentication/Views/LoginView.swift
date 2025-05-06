@@ -15,10 +15,10 @@ struct LoginView: View {
             GeometryReader { proxy in
                 VStack(spacing:70) {
                     Spacer()
-                    Image("ghoodlogo")
-                        .resizable()
-                        .scaledToFill()
-                        .frame(width: 200, height: 0)
+                    Text("ghood.")
+                        .font(.custom("Anton-Regular", size: 45))
+                        .foregroundStyle(.black.opacity(0.8))
+                        .frame(width: 125, height: 5)
                     VStack(spacing: 24) {
                         TextField("Mobile number or email address", text: $userEmail)
                             .textInputAutocapitalization(.never)
@@ -41,7 +41,7 @@ struct LoginView: View {
                                     .fontWeight(.semibold)
                                     .foregroundStyle(.white)
                                     .frame(width: proxy.size.width - 30, height: 44)
-                                    .background(ghoodPink)
+                                    .background(.blue.opacity(0.8))
                                     .clipShape(RoundedRectangle(cornerRadius: 30))
                                 
                         }
@@ -52,11 +52,11 @@ struct LoginView: View {
                             Text("Create new account")
                                 .font(.headline)
                                 .fontWeight(.semibold)
-                                .foregroundStyle(ghoodPink)
+                                .foregroundStyle(Color(.blue.opacity(0.8)))
                                 .frame(width: proxy.size.width - 30, height: 44)
                                 .overlay{
                                     RoundedRectangle(cornerRadius: 30)
-                                        .stroke(ghoodPink,lineWidth: 1)
+                                        .stroke(Color(.blue.opacity(0.8)),lineWidth: 1)
                                 }
                                 
                         }
@@ -64,14 +64,14 @@ struct LoginView: View {
                             Text("Forgot your password?")
                                 .font(.headline)
                                 .fontWeight(.semibold)
-                                .foregroundStyle(.black)
+                                .foregroundStyle(.black.opacity(0.8))
                         })
                     }
                     HStack { Spacer()}
                     Spacer()
                 }
-                .background(Color(ghoodLightPink))
             }
+            .background(Color(hex: "#F7F7F3"))
         }
     }
 }

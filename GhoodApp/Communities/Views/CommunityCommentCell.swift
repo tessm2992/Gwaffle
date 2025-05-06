@@ -32,7 +32,7 @@ struct CommunityCommentCell: View {
                         } label: {
                             Text("Tess M")
                                 .font(.system(size: 14,weight: .semibold))
-                                .foregroundStyle(Color(.black))
+                                .foregroundStyle(Color(.systemGray))
                         }
                         Text("This is the text for a coment. It can vary in size depending on how long the comment is.")
                             .font(.system(size: 16))

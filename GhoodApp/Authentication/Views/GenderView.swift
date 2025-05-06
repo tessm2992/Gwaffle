@@ -14,73 +14,97 @@ struct GenderView: View {
     var body: some View {
         NavigationStack {
             GeometryReader { proxy in
-                VStack(alignment: .center) {
-                    Text("About you")
+                VStack(alignment: .center, spacing: 20) {
+                    Text("Tell us about yourself")
                         .font(.title2)
                         .fontWeight(.semibold)
                         .padding(.top)
-                    Text("Tell us about yourself")
+                    Text("This step helps prevent trolls and ensures you're here with real people")
                         .font(.footnote)
                         .padding(.bottom, 20)
-                    VStack(spacing: 24) {
-                        NavigationLink{
-                            InterestsView()
-                                .navigationBarBackButtonHidden()
-                        } label: {
-                            Text("Female")
-                                .font(.headline)
-                                .fontWeight(.semibold)
-                                .foregroundStyle(.white)
-                                .frame(width: proxy.size.width - 30, height: 44)
-                                .background(ghoodPink)
-                                .clipShape(RoundedRectangle(cornerRadius: 30))
-                        }
-                        NavigationLink{
-                            InterestsView()
-                                .navigationBarBackButtonHidden()
-                        } label: {
-                            Text("Male")
-                                .font(.headline)
-                                .fontWeight(.semibold)
-                                .foregroundStyle(.white)
-                                .frame(width: proxy.size.width - 30, height: 44)
-                                .background(ghoodPink)
-                                .clipShape(RoundedRectangle(cornerRadius: 30))
-                        }
-                        NavigationLink{
-                            InterestsView()
-                                .navigationBarBackButtonHidden()
-                        } label: {
-                            Text("I prefer not to say")
-                                .font(.headline)
-                                .fontWeight(.semibold)
-                                .foregroundStyle(.white)
-                                .frame(width: proxy.size.width - 30, height: 44)
-                                .background(ghoodPink)
-                                .clipShape(RoundedRectangle(cornerRadius: 30))
-                        }
-                        Spacer()
+                    VStack(alignment: .leading, spacing: 10) {
+                        Text("Gender")
+                            .font(.system(size: 15))
+                            .fontWeight(.semibold)
+                        Text("Female")
+                            .font(.headline)
+                            .fontWeight(.semibold)
+                            .foregroundStyle(.white)
+                            .frame(width: proxy.size.width - 30, height: 44)
+                            .background(ghoodPink)
+                            .clipShape(RoundedRectangle(cornerRadius: 30))
+                        Text("Male")
+                            .font(.headline)
+                            .fontWeight(.semibold)
+                            .foregroundStyle(.white)
+                            .frame(width: proxy.size.width - 30, height: 44)
+                            .background(ghoodPink)
+                            .clipShape(RoundedRectangle(cornerRadius: 30))
+                    }
+                    VStack(alignment: .leading, spacing: 10) {
+                        Text("Age (Years)")
+                            .font(.system(size: 15))
+                            .fontWeight(.semibold)
+                        Text("18-24")
+                            .font(.headline)
+                            .fontWeight(.semibold)
+                            .foregroundStyle(.white)
+                            .frame(width: proxy.size.width - 30, height: 44)
+                            .background(ghoodPink)
+                            .clipShape(RoundedRectangle(cornerRadius: 30))
+                        Text("25-30")
+                            .font(.headline)
+                            .fontWeight(.semibold)
+                            .foregroundStyle(.white)
+                            .frame(width: proxy.size.width - 30, height: 44)
+                            .background(ghoodPink)
+                            .clipShape(RoundedRectangle(cornerRadius: 30))
+                        Text("31-39")
+                            .font(.headline)
+                            .fontWeight(.semibold)
+                            .foregroundStyle(.white)
+                            .frame(width: proxy.size.width - 30, height: 44)
+                            .background(ghoodPink)
+                            .clipShape(RoundedRectangle(cornerRadius: 30))
+                        Text("+ 40")
+                            .font(.headline)
+                            .fontWeight(.semibold)
+                            .foregroundStyle(.white)
+                            .frame(width: proxy.size.width - 30, height: 44)
+                            .background(ghoodPink)
+                            .clipShape(RoundedRectangle(cornerRadius: 30))
+                    }
+                    VStack(alignment: .leading, spacing: 10) {
+                        Text("City")
+                            .font(.system(size: 15))
+                            .fontWeight(.semibold)
+                        TextField("Enter your city", text: $userEmail)
+                            .textInputAutocapitalization(.never)
+                            .padding(12)
+                            .background(.white)
+                            .frame(width: proxy.size.width - 30, height: 50)
+                            .clipShape(RoundedRectangle(cornerRadius: 10))
                     }
                     HStack { Spacer()}
                     Spacer()
                 }
-                .background(Color(ghoodLightPink))
+                .background(Color(hex: "#F7F7F3"))
             }
         }
         .toolbar{
             ToolbarItem(placement: .topBarLeading) {
                 Button(action: {dismiss()}, label: {
-                    Image(systemName: "arrow.left")
-                        .foregroundStyle(Color(ghoodPink))
+                    Image(systemName: "chevron.left")
+                        .foregroundStyle(Color(.black.opacity(0.7)))
                         .fontWeight(.semibold)
                 })
             }
             ToolbarItem(placement: .topBarTrailing) {
                 NavigationLink {
-                    InterestsView()
+                    TabBarView()
                         .navigationBarBackButtonHidden()
                     } label: {
-                        Text("Skip")
+                        Text("Finish")
                             .foregroundStyle(Color(ghoodPink))
                             .fontWeight(.bold)
                 }

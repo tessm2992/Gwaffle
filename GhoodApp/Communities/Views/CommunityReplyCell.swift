@@ -33,7 +33,7 @@ struct CommunityReplyCell: View {
                                     .navigationBarBackButtonHidden()
                             } label: {
                                 Text("Tess M")
-                                    .font(.system(size: 13,weight: .semibold))
+                                    .font(.system(size: 14,weight: .semibold))
                             }
                             Image(systemName: "arrowtriangle.right.fill")
                                 .resizable()
@@ -44,7 +44,7 @@ struct CommunityReplyCell: View {
                                     .navigationBarBackButtonHidden()
                             } label: {
                                 Text("Rachel S")
-                                    .font(.system(size: 13,weight: .semibold))
+                                    .font(.system(size: 14,weight: .semibold))
                             }
                         }
                         .foregroundStyle(Color(.systemGray))
@@ -56,13 +56,13 @@ struct CommunityReplyCell: View {
                         
                         HStack(spacing: 9) {
                             Text("2h")
-                                .font(.system(size: 13))
+                                .font(.system(size: 14))
                                 .foregroundStyle(Color(.systemGray))
                                 .padding(.top, 2)
                             Button(action: {},
                                    label: {
                                 Text("Reply")
-                                    .font(.system(size: 13,weight: .semibold))
+                                    .font(.system(size: 14,weight: .semibold))
                                     .foregroundStyle(Color(.systemGray))
                                     .padding(.top, 2)
                             })

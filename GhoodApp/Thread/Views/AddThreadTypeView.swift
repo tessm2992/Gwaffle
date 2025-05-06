@@ -19,12 +19,15 @@ struct AddThreadTypeView: View {
     
     // Tag definitions
     private let tags = [
-        (id: 0, name: "Banter", color: Color.green),
-        (id: 1, name: "Pop Culture", color: Color.orange),
-        (id: 2, name: "Family", color: Color.blue),
-        (id: 3, name: "Lifestyle", color: Color.purple),
-        (id: 4, name: "Health & Fitness", color: Color.pink),
-        (id: 5, name: "Beauty & Wellness", color: Color.teal)
+        (id: 0, name: "🎙️ Banter", color: Color.teal),
+        (id: 1, name: "🍿 Pop Culture", color: Color.orange),
+        (id: 2, name: "🎨 Lifestyle", color: Color.blue),
+        (id: 3, name: "❤️‍🔥 Relationships", color: Color(hex: "#FF4C29")),
+        (id: 4, name: "🤰 Maternity", color: Color.purple),
+        (id: 5, name: "🏡 Family", color: Color(hex: "#006400")),
+        (id: 6, name: "🏥 Health", color: Color.red),
+        (id: 7, name: "💪 Fitness", color: Color.green),
+        (id: 8, name: "🧖‍♀️ Beauty & Wellness", color: Color(hex: "#EC4899"))
     ]
     
     // Select a tag (deselects if same tag is tapped again)
@@ -53,16 +56,16 @@ struct AddThreadTypeView: View {
                             Button(action: {
                                 selectTag(tag.id)
                             }) {
-                                HStack(alignment: .center) {
+                                HStack(alignment: .center, spacing: 6) {
                                     // Circle indicator that shows filled when selected
                                     ZStack {
                                         Circle()
-                                            .stroke(Color.black, lineWidth: 1.5)
+                                            .stroke(Color.black.opacity(0.7), lineWidth: 1.5)
                                             .frame(width: 24, height: 24)
                                         
                                         if selectedTagId == tag.id {
                                             Circle()
-                                                .fill(Color.black)
+                                                .fill(Color.black.opacity(0.7))
                                                 .frame(width: 16, height: 16)
                                         }
                                     }
@@ -109,7 +112,7 @@ struct AddThreadTypeView: View {
                         Text("Select")
                             .font(.subheadline)
                             .fontWeight(.semibold)
-                            .frame(width: 100, height: 35)
+                            .frame(width: 80, height: 35)
                             .foregroundStyle(selectedTagId == nil ? Color(.darkGray) : .white)
                             .background(selectedTagId == nil ? Color(.systemGray5) : ghoodPink)
                             .clipShape(RoundedRectangle(cornerRadius: 8))

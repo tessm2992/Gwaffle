@@ -25,7 +25,7 @@ struct ExploreThreadCategoriesView: View {
                             .navigationBarBackButtonHidden()
                     } label: {
                         HStack {
-                            Text("Pop Culture")
+                            Text("🍿 Pop Culture")
                                 .font(.system(size: 15,weight: .semibold))
                                 .foregroundStyle(Color(.systemGray))
                                 .textCase(.uppercase)

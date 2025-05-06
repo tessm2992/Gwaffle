@@ -34,7 +34,7 @@ struct ThreadListView: View {
                 }
                 ToolbarItem(placement: .principal) {
                     Button(action: {dismiss()}, label: {
-                        Text("Pop Culture")
+                        Text("🍿 Pop Culture")
                             .foregroundStyle(Color(.black))
                             .font(.system(size: 17,weight: .semibold))
                     })

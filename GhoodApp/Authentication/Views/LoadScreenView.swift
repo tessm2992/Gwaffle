@@ -65,7 +65,7 @@ struct LoadScreenView: View {
                     Text ("ghood.")
                         .font(.custom("Anton-Regular", size: 40))
                         .frame(width: 125, height: 150)
-                        .background(.white)
+                        .background(Color(hex: "#F0F0EA"))
                         .clipShape(RoundedRectangle(cornerRadius: 10))
                         
                     Image ("threadpic")

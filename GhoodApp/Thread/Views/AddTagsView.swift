@@ -19,11 +19,11 @@ struct AddTagsView: View {
     
     // Tag definitions
     private let tags = [
-        (id: 0, name: "FAMILY", color: Color.blue),
-        (id: 1, name: "SPORTS", color: Color.green),
-        (id: 2, name: "SOCIAL", color: Color.orange),
-        (id: 3, name: "EDUCATION", color: Color.purple),
-        (id: 4, name: "COMMUNITY", color: Color.pink)
+        (id: 0, name: "Advice", color: Color.teal),
+        (id: 1, name: "Recommendation", color: Color.green),
+        (id: 2, name: "Rant", color: Color.orange),
+        (id: 3, name: "Question", color: Color.purple),
+        (id: 4, name: "Placeholder", color: Color.yellow)
     ]
     
     // Select a tag (deselects if same tag is tapped again)
@@ -68,7 +68,7 @@ struct AddTagsView: View {
                                     
                                     // Capsule only around the text
                                     Text(tag.name)
-                                        .font(.system(size: 12, weight: .semibold))
+                                        .font(.system(size: 16, weight: .semibold))
                                         .padding(.vertical, 6)
                                         .padding(.horizontal, 10)
                                         .foregroundColor(.white)
