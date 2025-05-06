@@ -26,7 +26,7 @@ struct EmailVerificationView: View {
                             .textInputAutocapitalization(.never)
                             .padding(12)
                             .background(.white)
-                            .frame(width: proxy.size.width - 30, height: 50)
+                            .frame(width: proxy.size.width - 70, height: 50)
                             .clipShape(RoundedRectangle(cornerRadius: 10))
                         NavigationLink{
                             AddNameView()
@@ -34,10 +34,10 @@ struct EmailVerificationView: View {
                             } label: {
                                 Text("Continue")
                                     .font(.headline)
-                                    .fontWeight(.semibold)
+                                    .fontWeight(.bold)
                                     .foregroundStyle(.white)
-                                    .frame(width: proxy.size.width - 30, height: 44)
-                                    .background(ghoodPink)
+                                    .frame(width: proxy.size.width - 70, height: 50)
+                                    .background(Color(.blue.opacity(0.8)))
                                     .clipShape(RoundedRectangle(cornerRadius: 30))
                                 
                         }

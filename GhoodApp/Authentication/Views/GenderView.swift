@@ -28,18 +28,22 @@ struct GenderView: View {
                             .fontWeight(.semibold)
                         Text("Female")
                             .font(.headline)
-                            .fontWeight(.semibold)
-                            .foregroundStyle(.white)
-                            .frame(width: proxy.size.width - 30, height: 44)
-                            .background(ghoodPink)
-                            .clipShape(RoundedRectangle(cornerRadius: 30))
+                            .fontWeight(.bold)
+                            .foregroundStyle(Color(.blue.opacity(0.8)))
+                            .frame(width: proxy.size.width - 70, height: 50)
+                            .overlay{
+                                RoundedRectangle(cornerRadius: 30)
+                                    .stroke(Color(.blue.opacity(0.8)),lineWidth: 1)
+                            }
                         Text("Male")
                             .font(.headline)
-                            .fontWeight(.semibold)
-                            .foregroundStyle(.white)
-                            .frame(width: proxy.size.width - 30, height: 44)
-                            .background(ghoodPink)
-                            .clipShape(RoundedRectangle(cornerRadius: 30))
+                            .fontWeight(.bold)
+                            .foregroundStyle(Color(.blue.opacity(0.8)))
+                            .frame(width: proxy.size.width - 70, height: 50)
+                            .overlay{
+                                RoundedRectangle(cornerRadius: 30)
+                                    .stroke(Color(.blue.opacity(0.8)),lineWidth: 1)
+                            }
                     }
                     VStack(alignment: .leading, spacing: 10) {
                         Text("Age (Years)")
@@ -47,32 +51,40 @@ struct GenderView: View {
                             .fontWeight(.semibold)
                         Text("18-24")
                             .font(.headline)
-                            .fontWeight(.semibold)
-                            .foregroundStyle(.white)
-                            .frame(width: proxy.size.width - 30, height: 44)
-                            .background(ghoodPink)
-                            .clipShape(RoundedRectangle(cornerRadius: 30))
+                            .fontWeight(.bold)
+                            .foregroundStyle(Color(.blue.opacity(0.8)))
+                            .frame(width: proxy.size.width - 70, height: 50)
+                            .overlay{
+                                RoundedRectangle(cornerRadius: 30)
+                                    .stroke(Color(.blue.opacity(0.8)),lineWidth: 1)
+                            }
                         Text("25-30")
                             .font(.headline)
-                            .fontWeight(.semibold)
-                            .foregroundStyle(.white)
-                            .frame(width: proxy.size.width - 30, height: 44)
-                            .background(ghoodPink)
-                            .clipShape(RoundedRectangle(cornerRadius: 30))
+                            .fontWeight(.bold)
+                            .foregroundStyle(Color(.blue.opacity(0.8)))
+                            .frame(width: proxy.size.width - 70, height: 50)
+                            .overlay{
+                                RoundedRectangle(cornerRadius: 30)
+                                    .stroke(Color(.blue.opacity(0.8)),lineWidth: 1)
+                            }
                         Text("31-39")
                             .font(.headline)
-                            .fontWeight(.semibold)
-                            .foregroundStyle(.white)
-                            .frame(width: proxy.size.width - 30, height: 44)
-                            .background(ghoodPink)
-                            .clipShape(RoundedRectangle(cornerRadius: 30))
+                            .fontWeight(.bold)
+                            .foregroundStyle(Color(.blue.opacity(0.8)))
+                            .frame(width: proxy.size.width - 70, height: 50)
+                            .overlay{
+                                RoundedRectangle(cornerRadius: 30)
+                                    .stroke(Color(.blue.opacity(0.8)),lineWidth: 1)
+                            }
                         Text("+ 40")
                             .font(.headline)
-                            .fontWeight(.semibold)
-                            .foregroundStyle(.white)
-                            .frame(width: proxy.size.width - 30, height: 44)
-                            .background(ghoodPink)
-                            .clipShape(RoundedRectangle(cornerRadius: 30))
+                            .fontWeight(.bold)
+                            .foregroundStyle(Color(.blue.opacity(0.8)))
+                            .frame(width: proxy.size.width - 70, height: 50)
+                            .overlay{
+                                RoundedRectangle(cornerRadius: 30)
+                                    .stroke(Color(.blue.opacity(0.8)),lineWidth: 1)
+                            }
                     }
                     VStack(alignment: .leading, spacing: 10) {
                         Text("City")
@@ -82,8 +94,21 @@ struct GenderView: View {
                             .textInputAutocapitalization(.never)
                             .padding(12)
                             .background(.white)
-                            .frame(width: proxy.size.width - 30, height: 50)
+                            .frame(width: proxy.size.width - 70, height: 50)
                             .clipShape(RoundedRectangle(cornerRadius: 10))
+                    }
+                    NavigationLink{
+                        TabBarView()
+                            .navigationBarBackButtonHidden()
+                        } label: {
+                            Text("Finish")
+                                .font(.headline)
+                                .fontWeight(.bold)
+                                .foregroundStyle(.white)
+                                .frame(width: proxy.size.width - 70, height: 50)
+                                .background(Color(.blue.opacity(0.8)))
+                                .clipShape(RoundedRectangle(cornerRadius: 30))
+                            
                     }
                     HStack { Spacer()}
                     Spacer()
@@ -98,16 +123,6 @@ struct GenderView: View {
                         .foregroundStyle(Color(.black.opacity(0.7)))
                         .fontWeight(.semibold)
                 })
-            }
-            ToolbarItem(placement: .topBarTrailing) {
-                NavigationLink {
-                    TabBarView()
-                        .navigationBarBackButtonHidden()
-                    } label: {
-                        Text("Finish")
-                            .foregroundStyle(Color(ghoodPink))
-                            .fontWeight(.bold)
-                }
             }
         }
     }
