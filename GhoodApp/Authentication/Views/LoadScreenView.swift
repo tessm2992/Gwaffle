@@ -63,7 +63,7 @@ struct LoadScreenView: View {
                         .frame(width: 125,height: 150)
                         .clipShape(RoundedRectangle(cornerRadius: 10))
                     Text ("ghood.")
-                        .font(.custom("Shrikhand-Regular", size: 30))
+                        .font(.custom("Shrikhand-Regular", size: 32))
                         .foregroundColor(.black)
                         .frame(width: 125, height: 150)
                         .background(Color(hex: "#F0F0EA"))

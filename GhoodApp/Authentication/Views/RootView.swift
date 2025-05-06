@@ -15,7 +15,7 @@ struct RootView: View {
             if isLoading {
                 LoadScreenView()
             } else {
-                TabBarView()
+                LoginView()
             }
         }
         .onAppear {

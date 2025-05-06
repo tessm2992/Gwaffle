@@ -21,9 +21,9 @@ struct LoginView: View {
                 )
                 .ignoresSafeArea()
                 GeometryReader { proxy in
-                    VStack(spacing:70) {
+                    VStack(spacing:50) {
                         Spacer(minLength: 140)
-                        VStack(alignment: .center, spacing: 10) {
+                        VStack(alignment: .center, spacing: 8) {
                             Text("ghood.")
                                 .font(.custom("Shrikhand-Regular", size: 45))
                                 .foregroundStyle(.black.opacity(0.8))
@@ -90,6 +90,7 @@ struct LoginView: View {
                     }
                 }
             }
+            .background(.white)
         }
     }
 }
