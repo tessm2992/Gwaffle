@@ -42,8 +42,8 @@ struct ThreadPostView: View {
                                     .navigationBarBackButtonHidden()
                             } label: {
                                 Text(viewModel.threadposts[index].page?.pageTitle ?? "")
-                                    .font(.system(size: 14,weight: .semibold))
-                                    .foregroundStyle(Color(ghoodPink))
+                                    .font(.system(size: 14, weight: .semibold, design: .monospaced))
+                                    .foregroundStyle(.black.opacity(0.8))
                             }
                             Spacer()
                 

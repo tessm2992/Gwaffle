@@ -70,6 +70,7 @@ struct CommunityListView: View {
                         }
                     }
                 }
+                .background(Color(.white))
             }
         }
     }

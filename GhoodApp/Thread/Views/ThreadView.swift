@@ -61,6 +61,7 @@ struct ThreadView: View {
                 
             }
         }
+        .background(Color(.white))
     }
 }
 

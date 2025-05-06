@@ -72,6 +72,7 @@ struct PollsView: View {
                     }
                 }
             }
+            .background(Color(.white))
         }
     }
 }

@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		61056B282DC547BA0027FC4C /* Anton-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 61056B272DC547BA0027FC4C /* Anton-Regular.ttf */; };
 		61056BBB2DC7EA4D0027FC4C /* SF-Pro-Display-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 61056BBA2DC7EA4D0027FC4C /* SF-Pro-Display-Bold.otf */; };
+		61D37E4A2DCACED600E9AC84 /* Shrikhand-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 61D37E492DCACED600E9AC84 /* Shrikhand-Regular.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,6 +35,7 @@
 		6101582C2DAFD6130075B9AA /* GhoodAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GhoodAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		61056B272DC547BA0027FC4C /* Anton-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Anton-Regular.ttf"; sourceTree = "<group>"; };
 		61056BBA2DC7EA4D0027FC4C /* SF-Pro-Display-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Bold.otf"; sourceTree = "<group>"; };
+		61D37E492DCACED600E9AC84 /* Shrikhand-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Shrikhand-Regular.ttf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -101,6 +103,7 @@
 				610158152DAFD60C0075B9AA /* Products */,
 				61056B272DC547BA0027FC4C /* Anton-Regular.ttf */,
 				61056BBA2DC7EA4D0027FC4C /* SF-Pro-Display-Bold.otf */,
+				61D37E492DCACED600E9AC84 /* Shrikhand-Regular.ttf */,
 			);
 			sourceTree = "<group>";
 		};
@@ -234,6 +237,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				61D37E4A2DCACED600E9AC84 /* Shrikhand-Regular.ttf in Resources */,
 				61056B282DC547BA0027FC4C /* Anton-Regular.ttf in Resources */,
 				61056BBB2DC7EA4D0027FC4C /* SF-Pro-Display-Bold.otf in Resources */,
 			);
@@ -415,6 +419,7 @@
 				CODE_SIGN_ENTITLEMENTS = GhoodApp/GhoodApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = G7VF24AHS3;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = GhoodApp/Info.plist;
@@ -453,6 +458,7 @@
 				CODE_SIGN_ENTITLEMENTS = GhoodApp/GhoodApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = G7VF24AHS3;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = GhoodApp/Info.plist;

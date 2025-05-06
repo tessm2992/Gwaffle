@@ -114,6 +114,7 @@ struct CommunityPageView: View {
             }
             print("Scroll offset: \(newValue), Show header: \(showHeaderInfo)")
         }
+        .background(Color(.white))
     }
 }
 

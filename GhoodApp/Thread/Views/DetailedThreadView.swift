@@ -112,6 +112,7 @@ struct DetailedThreadView: View {
                 }
                 .toolbar(.hidden, for: .tabBar)
             }
+            .background(Color(.white))
         }
     }
 }
